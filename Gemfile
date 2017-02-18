@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'simple_form'
 gem 'devise'
 
 # Use jquery as the JavaScript library
@@ -44,6 +45,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
