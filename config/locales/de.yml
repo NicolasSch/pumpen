@@ -3,6 +3,13 @@ de:
     logout: "abmelden"
     account: "Mein Konto"
     admin: "Zum Admin-Bereich"
+  session:
+    login:
+      headline: "Anmelden"
+    signup:
+      headline: "Registrieren"
+    reset_password:
+      headline: "Mein Passwort zurücksetzen"
   tab_item:
     create:
       success: "Artikel %{title} wurde angeschrieben"
