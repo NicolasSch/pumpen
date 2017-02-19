@@ -1,3 +1,19 @@
 en:
-  user:
-    headline: "My Tablist"
+  nav_bar:
+    logout: "logout"
+    account: "My Account"
+    admin: "Admin area"
+  tab:
+    add_item:
+      headline: "Add to tab"
+      description: "Choose a product from the list and add it to your tab."
+      submit: "add"
+    product:
+      title: "Product"
+      price: "Price"
+      quantity: "Quantity"
+    list:
+      headline: "My Tablist"
+      description: "This is your tab list of the current month."
+      empty: "Your tab list is empty. Start gaining now...!"
+      link: "add stuff"

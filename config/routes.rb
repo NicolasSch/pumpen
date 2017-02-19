@@ -6,9 +6,11 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
     authenticated do
-      root 'users#index'
+      root 'tabs#index'
     end
   end
 
+  resources :tab, only: :index
+  resources :tab_item, only: :create
   resources :user, only: :index
 end

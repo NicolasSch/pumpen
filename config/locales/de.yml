@@ -1,3 +1,19 @@
 de:
-  user:
-    headline: Meine Tabliste
+  nav_bar:
+    logout: "abmelden"
+    account: "Mein Konto"
+    admin: "Zum Admin-Bereich"
+  tab:
+    add_item:
+      headline: "Zur Liste hinzufügen"
+      description: "Wähle aus der Liste einen Artikel aus und füge diesen deinem Tab hinzu."
+      submit: "anschreiben"
+    product:
+      title: "Artikel"
+      price: "Preis"
+      quantity: "Anzahl"
+    list:
+      headline: "Meine Tabliste"
+      description: "Hier siehst du deine Tabliste des aktuellen Monats."
+      empty: "Du hast bisher nichts auf deiner Tabliste. Dann mal los."
+      link: "Artikel anschreiben"

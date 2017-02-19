@@ -9,6 +9,30 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">CrossFit HH</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+          <li class="nav-item active">
+            <%= link_to t('nav_bar.home'), root_path, class: 'nav-link '%>
+          </li>
+        </ul>
+        <ul class="navbar-nav mt-2 col-md-2 mt-md-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('nav_bar.account') %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to t('nav_bar.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete%>
+              <%= link_to t('nav_bar.admin'), destroy_user_session_path, class: 'dropdown-item'%>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="container">
       <div class="row">
         <div class="flash-messages col-md-6">

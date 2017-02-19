@@ -1,0 +1,6 @@
+body { background: #000000 !important;}
+
+.card {
+    margin-top: 20px;
+    @extend .card;
+}
