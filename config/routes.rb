@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :tabs, only: :index
+  resources :products, only: :index
   resources :tab_items, only: :create
   resources :users, only: :index
 end
