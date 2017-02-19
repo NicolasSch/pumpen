@@ -1,11 +1,11 @@
 <div class="card row text-center">
   <div class="card-block col-md-12">
-    <h3 class="card-title"><%= t('tab.add_item.headline')%></h3>
-    <h6 class="card-subtitle mb-2 text-muted"><%= t('tab.add_item.description') %></h6>
-    <%= simple_form_for @tab_item, url: tab_item_index_path(@tab_item) do |f| %>
+    <h3 class="card-title"><%= t('add_tab.item.headline')%></h3>
+    <h6 class="card-subtitle mb-2 text-muted"><%= t('add_tab.item.description') %></h6>
+    <%= simple_form_for @tab_item, url: tab_items_path(@tab_item) do |f| %>
       <div>
         <%= f.association :product, input_html: { class: "col-md-12 selectpicker", "data-live-search" => true } %>
-        <%= f.submit t('tab.add_item.submit'), class: 'button' %>
+        <%= f.submit t('add_tab.item.submit'), class: 'button' %>
       </div>
     <% end %>
   </div>
