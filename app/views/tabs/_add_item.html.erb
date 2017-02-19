@@ -5,7 +5,7 @@
     <%= simple_form_for @tab_item, url: tab_item_index_path(@tab_item) do |f| %>
       <div>
         <%= f.association :product, input_html: { class: "col-md-12 selectpicker", "data-live-search" => true } %>
-        <%= f.submit t('tab.add_item.submit'), class: 'col-md-6 btn btn-danger' %>
+        <%= f.submit t('tab.add_item.submit'), class: 'button' %>
       </div>
     <% end %>
   </div>

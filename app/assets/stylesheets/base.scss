@@ -5,3 +5,9 @@ body { background: #000000 !important;}
     background-color: #d3d3d3;
     @extend .card;
 }
+
+.button {
+  @extend .col-md-2;
+  @extend .btn;
+  @extend .btn-primary;
+}
