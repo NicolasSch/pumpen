@@ -5,7 +5,7 @@ class TabItemsController < ApplicationController
     authorize! :write, TabItem
     item = @tab.add_product(tab_item_params[:product_id])
     if item.save
-      redirect_to :back, notice: t('tab_item.create.success')
+      redirect_to :back, notice: t('tab_item.create.success', title: item.product.title)
     else
       redirect_to :back, alert: t('tab_item.create.alert')
     end

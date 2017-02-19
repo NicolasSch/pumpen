@@ -8,6 +8,7 @@ class Ability
     else
       can :read, User, id: user.id
       can :read, Tab, user_id: user.id
+      can :read, Product
       can :write, TabItem
     end
   end
