@@ -1,0 +1,10 @@
+.flash-messages__alert {
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+.flash-messages__notice,
+.flash-messages__success {
+  @extend .alert;
+  @extend .alert-success;
+}

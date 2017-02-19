@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tab, only: :index
-  resources :tab_item, only: :create
-  resources :user, only: :index
+  resources :tabs, only: :index
+  resources :products, only: :index
+  resources :tab_items, only: :create
+  resources :users, only: :index
 end

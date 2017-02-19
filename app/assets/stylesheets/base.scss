@@ -2,5 +2,12 @@ body { background: #000000 !important;}
 
 .card {
     margin-top: 20px;
+    background-color: #d3d3d3;
     @extend .card;
+}
+
+.button {
+  @extend .col-md-2;
+  @extend .btn;
+  @extend .btn-primary;
 }

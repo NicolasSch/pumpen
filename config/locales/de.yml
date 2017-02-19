@@ -3,11 +3,25 @@ de:
     logout: "abmelden"
     account: "Mein Konto"
     admin: "Zum Admin-Bereich"
-  tab:
-    add_item:
+  tab_item:
+    create:
+      success: "Artikel %{title} wurde angeschrieben"
+      alert: "konnte Artikel nicht anschreiben"
+  add_tab:
+    item:
       headline: "Zur Liste hinzufügen"
       description: "Wähle aus der Liste einen Artikel aus und füge diesen deinem Tab hinzu."
       submit: "anschreiben"
+  products:
+    headline: "Artikel"
+    description: "Füge Artikel deinem Tab hinzu. Achtung, Du kannst hinzufgefügte Artikel nicht wieder löschen.
+      Solltest Du Probleme haben werden Dir unsere Tresenkräfte gerne behilflich sein."
+    add_item: "hinzufügen"
+    title: "Title"
+    price: "Preis"
+    action: "Aktion"
+  my_tab:
+    sum: "Gesamt:"
     product:
       title: "Artikel"
       price: "Preis"
@@ -16,4 +30,4 @@ de:
       headline: "Meine Tabliste"
       description: "Hier siehst du deine Tabliste des aktuellen Monats."
       empty: "Du hast bisher nichts auf deiner Tabliste. Dann mal los."
-      link: "Artikel anschreiben"
+      product_link: "Artikel ansehen"

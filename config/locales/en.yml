@@ -3,11 +3,25 @@ en:
     logout: "logout"
     account: "My Account"
     admin: "Admin area"
-  tab:
-    add_item:
+  tab_item:
+    create:
+      success: "Product %{title} has been added to tab"
+      alert: "could not add product to tab"
+  add_tab:
+    item:
       headline: "Add to tab"
       description: "Choose a product from the list and add it to your tab."
       submit: "add"
+  products:
+    headline: "Products"
+    description: "Add products to your tab. Attention, you cannot remove a product after an addition.
+      If you have questions or trouble our frontdesk people will be glad to help."
+    title: "Title"
+    price: "Price"
+    action: "Action"
+    add_item: "add"
+  my_tab:
+    sum: "Total:"
     product:
       title: "Product"
       price: "Price"
@@ -16,4 +30,4 @@ en:
       headline: "My Tablist"
       description: "This is your tab list of the current month."
       empty: "Your tab list is empty. Start gaining now...!"
-      link: "add stuff"
+      product_link: "product list"

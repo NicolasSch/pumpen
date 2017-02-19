@@ -1,26 +1,31 @@
-<div class="card row text-center">
+<div class="card row">
   <div class="card-block">
-      <h3 class="card-title"><%= t('tab.list.headline')%></h3>
-      <h6 class="card-subtitle mb-2 text-muted"><%= t('tab.list.description') %></h6>
+      <h3 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description') %></h6>
     <% if @tab.tab_items.any? %>
-      <table class="table table-striped col-md-12">
+      <table class="table">
         <thead>
           <tr>
-            <th><%= t('tab.product.title')%></th>
-            <th><%= t('tab.product.price')%></th>
-            <th><%= t('tab.quantity') %></th>
+            <th><%= t('my_tab.product.title')%></th>
+            <th><%= t('my_tab.quantity') %></th>
+            <th><%= t('my_tab.product.price')%></th>
           </tr>
         </thead>
+        <tfoot>
+          <td></td>
+          <td><%= t('my_tab.sum') %></td>
+          <td><%= number_to_euro(@tab.total_price) %></td>
+        </tfoot>
         <tbody>
             <%= render partial: @tab.tab_items %>
         </tbody>
       </table>
     <% else %>
-     <p class="card-text">
-       <%= t('tab.list.empty')%>
+     <p class="card-text text-center">
+       <%= t('my_tab.list.empty')%>
      </p>
-     <a href="#" class="btn btn-danger col-md-6">
-       <%= t('tab.list.link')%>
+     <a href="#" class="button offset-md-5">
+       <%= t('my_tab.list.product_link')%>
      </a>
     <% end %>
   </div>
