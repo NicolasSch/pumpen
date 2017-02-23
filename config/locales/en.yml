@@ -35,6 +35,6 @@ en:
       quantity: "Quantity"
     list:
       headline: "My Tablist"
-      description: "This is your tab list of the current month."
+      description: "This is your tab list of the month."
       empty: "Your tab list is empty. Start gaining now...!"
       product_link: "product list"

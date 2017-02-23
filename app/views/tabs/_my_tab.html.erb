@@ -24,9 +24,7 @@
      <p class="card-text text-center">
        <%= t('my_tab.list.empty')%>
      </p>
-     <a href="#" class="button offset-md-5">
-       <%= t('my_tab.list.product_link')%>
-     </a>
+      <%= link_to t('my_tab.list.product_link'), products_path, class: 'button offset-md-5'%>
     <% end %>
   </div>
 </div>
