@@ -8,6 +8,10 @@ de:
       firstname: "Vorname"
       lastname: "Nachname"
       membership: "Mitgliedschaft"
+      password: "Passwort"
+      password_confirmation: "Passwort bestätigen"
+      role: "Rolle"
+      role_hint: "Wenn admin ausgewählt wird, hat der Benutzer Zugriff auf den Adminbereich."
   nav_bar:
     logout: "abmelden"
     account: "Mein Konto"
@@ -19,6 +23,14 @@ de:
       headline: "Registrieren"
     reset_password:
       headline: "Mein Passwort zurücksetzen"
+  user:
+    membership:
+      staff: "Mitarbeiter"
+      full: "Vollzeit"
+      four: "Viermal"
+      three: "Dreimal"
+      two: "Zweimal"
+      one: "Einmal"
   tab_item:
     create:
       success: "Artikel %{title} wurde angeschrieben"

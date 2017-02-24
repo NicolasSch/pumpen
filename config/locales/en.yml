@@ -5,9 +5,18 @@ en:
       description: "Create new users or edit exisiting ones."
       create: "Create User"
       email: "Email"
-      firstname: "Surname"
-      lastname: "Lastname"
+      firstname: "First name"
+      lastname: "Last name"
       membership: "Membership"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+      role: "Role"
+      role_hint: "If you choose the role admin an user can enter the admin area."
+      new:
+        headline: "Create new user"
+      edit:
+        link: 'edit'
+        headline: "Edit user"
   nav_bar:
     logout: "logout"
     account: "My Account"
@@ -19,6 +28,14 @@ en:
       headline: "Signup"
     reset_password:
       headline: "Reset my password"
+  user:
+    membership:
+      staff: "Staff member"
+      full: "Full time"
+      four: "Four times"
+      three: "Three times"
+      two: "Twice"
+      one: "Once"
   tab_item:
     create:
       success: "Product %{title} has been added to tab"

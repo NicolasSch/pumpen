@@ -1,0 +1,13 @@
+<%= simple_form_for [:admin, @user] do |f| %>
+  <div>
+    <%= f.input :first_name, label: t('admin.users.firstname'), input_html: { value: @user.first_name} %>
+    <%= f.input :last_name, label: t('admin.users.lastname'), input_html: { value: @user.last_name} %>
+    <%= f.input :email, label: t('admin.users.email'), input_html: { value: @user.email} %>
+    <%= f.input :password, label: t('admin.users.password'), input_html: { value: @user.email} %>
+    <%= f.input :password_confirmation, label: t('admin.users.password_confirmation'), input_html: { value: @user.email} %>
+    <%= f.input :membership, label: t('admin.users.membership'), collection: translated_memberships, include_blank: false, select: @user.membership %>
+    <%= f.input :role, label: t('admin.users.role'), collection: User::ROLES, select: @user.membership, include_blank: false,
+      hint: t('admin.users.role_hint')%>
+    <%= f.submit class: 'button' %>
+  </div>
+<% end %>
