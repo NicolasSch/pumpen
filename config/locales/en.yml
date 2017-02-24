@@ -1,4 +1,13 @@
 en:
+  admin:
+    users:
+      headline: "User list"
+      description: "Create new users or edit exisiting ones."
+      create: "Create User"
+      email: "Email"
+      firstname: "Surname"
+      lastname: "Lastname"
+      membership: "Membership"
   nav_bar:
     logout: "logout"
     account: "My Account"

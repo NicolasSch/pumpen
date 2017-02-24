@@ -1,0 +1,9 @@
+<tr>
+  <td><%= user.email %></td>
+  <td><%= user.first_name %> </td>
+  <td><%= user.last_name %> </td>
+  <td><%= user.membership %> </td>
+  <td>
+    <%= link_to t('admin.users.edit'), edit_admin_user_path(user), method: :get, class: 'btn btn-primary' %>
+  </td>
+</tr>

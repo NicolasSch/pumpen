@@ -1,4 +1,13 @@
 de:
+  admin:
+    users:
+      headline: "Benutzer Liste"
+      description: "Bearbeite existierende Benutzer oder lege Neue an."
+      create: "Erstelle Benutzer"
+      email: "E-Mail"
+      firstname: "Vorname"
+      lastname: "Nachname"
+      membership: "Mitgliedschaft"
   nav_bar:
     logout: "abmelden"
     account: "Mein Konto"

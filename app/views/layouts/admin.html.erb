@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crossfit HH Tabs Admin</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render partial: 'shared/nav_bar_admin'%>
+    <div class="container">
+      <%= render partial: 'shared/notification'%>
+        <%= yield %>
+    </div>
+  </body>
+</html>

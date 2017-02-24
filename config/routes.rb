@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :users
+  end
+
   resources :tabs, only: :index
   resources :products, only: :index
   resources :tab_items, only: :create
