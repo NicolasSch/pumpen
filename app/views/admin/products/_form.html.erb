@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, @product] do |f| %>
+  <div>
+    <%= f.input :title, label: t('admin.products.title'), input_html: { value: @product.title} %>
+    <%= f.input :price, as: :decimal, label: t('admin.products.price'), input_html: { value: @product.price} %>
+    <%= f.submit class: 'button' %>
+  </div>
+<% end %>

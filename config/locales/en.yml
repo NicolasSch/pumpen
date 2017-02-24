@@ -1,5 +1,20 @@
 en:
   admin:
+    products:
+      headline: "Product list"
+      description: "Add product or edit exisiting ones."
+      title: "Title"
+      price: "Price"
+      create_link: "create product"
+      edit_link: "edit"
+      destroy_link: "delete"
+      notice:
+        create: "Product has been created"
+        update: "Product has been updated"
+      edit:
+        headline: "Edit %{product}"
+      new:
+        headline: "Create Product"
     users:
       headline: "User list"
       description: "Create new users or edit exisiting ones."

@@ -1,0 +1,6 @@
+<tr>
+  <td><%= product.title %></td>
+  <td><%= number_to_euro(product.price) %> </td>
+  <td><%= link_to t('admin.products.edit_link'), edit_admin_product_path(product), method: :get, class: 'btn btn-primary' %> </td>
+  <td><%= link_to t('admin.products.destroy_link'), admin_product_path(product), method: :delete, class: 'btn btn-primary' %> </td>
+</tr>
