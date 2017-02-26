@@ -1,5 +1,18 @@
 en:
   admin:
+    nav_bar:
+      shops: "Shop"
+      users: "Users"
+      products: "Products"
+    shop:
+      cart:
+        headline: "Cart"
+        description: "Submit the card to add products to users tab."
+      user:
+        headline: "Choose user and add a product to the cart"
+      products:
+        headline: "Product list"
+        description: "Add product to current users tab"
     products:
       headline: "Product list"
       description: "Add product or edit exisiting ones."

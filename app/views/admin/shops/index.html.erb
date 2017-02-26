@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.shop.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.description') %></h6>
+        <%= simple_form_for [:admin, @tab_item], url: tab_items_path(@tab_item) do |f| %>
+            <%= f.input :user, collection: @users %>
+            <%= f.association :product %>
+            <%= f.submit t('add_tab.item.submit'), class: 'button' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.shop.products.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('products.shop.description') %></h6>
+        <table class="table col-md-12">
+          <thead>
+            <tr>
+              <th><%= t('products.title') %></th>
+              <th><%= t('products.price') %></th>
+              <th><%= t('products.action') %></th>
+            </tr>
+          </thead>
+          <tbody>
+              <%= render partial: 'products/product', collection: @products, as: :product %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.shop.cart.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.cart.description') %></h6>
+        <table class="table col-md-12">
+        </table>
+        <%= simple_form_for @cart, url: tab_path(@tab_item), method: :put do |f| %>
+          <% @products.each do |product| %>
+            <%= f.simple_fields_for 'skus_attributes[]', product do |pf| %>
+              <%= render partial: 'admin/shops/skus/sku_table_row', locals: {product: product, f: pf} %>
+            <% end %>
+            <% end %>
+            <%= f.submit t('add_tab.item.submit'), class: 'button' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

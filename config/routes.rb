@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :products
+    resources :shops, only: :index
   end
 
-  resources :tabs, only: :index
+  resources :tabs, only: [:index, :update]
   resources :products, only: :index
   resources :tab_items, only: :create
   resources :users, only: :index
