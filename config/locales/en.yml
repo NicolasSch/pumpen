@@ -50,7 +50,7 @@ en:
   nav_bar:
     logout: "logout"
     account: "My Account"
-    admin: "Admin area"
+    admin: "Admin"
   session:
     login:
       headline: "Login"
