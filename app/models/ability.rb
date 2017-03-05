@@ -11,6 +11,7 @@ class Ability
       can :write, Tab, user_id: user.id
       can :read, Product
       can :write, TabItem
+      can :write, Cart, user_id: user.id
     end
   end
 end

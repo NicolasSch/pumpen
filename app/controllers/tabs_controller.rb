@@ -1,5 +1,5 @@
 class TabsController < ApplicationController
-  before_action :ensure_tab, :ensure_tab, only: :index
+  before_action :ensure_tab, only: :index
 
   def index
     authorize! :read, @tab
@@ -7,8 +7,8 @@ class TabsController < ApplicationController
   end
 
   def update
-    authorize! :write, @tab
     tab = current_user.tabs.find(params[:id])
+    authorize! :write, tab
     tab.add_product(params[:product_id])
     if tab.save
       redirect_to :root
