@@ -58,7 +58,10 @@
             </tbody>
           </table>
         <% end %>
-        <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' if @cart.persisted? %>
+        <% if @cart.tab_items.any? && @cart.persisted? %>
+          <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' %>
+          <%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'button-cart' %>
+        <% end %>
       </div>
     </div>
   </div>

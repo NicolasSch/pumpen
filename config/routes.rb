@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     end
     resources :shops, only: :index
-    resources :carts, only: [:new, :update] do
+    resources :carts, only: [:new, :update, :destroy] do
       member do
         put :checkout
       end

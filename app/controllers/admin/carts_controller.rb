@@ -10,6 +10,12 @@ class Admin::CartsController < AdminController
     redirect_to admin_shops_path, notice: 'Added cart to users tab.'
   end
 
+  def destroy
+    cart = Cart.find(params[:id])
+    cart.tab_items.destroy_all
+    redirect_to admin_shops_path, notice: 'Cart has been cleared'
+  end
+
   private
 
   def cart_params
