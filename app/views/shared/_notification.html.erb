@@ -1,7 +1,5 @@
-<div class="row">
-  <div class="flash-messages col-md-12">
-    <% flash.each do |type, message| %>
-      <%= content_tag(:div, message, class: "flash-messages__#{type}") %>
-    <% end %>
-  </div>
+<div class="flash-messages">
+  <% flash.each do |type, message| %>
+    <%= content_tag(:div, message, class: "flash-messages__#{type}") %>
+  <% end %>
 </div>

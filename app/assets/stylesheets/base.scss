@@ -1,7 +1,7 @@
 body { background: #EBEBEB !important;}
 
 .card {
-    margin-top: 20px;
+    margin-bottom: 1rem;
     @extend .card;
 }
 
@@ -9,11 +9,12 @@ body { background: #EBEBEB !important;}
   @extend .col-md-2;
   @extend .btn;
   @extend .btn-primary;
+  text-align: center;
 }
 
 .button-cart {
-  @extend .offset-md-4;
-  @extend .col-md-4;
+  @extend .col-12;
   @extend .btn;
   @extend .btn-primary;
+  margin-bottom: 1rem;
 }

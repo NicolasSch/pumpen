@@ -1,3 +1,8 @@
+.flash-messages {
+  @extend .col-12;
+  margin-top: 1rem;
+}
+
 .flash-messages__alert {
   @extend .alert;
   @extend .alert-danger;
