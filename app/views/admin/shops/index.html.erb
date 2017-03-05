@@ -6,8 +6,11 @@
         <% if @cart.persisted? %>
           <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.description') %></h6>
           <%= simple_form_for [:admin, @tab_item], url: tab_items_path(@tab_item, cart_id: @cart&.id) do |f| %>
+            <div class="col-md-12">
               <%= f.association :product %>
-              <%= f.submit t('add_tab.item.submit'), class: 'button' %>
+              <%= f.submit t('add_tab.item.submit'), class: 'button offset-md-5' %>
+            </div>
+            <div class="row">
               <table class="table col-md-12">
                 <thead>
                   <tr>
@@ -20,6 +23,7 @@
                     <%= render partial: 'products/product', collection: @products, as: :product, locals: {cart: @cart} %>
                 </tbody>
               </table>
+            </div>
           <% end %>
           <% else %>
             <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.choose_user') %></h6>

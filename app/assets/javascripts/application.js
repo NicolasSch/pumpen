@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function (){
   $('#cart_user_id').on('change', function (e) {
     $(this).parents('form').submit();
   })
