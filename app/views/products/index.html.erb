@@ -1,18 +1,49 @@
-<div class="card row">
-  <div class="card-block">
-    <h3 class="card-title text-center"><%= t('products.headline')%></h3>
-    <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('products.description') %></h6>
-    <table class="table col-md-12">
-      <thead>
-        <tr>
-          <th><%= t('products.title') %></th>
-          <th><%= t('products.price') %></th>
-          <th><%= t('products.action') %></th>
-        </tr>
-      </thead>
-      <tbody>
-          <%= render partial: @products %>
-      </tbody>
-    </table>
+<div class="col-md-8">
+  <div class="card row">
+    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('products.headline')%></h3>
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('products.description') %></h6>
+      <table class="table col-md-12">
+        <thead>
+          <tr>
+            <th><%= t('products.title') %></th>
+            <th><%= t('products.price') %></th>
+            <th><%= t('products.action') %></th>
+          </tr>
+        </thead>
+        <tbody>
+            <%= render partial: @products %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  <div class="col-md-4">
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.shop.cart.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.cart.description') %></h6>
+        <% if @cart.tab_items.any? %>
+          <table class="table col-md-12">
+            <thead>
+              <tr>
+                <th><%= t('my_tab.product.title')%></th>
+                <th><%= t('my_tab.quantity') %></th>
+                <th><%= t('my_tab.product.price')%></th>
+              </tr>
+            </thead>
+            <tfoot>
+              <td></td>
+              <td><%= t('my_tab.sum') %></td>
+              <td><%= number_to_euro(@cart.total_price) %></td>
+            </tfoot>
+            <tbody>
+                <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
+            </tbody>
+          </table>
+        <% end %>
+        <%= link_to t('cart.checkout'), cart_path(@cart), method: :put, class: 'button-cart' if @cart.persisted? %>
+      </div>
+    </div>
   </div>
 </div>

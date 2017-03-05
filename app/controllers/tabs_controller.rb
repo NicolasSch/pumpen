@@ -1,14 +1,29 @@
 class TabsController < ApplicationController
-  before_action :ensure_tab, :set_tab, only: :index
+  before_action :ensure_tab, :ensure_tab, only: :index
 
   def index
     authorize! :read, @tab
-    @tab_item = TabItem.new
+    @products = Product.all
+  end
+
+  def update
+    authorize! :write, @tab
+    tab = current_user.tabs.find(params[:id])
+    tab.add_product(params[:product_id])
+    if tab.save
+      redirect_to :root
+    else
+      redirect_to :root, alert: 'Something went wrong'
+    end
   end
 
   private
 
+  def tab_item_params
+    params.require(:tab).permit(:product_id)
+  end
+
   def ensure_tab
-    current_user.tabs.first_or_create!(month: Time.now.month)
+    @tab = current_user.tabs.where(month: Time.now.month).first_or_create
   end
 end

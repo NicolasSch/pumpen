@@ -3,6 +3,6 @@
   <td><%= number_to_euro(product.price) %></td>
   <td>
     <%= link_to t('products.add_item'),
-      tab_items_path(@tab_item, tab_item: { product_id: product.id}), method: :post, class: 'btn btn-primary' %>
+      tab_items_path(@tab_item, cart_id: @cart&.id, tab_item: { product_id: product.id}), method: :post, class: 'btn btn-primary' %>
   </td>
 </tr>

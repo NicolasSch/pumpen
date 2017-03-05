@@ -13,9 +13,22 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :products
+    resources :tab_items, only: [:create] do
+
+    end
     resources :shops, only: :index
+    resources :carts, only: [:new, :update] do
+      member do
+        put :checkout
+      end
+    end
   end
 
+  resources :carts, only: [:update] do
+    member do
+      put :checkout
+    end
+  end
   resources :tabs, only: [:index, :update]
   resources :products, only: :index
   resources :tab_items, only: :create

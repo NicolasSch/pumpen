@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.users.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.users.description') %></h6>
+        <%= simple_form_for @tab_item, url: tab_items_path(@tab_item) do |f| %>
+          <div>
+            <%= f.association :user %>
+            <%= f.association :product %>
+            <%= f.submit t('add_tab.item.submit'), class: 'button' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.users.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.users.description') %></h6>
+        <table class="table col-md-12">
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card row">
+      <div class="card-block">
+        <h3 class="card-title text-center"><%= t('admin.users.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.users.description') %></h6>
+        <table class="table col-md-12">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

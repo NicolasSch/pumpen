@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+  $('#cart_user_id').on('change', function (e) {
+    $(this).parents('form').submit();
+  })
+});

@@ -3,17 +3,17 @@ class Tab < ActiveRecord::Base
   belongs_to :user
 
   def self.tab_of_the_month
-    where(month: Time.now.month).first!
+    where(month: Time.now.month).first_or_create
   end
 
   def total_price
-    tab_items.to_a.sum { |tab_item| tab_item.total_price}
+    tab_items.to_a.sum { |tab_item| tab_item.total_price }
   end
 
   def add_product(product_id)
     current_item = tab_items.find_by_product_id(product_id)
     if current_item
-      current_item.quantity += 1
+      current_item.update!(quantity: current_item.quantity + 1)
     else
       current_item = tab_items.build(product_id: product_id)
     end

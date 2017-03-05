@@ -1,10 +1,10 @@
-<div class="card row text-center">
-  <div class="card-block col-md-12">
+<div class="card text-center col-md-12">
+  <div class="card-block">
     <h3 class="card-title"><%= t('add_tab.item.headline')%></h3>
     <h6 class="card-subtitle mb-2 text-muted"><%= t('add_tab.item.description') %></h6>
-    <%= simple_form_for @tab_item, url: tab_items_path(@tab_item) do |f| %>
+    <%= simple_form_for @tab do |f| %>
       <div>
-        <%= f.association :product, input_html: { class: "col-md-12 selectpicker", "data-live-search" => true } %>
+        <%= f.input :product_id, as: :fake_select, collection: @products.map {|product| [product.title, product.id] } %>
         <%= f.submit t('add_tab.item.submit'), class: 'button' %>
       </div>
     <% end %>

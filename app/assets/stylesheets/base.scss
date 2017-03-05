@@ -10,3 +10,10 @@ body { background: #EBEBEB !important;}
   @extend .btn;
   @extend .btn-primary;
 }
+
+.button-cart {
+  @extend .offset-md-4;
+  @extend .col-md-4;
+  @extend .btn;
+  @extend .btn-primary;
+}

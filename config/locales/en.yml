@@ -5,11 +5,13 @@ en:
       users: "Users"
       products: "Products"
     shop:
+      headline: "Manage Tablist"
+      choose_user: Please select a user first.
       cart:
         headline: "Cart"
         description: "Submit the card to add products to users tab."
       user:
-        headline: "Choose user and add a product to the cart"
+        headline: "Add a product to the users cart"
       products:
         headline: "Product list"
         description: "Add product to current users tab"
