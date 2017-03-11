@@ -4,24 +4,26 @@
   </button>
   <a class="navbar-brand" href="#">CrossFit HH</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-      <li class="nav-item <%= 'active' if current_page?(root_path) %>">
-        <%= link_to t('nav_bar.home'), root_path, class: 'nav-link '%>
-      </li>
-      <li class="nav-item <%= 'active' if current_page?(products_path) %>">
-        <%= link_to t('nav_bar.products'), products_path, class: 'nav-link '%>
-      </li>
-    </ul>
-    <ul class="navbar-nav mt-2 col-md-2 mt-md-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t('nav_bar.account') %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to t('nav_bar.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete%>
-          <%= link_to t('nav_bar.admin'), admin_users_path, class: 'dropdown-item' if current_user&.admin? %>
-        </div>
-      </li>
-    </ul>
+    <% if user_signed_in? %>
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+        <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+          <%= link_to t('nav_bar.home'), root_path, class: 'nav-link '%>
+        </li>
+        <li class="nav-item <%= 'active' if current_page?(products_path) %>">
+          <%= link_to t('nav_bar.products'), products_path, class: 'nav-link '%>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 col-md-2 mt-md-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('nav_bar.account') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to t('nav_bar.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete%>
+            <%= link_to t('nav_bar.admin'), admin_users_path, class: 'dropdown-item' if current_user&.admin? %>
+          </div>
+        </li>
+      </ul>
+      <% end %>
   </div>
 </nav>
