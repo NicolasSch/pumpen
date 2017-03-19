@@ -1,5 +1,5 @@
 class TabsController < ApplicationController
-  before_action :ensure_tab, only: :index
+  before_action :ensure_tab, only: [:index, :bill]
 
   def index
     authorize! :read, @tab
@@ -14,6 +14,16 @@ class TabsController < ApplicationController
       redirect_to :root
     else
       redirect_to :root, alert: 'Something went wrong'
+    end
+  end
+
+  def bill
+    @tab = Tab.find(params[:id])
+    authorize! :read, @tab
+    respond_to do |format|
+      format.pdf do
+        render pdf: "file_name", layout: 'pdf.html.erb'
+      end
     end
   end
 

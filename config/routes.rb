@@ -29,7 +29,11 @@ Rails.application.routes.draw do
       put :checkout
     end
   end
-  resources :tabs, only: [:index, :update]
+  resources :tabs, only: [:index, :update] do
+    member do
+      post :bill
+    end
+  end
   resources :products, only: :index
   resources :tab_items, only: :create
   resources :users, only: :index

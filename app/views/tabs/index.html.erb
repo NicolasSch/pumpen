@@ -1,2 +1,3 @@
 <%= render partial: 'add_item' %>
 <%= render partial: 'my_tab' %>
+<%= link_to 'Create PDF document', bill_tab_path(@tab, :format => :pdf), method: :post %>
