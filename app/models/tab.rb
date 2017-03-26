@@ -4,7 +4,7 @@ class Tab < ActiveRecord::Base
   has_one :bill
 
   def self.tab_of_the_month
-    first_or_create(month: Time.now.month)
+    where(month: Time.now.month).first_or_create
   end
 
   def total_price
