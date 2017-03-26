@@ -2,7 +2,7 @@
   <td><%= bill.tab.month %></td>
   <td><%= bill.number %></td>
   <td><%= bill.tab.user.first_name%> <%= bill.tab.user.last_name%></td>
-  <td><%= link_to t('admin.bill.show'), admin_bill_path(bill, format: :pdf)%></td>
+  <td><%= link_to t('admin.bills.show'), admin_bill_path(bill, format: :pdf)%></td>
   <td><%= bill.paid? %></td>
-  <td><%= link_to t('admin.bills.pay'), admin_bill_path(bill.tab), method: :put %></td>
+  <td><%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put %></td>
 </tr>

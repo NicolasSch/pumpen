@@ -27,6 +27,7 @@ class Admin::BillsController < AdminController
     bill = Bill.find(params[:id])
     bill.paid = true
     if bill.save
+      bill.tab.update!(state: 'closed')
       redirect_to admin_bills_path, notice: t('admin.bills.paid')
     else
       redirect_to admin_bills_path, alert: t('admin.alert')
