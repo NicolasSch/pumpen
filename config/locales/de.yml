@@ -65,6 +65,7 @@ de:
   nav_bar:
     home: "Meine Tabliste"
     logout: "abmelden"
+    profile: "Mein Profil"
     account: "Mein Konto"
     admin: "Admin-Bereich"
     private: "Privater Bereich"
@@ -77,6 +78,11 @@ de:
     reset_password:
       headline: "Mein Passwort zurücksetzen"
   user:
+    profile:
+      notice:
+        save: "Daten wurden gespeichert"
+      headline: "Mein persönlichen Daten"
+      submit: "aktualisieren"
     membership:
       staff: "Mitarbeiter"
       full: "Vollzeit"

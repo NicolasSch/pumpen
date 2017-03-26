@@ -31,5 +31,5 @@ Rails.application.routes.draw do
   resources :tabs, only: [:index, :update]
   resources :products, only: :index
   resources :tab_items, only: [:create, :update, :destroy]
-  resources :users, only: :index
+  resources :users, only: [:edit, :update]
 end
