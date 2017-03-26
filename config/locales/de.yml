@@ -78,6 +78,9 @@ de:
     reset_password:
       headline: "Mein Passwort zurücksetzen"
   user:
+    bills:
+      headline: "Meine Rechnungen"
+      empty: "Sie haben noch keine Rechnungen."
     profile:
       alert: "konnte nicht gespeichert werden"
       password_save: "Passwort wurde gespeichert"

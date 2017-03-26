@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def edit
     @user = current_user
+    @bills = @user.bills
     authorize! :write, @user
   end
 
