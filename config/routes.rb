@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     resources :products
     resources :tabs, only: [:index, :update]
     resources :bills, only: [:index, :show, :create, :update]
-    resources :tab_items, only: [:create] do
-
-    end
     resources :shops, only: :index
     resources :carts, only: [:new, :update, :destroy] do
       member do
@@ -33,6 +30,6 @@ Rails.application.routes.draw do
   end
   resources :tabs, only: [:index, :update]
   resources :products, only: :index
-  resources :tab_items, only: :create
+  resources :tab_items, only: [:create, :update, :destroy]
   resources :users, only: :index
 end

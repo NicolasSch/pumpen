@@ -7,7 +7,7 @@
     <% if bill.paid? %>
       <%= fa_icon "check" %>
     <% else %>
-      <%= fa_icon "close", class: 'icon-red' %>
+      <%= fa_icon "close 2x", class: 'icon-red' %>
     <% end %>
   </td>
   <td><%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put %></td>
