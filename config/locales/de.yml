@@ -36,24 +36,24 @@ de:
       sum: "Betrag"
       paid: "bezahlt?"
     products:
-      headline: "Produktliste"
-      description: "Erstelle neue Produkte oder editiere Bestehende."
-      title: "Title"
+      headline: "Artikelliste"
+      description: "Erstelle neue Artikel oder editiere Bestehende."
+      title: "Titel"
       price: "Preis"
-      create_link: "Produkt anlegen"
+      create_link: "Neuen Artikel anlegen"
       edit_link: "bearbeiten"
       destroy_link: "löschen"
       notice:
         create: "Produkt wurde erstellt"
         update: "Produkt wurde gespeichert"
       edit:
-        headline: "Edit %{product}"
+        headline: "Bearbeite %{product}"
       new:
-        headline: "Create Product"
+        headline: "Neuen Artikel anlegen"
     users:
       headline: "Benutzer Liste"
       description: "Bearbeite existierende Benutzer oder lege Neue an."
-      create: "Erstelle Benutzer"
+      create: "Neuen Benutzer erstellen"
       email: "E-Mail"
       firstname: "Vorname"
       lastname: "Nachname"

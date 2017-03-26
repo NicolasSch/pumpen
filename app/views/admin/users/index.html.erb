@@ -2,6 +2,7 @@
   <div class="card-block">
     <h3 class="card-title text-center"><%= t('admin.users.headline')%></h3>
     <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.users.description') %></h6>
+    <%= link_to t('admin.users.create'), new_admin_user_path %>
     <table class="table col-md-12">
       <thead>
         <tr>
@@ -9,7 +10,7 @@
           <th><%= t('admin.users.firstname') %></th>
           <th><%= t('admin.users.lastname') %></th>
           <th><%= t('admin.users.membership') %></th>
-          <th><%= link_to t('admin.users.create'), new_admin_user_path %></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
