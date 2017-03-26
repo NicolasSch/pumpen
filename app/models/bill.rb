@@ -1,6 +1,7 @@
 class Bill < ActiveRecord::Base
   belongs_to :tab
   before_save :add_number
+  belongs_to :tab
 
   private
 

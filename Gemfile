@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'autoprefixer-rails'
 gem 'tether-rails'

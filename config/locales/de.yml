@@ -1,5 +1,13 @@
 de:
   admin:
+    bills:
+      headline: "Offene Rechnungen"
+      show: "Rechnung ansehen"
+      pay: "Rechnung bezahlt"
+      month: 'Monat'
+      number: "Rechnungnummer"
+      user: "Mitglied"
+      status: "Status"
     products:
       headline: "Produktliste"
       description: "Erstelle neue Produkte oder editiere Bestehende."
