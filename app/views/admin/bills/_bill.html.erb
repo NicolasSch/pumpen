@@ -1,0 +1,14 @@
+<tr>
+  <td><%= bill.tab.month %></td>
+  <td><%= link_to bill.number, admin_bill_path(bill, format: :pdf)%></td>
+  <td><%= bill.tab.user.first_name%> <%= bill.tab.user.last_name%></td>
+  <td><%= bill.tab.total_price %></td>
+  <td>
+    <% if bill.paid? %>
+      <%= fa_icon "check" %>
+    <% else %>
+      <%= fa_icon "close 2x", class: 'icon-red' %>
+    <% end %>
+  </td>
+  <td><%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put %></td>
+</tr>

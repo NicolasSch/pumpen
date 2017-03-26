@@ -1,0 +1,17 @@
+<%= simple_form_for @user do |f| %>
+  <div class="row">
+    <%= f.input :first_name, label: t('admin.users.firstname'), wrapper_html: {class: 'col-sm-12 col-md-6'}, input_html: { value: @user.first_name} %>
+    <%= f.input :last_name, label: t('admin.users.lastname'), wrapper_html: {class: 'col-sm-12 col-md-6'},input_html: { value: @user.last_name} %>
+    <%= f.input :email, label: t('admin.users.email'), wrapper_html: {class: 'col-sm-12 col-md-12'}, input_html: { value: @user.email} %>
+    <%= f.submit t('user.profile.submit'), class: 'button col-sm-12 col-md-4 push-md-4' %>
+  </div>
+<% end %>
+
+<%= simple_form_for @user do |f| %>
+  <div class="row">
+    <%= f.input :current_password, label: t('admin.users.password'), auto_complete: 'off', wrapper_html: {class: 'col-sm-12 col-md-12'} %>
+    <%= f.input :password, label: t('admin.users.password'), auto_complete: 'off', wrapper_html: {class: 'col-sm-12 col-md-6'} %>
+    <%= f.input :password_confirmation, label: t('admin.users.password_confirmation'), wrapper_html: {class: 'col-sm-12 col-md-6'} %>
+    <%= f.submit t('user.profile.submit'), class: 'button col-sm-12 col-md-4 push-md-4' %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 class TabsController < ApplicationController
-  before_action :ensure_tab, only: :index
+  before_action :ensure_tab, only: [:index, :bill]
 
   def index
     authorize! :read, @tab

@@ -20,7 +20,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to t('nav_bar.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete%>
-            <%= link_to t('nav_bar.admin'), admin_users_path, class: 'dropdown-item' if current_user&.admin? %>
+            <%= link_to t('nav_bar.profile'), edit_user_path(current_user), class: 'dropdown-item' %>
+            <%= link_to t('nav_bar.admin'), admin_shops_path, class: 'dropdown-item' if current_user&.admin? %>
           </div>
         </li>
       </ul>

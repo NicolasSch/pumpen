@@ -5,6 +5,7 @@ class Admin::ShopsController < AdminController
     @users    = User.order(:last_name)
     @products = Product.order(:title)
     @tab_item = TabItem.new
+    @tab = @cart.user.tabs.tab_of_the_month if @cart.user.present?
   end
 
   private

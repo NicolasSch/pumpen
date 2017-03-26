@@ -1,24 +1,59 @@
 de:
+  alert: "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
   admin:
+    nav_bar:
+      home: "CrossFit HH"
+      logout: "abmelden"
+      account: "Mein Konto"
+      admin: "Admin-Bereich"
+      private: "Privater Bereich"
+      users: "Benutzer"
+      products: "Sortiment"
+      bills: "Rechnungen"
+      shop: "Shop"
+    shop:
+      headline: "Benutzer Tab verwalten"
+      description: "Füge der akteullen Tabliste eines Benutzers Artikel hinzu"
+      choose_user: Bitte wähle zunächst einen Benutzer aus der Liste aus.
+      user: "Benutzer"
+      tab:
+        description: Bearbeite die aktuelle Tabliste von %{user}.
+        title: "Artikel"
+        quantity: "Anzahl"
+        price: "Summe"
+        submit: "speichern"
+    bills:
+      headline: "Offene Rechnungen"
+      show: "Rechnung ansehen"
+      open:
+        one: "Für einen offenen Tab kann eine Rechnung erstellt werden."
+        other: "Für %{count} offene Tabs können Rechnungen erstellt werden."
+      create: "Rechnungen erstellen"
+      pay: "bezahlen"
+      month: 'Monat'
+      number: "Rechnungnummer"
+      user: "Mitglied"
+      sum: "Betrag"
+      paid: "bezahlt?"
     products:
-      headline: "Produktliste"
-      description: "Erstelle neue Produkte oder editiere Bestehende."
-      title: "Title"
+      headline: "Artikelliste"
+      description: "Erstelle neue Artikel oder editiere Bestehende."
+      title: "Titel"
       price: "Preis"
-      create_link: "Produkt anlegen"
+      create_link: "Neuen Artikel anlegen"
       edit_link: "bearbeiten"
       destroy_link: "löschen"
       notice:
         create: "Produkt wurde erstellt"
         update: "Produkt wurde gespeichert"
       edit:
-        headline: "Edit %{product}"
+        headline: "Bearbeite %{product}"
       new:
-        headline: "Create Product"
+        headline: "Neuen Artikel anlegen"
     users:
       headline: "Benutzer Liste"
       description: "Bearbeite existierende Benutzer oder lege Neue an."
-      create: "Erstelle Benutzer"
+      create: "Neuen Benutzer erstellen"
       email: "E-Mail"
       firstname: "Vorname"
       lastname: "Nachname"
@@ -28,9 +63,13 @@ de:
       role: "Rolle"
       role_hint: "Wenn admin ausgewählt wird, hat der Benutzer Zugriff auf den Adminbereich."
   nav_bar:
+    home: "Meine Tabliste"
     logout: "abmelden"
+    profile: "Mein Profil"
     account: "Mein Konto"
-    admin: "Zum Admin-Bereich"
+    admin: "Admin-Bereich"
+    private: "Privater Bereich"
+    products: "Sortiment"
   session:
     login:
       headline: "Anmelden"
@@ -39,6 +78,15 @@ de:
     reset_password:
       headline: "Mein Passwort zurücksetzen"
   user:
+    bills:
+      headline: "Meine Rechnungen"
+      empty: "Sie haben noch keine Rechnungen."
+    profile:
+      alert: "konnte nicht gespeichert werden"
+      password_save: "Passwort wurde gespeichert"
+      data_save: "Daten wurden gespeichert"
+      headline: "Mein persönlichen Daten"
+      submit: "aktualisieren"
     membership:
       staff: "Mitarbeiter"
       full: "Vollzeit"
@@ -47,13 +95,16 @@ de:
       two: "Zweimal"
       one: "Einmal"
   tab_item:
+    notice:
+      save: "Eintrag wurde gespeichert"
+      destroy: "Eintarg wurde gelöscht"
     create:
-      success: "Artikel %{title} wurde angeschrieben"
+      success: "Artikel %{title} wurde hinzugefügt"
       alert: "konnte Artikel nicht anschreiben"
   add_tab:
     item:
       headline: "Zur Liste hinzufügen"
-      description: "Wähle aus der Liste einen Artikel aus und füge diesen deinem Tab hinzu."
+      description: "Wähle einen Artikel aus der Liste um diesen deiner Tabliste hinzuzufügen."
       submit: "anschreiben"
   products:
     headline: "Artikel"
@@ -63,6 +114,17 @@ de:
     title: "Title"
     price: "Preis"
     action: "Aktion"
+  cart:
+    headline: "Warenkorb"
+    quantity: "Anzahl"
+    price: "Preis"
+    title: "Artikel"
+    checkout: "kaufen"
+    sum: "Gesamt:"
+    clear: "Warenkorb leeren"
+    notice:
+      clear: "Warenkorb wurde geleert"
+      buy: "Artikel wurden der Tabliste hinzugefügt"
   my_tab:
     sum: "Gesamt:"
     product:

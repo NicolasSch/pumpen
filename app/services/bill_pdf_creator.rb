@@ -1,0 +1,3 @@
+class BillPdfCreator
+
+end

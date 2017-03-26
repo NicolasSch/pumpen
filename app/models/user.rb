@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :tabs
+  has_many :bills, through: :tabs
   has_one :cart
 
   def admin?

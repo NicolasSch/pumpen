@@ -13,9 +13,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :products
-    resources :tab_items, only: [:create] do
-
-    end
+    resources :tabs, only: [:index, :update]
+    resources :bills, only: [:index, :show, :create, :update]
     resources :shops, only: :index
     resources :carts, only: [:new, :update, :destroy] do
       member do
@@ -24,13 +23,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: [:update] do
+  resources :carts, only: [:update, :destroy] do
     member do
       put :checkout
     end
   end
   resources :tabs, only: [:index, :update]
   resources :products, only: :index
-  resources :tab_items, only: :create
-  resources :users, only: :index
+  resources :tab_items, only: [:create, :update, :destroy]
+  resources :users, only: [:edit, :update]
 end

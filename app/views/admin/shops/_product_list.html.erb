@@ -1,0 +1,21 @@
+<div class="<%= @cart.tab_items.any? ? "col-8" : "col-12"%>">
+  <div class="card row">
+    <div class="card-block">
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.description') %></h6>
+      <%= simple_form_for [:admin, @tab_item], url: tab_items_path(@tab_item, cart_id: @cart&.id) do |f| %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= t('products.title') %></th>
+              <th><%= t('products.price') %></th>
+              <th><%= t('products.action') %></th>
+            </tr>
+          </thead>
+          <tbody>
+              <%= render partial: 'products/product', collection: @products, as: :product, locals: {cart: @cart} %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

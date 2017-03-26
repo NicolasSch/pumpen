@@ -13,9 +13,18 @@ class Cart < ActiveRecord::Base
   end
 
   def add_to_current_tab
-    tab = self.user.tabs.tab_of_the_month
-    self.tab_items.update_all(tab_id: tab.id, cart_id: nil)
-    self.destroy!
+    tab = user.tabs.tab_of_the_month
+    tab_items.each do |item|
+      existing_item = tab.tab_items.where(product_id: item.product_id).first
+      if existing_item.present?
+        existing_item.quantity += item.quantity
+        existing_item.save
+        item.destroy!
+      else
+        item.update!(tab_id: tab.id, cart_id: nil)
+      end
+    end
+    destroy!
   end
 
   def total_price
