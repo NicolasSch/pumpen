@@ -97,6 +97,9 @@ de:
     checkout: "kaufen"
     sum: "Gesamt:"
     clear: "Warenkorb leeren"
+    notice:
+      clear: "Warenkorb wurde geleert"
+      buy: "Waren wurden gekauft"
   my_tab:
     sum: "Gesamt:"
     product:

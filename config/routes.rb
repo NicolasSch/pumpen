@@ -26,16 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: [:update] do
+  resources :carts, only: [:update, :destroy] do
     member do
       put :checkout
     end
   end
-  resources :tabs, only: [:index, :update] do
-    member do
-      post :bill
-    end
-  end
+  resources :tabs, only: [:index, :update]
   resources :products, only: :index
   resources :tab_items, only: :create
   resources :users, only: :index

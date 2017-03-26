@@ -42,8 +42,8 @@
           </table>
         <% end %>
         <% if @cart.tab_items.any? && @cart.persisted? %>
-          <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' %>
-          <%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'button-cart' %>
+          <%= link_to t('cart.checkout'), cart_path(@cart), method: :put, class: 'button-cart' %>
+          <%= link_to t('cart.clear'), cart_path(@cart), method: :delete, class: 'button-cart' %>
         <% end %></div>
     </div>
   </div>
