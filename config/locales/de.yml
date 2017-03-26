@@ -79,8 +79,9 @@ de:
       headline: "Mein Passwort zurücksetzen"
   user:
     profile:
-      notice:
-        save: "Daten wurden gespeichert"
+      alert: "konnte nicht gespeichert werden"
+      password_save: "Passwort wurde gespeichert"
+      data_save: "Daten wurden gespeichert"
       headline: "Mein persönlichen Daten"
       submit: "aktualisieren"
     membership:
