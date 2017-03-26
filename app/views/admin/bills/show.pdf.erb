@@ -1,12 +1,13 @@
   <div class="col-12">
     <div class="row">
-      <h3 class="col-8">Tabrechnung <%= Date.new(Date.today.year,1,1) + @tab.month.month %></h3>
+      <h3 class="col-8">Tabrechnung <%= Date.new(Date.today.year,1,1) + @bill.tab.month.month %></h3>
       <p class="col-4"><%= l Date.today, format: :long %></p>
     </div>
-    <p>Hallo <%= @tab.user.first_name %> <%= @tab.user.last_name %>,</p>
+    <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
 
     <p>bitte begleichen Sie den untenstehenden Betrag innerhalb von 14 Tagen.</p>
-    <% if @tab.tab_items.any? %>
+    
+    <% if @bill.tab.tab_items.any? %>
       <table class="table">
         <thead>
           <tr>
@@ -18,10 +19,10 @@
         <tfoot>
           <td></td>
           <td><%= t('my_tab.sum') %></td>
-          <td><%= number_to_euro(@tab.total_price) %></td>
+          <td><%= number_to_euro(@bill.tab.total_price) %></td>
         </tfoot>
         <tbody>
-            <%= render partial: 'tab_items/tab_item.html.erb', collection: @tab.tab_items, as: :tab_item %>
+            <%= render partial: 'tab_items/tab_item.html.erb', collection: @bill.tab.tab_items, as: :tab_item %>
         </tbody>
       </table>
     <% end %>

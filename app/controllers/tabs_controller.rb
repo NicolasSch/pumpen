@@ -17,16 +17,6 @@ class TabsController < ApplicationController
     end
   end
 
-  def bill
-    @tab = Tab.find(params[:id])
-    authorize! :read, @tab
-    respond_to do |format|
-      format.pdf do
-        render pdf: "file_name", layout: 'pdf.html.erb'
-      end
-    end
-  end
-
   private
 
   def tab_item_params

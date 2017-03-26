@@ -1,6 +1,7 @@
 class Tab < ActiveRecord::Base
   has_many :tab_items, dependent: :destroy
   belongs_to :user
+  has_one :bill
 
   def self.tab_of_the_month
     where(month: Time.now.month).first_or_create
