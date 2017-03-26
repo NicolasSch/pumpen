@@ -1,14 +1,15 @@
 <div class="card col-12">
   <div class="card-block">
       <h3 class="card-title text-center"><%= t('admin.bills.headline')%></h3>
-        <%= link_to "Erstelle Rechnungen für letzten Monat", admin_bills_path, method: :post %>
+        <h6><%= t('admin.bills.open', count: @unbilled_tabs.count) %></h6>
+        <%= link_to t('admin.bills.create'), admin_bills_path, method: :post %>
       <table class="table">
         <thead>
           <tr>
             <th><%= t('admin.bills.month')%></th>
             <th><%= t('admin.bills.number')%></th>
             <th><%= t('admin.bills.user')%></th>
-            <th><%= t('admin.bills.bill') %></th>
+            <th><%= t('admin.bills.sum')%></th>
             <th><%= t('admin.bills.paid')%></th>
             <th></th>
           </tr>

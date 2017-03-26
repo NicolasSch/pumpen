@@ -7,7 +7,7 @@ de:
         one: "Für einen offenen Tab kann eine Rechnung erstellt werden."
         other: "Für %{count} offene Tabs können Rechnungen erstellt werden."
       create: "Rechnungen erstellen"
-      pay: "Rechnung bezahlt"
+      pay: "bezahlen"
       month: 'Monat'
       number: "Rechnungnummer"
       user: "Mitglied"

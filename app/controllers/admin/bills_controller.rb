@@ -1,6 +1,6 @@
 class Admin::BillsController < AdminController
   def index
-    @unbilled_tabs = Tab.left_outer_joins(:bill).where('tab_id is NULL')
+    @unbilled_tabs = Tab.left_outer_joins(:bill).where('tab_id is NULL AND month < ?', Time.now.month,)
     @bills = Bill.where(paid: false)
   end
 
