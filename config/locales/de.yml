@@ -3,11 +3,16 @@ de:
     bills:
       headline: "Offene Rechnungen"
       show: "Rechnung ansehen"
+      open:
+        one: "Für einen offenen Tab kann eine Rechnung erstellt werden."
+        other: "Für %{count} offene Tabs können Rechnungen erstellt werden."
+      create: "Rechnungen erstellen"
       pay: "Rechnung bezahlt"
       month: 'Monat'
       number: "Rechnungnummer"
       user: "Mitglied"
-      status: "Status"
+      sum: "Betrag"
+      paid: "bezahlt?"
     products:
       headline: "Produktliste"
       description: "Erstelle neue Produkte oder editiere Bestehende."
