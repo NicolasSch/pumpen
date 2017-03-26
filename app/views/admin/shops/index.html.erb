@@ -42,14 +42,14 @@
         <table class="table col-md-12">
           <thead>
             <tr>
-              <th><%= t('my_tab.product.title')%></th>
-              <th><%= t('my_tab.quantity') %></th>
-              <th><%= t('my_tab.product.price')%></th>
+              <th><%= t('cart.title')%></th>
+              <th><%= t('cart.quantity') %></th>
+              <th><%= t('cart.price')%></th>
             </tr>
           </thead>
           <tfoot>
             <td></td>
-            <td><%= t('my_tab.sum') %></td>
+            <td><%= t('cart.sum') %></td>
             <td><%= number_to_euro(@cart.total_price) %></td>
           </tfoot>
           <tbody>

@@ -1,5 +1,15 @@
 de:
   admin:
+    nav_bar:
+      home: "CrossFit HH"
+      logout: "abmelden"
+      account: "Mein Konto"
+      admin: "Admin-Bereich"
+      private: "Privater Bereich"
+      users: "Benutzer"
+      products: "Sortiment"
+      bills: "Rechnungen"
+      shop: "Shop"
     bills:
       headline: "Offene Rechnungen"
       show: "Rechnung ansehen"
@@ -41,9 +51,12 @@ de:
       role: "Rolle"
       role_hint: "Wenn admin ausgewählt wird, hat der Benutzer Zugriff auf den Adminbereich."
   nav_bar:
+    home: "Meine Tabliste"
     logout: "abmelden"
     account: "Mein Konto"
-    admin: "Zum Admin-Bereich"
+    admin: "Admin-Bereich"
+    private: "Privater Bereich"
+    products: "Sortiment"
   session:
     login:
       headline: "Anmelden"
@@ -66,7 +79,7 @@ de:
   add_tab:
     item:
       headline: "Zur Liste hinzufügen"
-      description: "Wähle aus der Liste einen Artikel aus und füge diesen deinem Tab hinzu."
+      description: "Wähle einen Artikel aus der Liste um diesen deiner Tabliste hinzuzufügen."
       submit: "anschreiben"
   products:
     headline: "Artikel"
@@ -76,6 +89,14 @@ de:
     title: "Title"
     price: "Preis"
     action: "Aktion"
+  cart:
+    headline: "Warenkorb"
+    quantity: "Anzahl"
+    price: "Preis"
+    title: "Artikel"
+    checkout: "kaufen"
+    sum: "Gesamt:"
+    clear: "Warenkorb leeren"
   my_tab:
     sum: "Gesamt:"
     product:
