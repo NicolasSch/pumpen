@@ -114,7 +114,7 @@ de:
     clear: "Warenkorb leeren"
     notice:
       clear: "Warenkorb wurde geleert"
-      buy: "Waren wurden gekauft"
+      buy: "Artikel wurden der Tabliste hinzugefügt"
   my_tab:
     sum: "Gesamt:"
     product:

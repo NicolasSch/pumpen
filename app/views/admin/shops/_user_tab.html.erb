@@ -1,6 +1,5 @@
 <div class="card col-12">
   <div class="card-block">
-    <h3 class="card-title text-center"><%= t('admin.shop.headline')%></h3>
     <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.tab.description', user: "#{@tab.user.first_name} #{@tab.user.last_name}") %></h6>
     <% if @tab.tab_items.any? %>
       <table class="table">

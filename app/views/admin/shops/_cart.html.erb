@@ -1,0 +1,26 @@
+<div class="col-md-4">
+  <div class="card row">
+    <div class="card-block">
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('cart.headline')%></h6>
+      <table class="table col-md-12">
+        <thead>
+          <tr>
+            <th><%= t('cart.title')%></th>
+            <th><%= t('cart.quantity') %></th>
+            <th><%= t('cart.price')%></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <td></td>
+          <td><%= t('cart.sum') %></td>
+          <td><%= number_to_euro(@cart.total_price) %></td>
+        </tfoot>
+        <tbody>
+            <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
+        </tbody>
+      </table>
+      <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' %>
+      <%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'button-cart' %>
+    </div>
+  </div>
+</div>

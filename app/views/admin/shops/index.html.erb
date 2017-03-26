@@ -1,65 +1,16 @@
-<%= render partial: 'user_tab' if @cart.persisted? %>
-<div class="col-md-8">
+<div class="col-md-12">
   <div class="card row">
     <div class="card-block">
-      <% if @cart.persisted? %>
-        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.description') %></h6>
-        <%= simple_form_for [:admin, @tab_item], url: tab_items_path(@tab_item, cart_id: @cart&.id) do |f| %>
-          <div class="col-md-12">
-            <%= f.association :product %>
-            <%= f.submit t('add_tab.item.submit'), class: 'button-cart' %>
-          </div>
-          <div class="row">
-            <table class="table col-md-12">
-              <thead>
-                <tr>
-                  <th><%= t('products.title') %></th>
-                  <th><%= t('products.price') %></th>
-                  <th><%= t('products.action') %></th>
-                </tr>
-              </thead>
-              <tbody>
-                  <%= render partial: 'products/product', collection: @products, as: :product, locals: {cart: @cart} %>
-              </tbody>
-            </table>
-          </div>
-        <% end %>
-        <% else %>
-          <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.choose_user') %></h6>
-        <% end%>
-    </div>
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="card row">
-    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('admin.shop.headline')%></h3>
       <%= simple_form_for @cart, url: new_admin_cart_path, method: :get do |f| %>
           <%= f.association :user, label: t('admin.shop.user'), collection: @users.map {|user| ["#{user.last_name} #{user.first_name}", user.id]} %>
       <% end %>
-      <% if @cart.tab_items.any? %>
-      <h3 class="card-title text-center"><%= t('cart.headline')%></h3>
-        <table class="table col-md-12">
-          <thead>
-            <tr>
-              <th><%= t('cart.title')%></th>
-              <th><%= t('cart.quantity') %></th>
-              <th><%= t('cart.price')%></th>
-            </tr>
-          </thead>
-          <tfoot>
-            <td></td>
-            <td><%= t('cart.sum') %></td>
-            <td><%= number_to_euro(@cart.total_price) %></td>
-          </tfoot>
-          <tbody>
-              <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
-          </tbody>
-        </table>
-      <% end %>
-      <% if @cart.tab_items.any? && @cart.persisted? %>
-        <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' %>
-        <%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'button-cart' %>
-      <% end %>
     </div>
   </div>
 </div>
+
+<% if @cart.persisted? %>
+  <%= render partial: 'user_tab' %>
+  <%= render partial: 'product_list' %>
+  <%= render partial: 'cart' if @cart.tab_items.any? %>
+<% end %>

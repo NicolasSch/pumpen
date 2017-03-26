@@ -7,13 +7,13 @@ class Admin::CartsController < AdminController
   def update
     cart = Cart.find(params[:id])
     cart.add_to_current_tab
-    redirect_to admin_shops_path, notice: 'Added cart to users tab.'
+    redirect_to admin_shops_path, notice: t('cart.notice.buy')
   end
 
   def destroy
     cart = Cart.find(params[:id])
     cart.tab_items.destroy_all
-    redirect_to admin_shops_path, notice: 'Cart has been cleared'
+    redirect_to admin_shops_path(cart_id: cart.id), notice: t('cart.notice.clear')
   end
 
   private
