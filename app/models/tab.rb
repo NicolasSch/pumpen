@@ -3,12 +3,15 @@ class Tab < ActiveRecord::Base
   belongs_to :user
   has_one :bill
 
+  before_create :set_staff_discount
+
   def self.tab_of_the_month
     where(month: Time.now.month).first_or_create
   end
 
   def total_price
-    tab_items.to_a.sum { |tab_item| tab_item.total_price }
+    sum = tab_items.to_a.sum { |tab_item| tab_item.total_price }.to_f
+    discount.present? ? sum * (100 - discount).to_f / 100 : sum
   end
 
   def add_product(product_id)
@@ -32,5 +35,11 @@ class Tab < ActiveRecord::Base
         tab_items << item
       end
     end
+  end
+
+  private
+
+  def set_staff_discount
+    self.discount = 25 if user.staff_member?
   end
 end

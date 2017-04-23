@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def admin?
     role == 'admin'
   end
+
+  def staff_member?
+    membership == 'staff'
+  end
 end

@@ -12,9 +12,18 @@
           </tr>
         </thead>
         <tfoot>
-          <td></td>
-          <td><%= t('my_tab.sum') %></td>
-          <td><%= number_to_euro(@tab.total_price) %></td>
+          <% if @tab.discount.present? %>
+            <tr>
+              <td></td>
+              <td><%= t('my_tab.discount') %>:</td>
+              <td><%= @tab.discount %>%</td>
+            </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td><%= t('my_tab.sum') %></td>
+            <td><%= number_to_euro(@tab.total_price) %></td>
+          </tr>
         </tfoot>
         <tbody>
             <%= render partial: @tab.tab_items %>
