@@ -2,6 +2,7 @@
   <div>
     <%= f.input :title, label: t('admin.products.title'), input_html: { value: @product.title} %>
     <%= f.input :price, as: :decimal, label: t('admin.products.price'), input_html: { value: @product.price} %>
+    <%= f.input :number, label: t('admin.products.number'), input_html: { value: @product.number} %>
     <%= f.submit class: 'button' %>
   </div>
 <% end %>

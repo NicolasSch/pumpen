@@ -10,7 +10,7 @@ class Admin::ProductsController < AdminController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_products_path, notice: t('admin.products.create')
+      redirect_to admin_products_path, notice: t('admin.products.notice.create')
     else
       render :new
     end
@@ -23,7 +23,7 @@ class Admin::ProductsController < AdminController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_products_path, notice: t('admin.products.update')
+      redirect_to admin_products_path, notice: t('admin.products.notice.update')
     else
       render :new
     end
@@ -41,6 +41,6 @@ class Admin::ProductsController < AdminController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price)
+    params.require(:product).permit(:title, :price, :number)
   end
 end

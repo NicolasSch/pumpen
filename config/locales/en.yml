@@ -20,6 +20,7 @@ en:
       description: "Add product or edit exisiting ones."
       title: "Title"
       price: "Price"
+      number: "Number (Sumup number)"
       create_link: "create product"
       edit_link: "edit"
       destroy_link: "delete"
