@@ -15,6 +15,21 @@ en:
       products:
         headline: "Product list"
         description: "Add product to current users tab"
+    bills:
+      headline: "Open bills"
+      show: "Show bill"
+      notice:
+        create: "Bills have been created"
+      open:
+        one: "You can create one bill"
+        other: "For %{count} open tab bills can be created."
+      create: "Create bill"
+      pay: "pay"
+      month: "Month"
+      number: "Billnumber"
+      user: "Member"
+      sum: "Sum"
+      paid: "payed?"
     products:
       headline: "Product list"
       description: "Add product or edit exisiting ones."

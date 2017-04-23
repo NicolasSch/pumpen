@@ -25,6 +25,8 @@ de:
     bills:
       headline: "Offene Rechnungen"
       show: "Rechnung ansehen"
+      notice:
+        create: "Rechnungen wurden erstellt"
       open:
         one: "Für einen offenen Tab kann eine Rechnung erstellt werden."
         other: "Für %{count} offene Tabs können Rechnungen erstellt werden."

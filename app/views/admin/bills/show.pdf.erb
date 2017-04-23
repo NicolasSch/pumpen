@@ -6,7 +6,7 @@
     <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
 
     <p>bitte begleichen Sie den untenstehenden Betrag innerhalb von 14 Tagen.</p>
-    
+
     <% if @bill.tab.tab_items.any? %>
       <table class="table">
         <thead>
@@ -17,9 +17,18 @@
           </tr>
         </thead>
         <tfoot>
-          <td></td>
-          <td><%= t('my_tab.sum') %></td>
-          <td><%= number_to_euro(@bill.tab.total_price) %></td>
+          <% if @bill.tab.discount.present? %>
+            <tr>
+              <td></td>
+              <td><%= t('my_tab.discount') %>:</td>
+              <td><%= @bill.tab.discount %>%</td>
+            </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td><%= t('my_tab.sum') %></td>
+            <td><%= number_to_euro(@bill.tab.total_price) %></td>
+          </tr>
         </tfoot>
         <tbody>
             <%= render partial: 'tab_items/tab_item.html.erb', collection: @bill.tab.tab_items, as: :tab_item %>
