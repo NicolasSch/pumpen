@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
 
@@ -11,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
     resources :users
     resources :products
     resources :tabs, only: [:index, :update]
