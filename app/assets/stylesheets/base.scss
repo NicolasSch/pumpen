@@ -6,7 +6,6 @@ body { background: #EBEBEB !important;}
 }
 
 .button {
-  @extend .col-md-2;
   @extend .btn;
   @extend .btn-primary;
   text-align: center;
