@@ -85,15 +85,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['SMTP_DOMAIN'] }
+  config.action_mailer.default_url_options = { host: 'cfhh-tab.de' }
 
   config.action_mailer.smtp_settings = {
     user_name:        ENV['SMTP_USER'],
     password:         ENV['SMTP_PASSWORD'],
-    address:          ENV['SMTP_ADDRESS'],
-    domain:           ENV['SMTP_DOMAIN'],
-    port:             465,
+    address:          'smtp.mailgun.org',
+    domain:           'cfhh-tab.de',
+    port:             '465',
     authentication:   :login,
+    ssl:              true,
     enable_starttls_auto: true
   }
 
