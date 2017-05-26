@@ -29,6 +29,7 @@ gem "font-awesome-rails"
 gem 'sidekiq'              # background worker framework
 gem 'foreman'              # process runner
 gem 'kaminari'             # Pagination
+gem 'devise-i18n'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
