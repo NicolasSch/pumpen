@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     bypass_sign_in(@user)
     redirect_to edit_user_path(@user), notice: @notice
   else
+    @bills = @user.bills
     flash[:alert] = t('user.profile.alert')
     render :edit
   end

@@ -1,39 +1,43 @@
-<div class="card">
-  <div class="card-block">
-      <h4 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
-      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description') %></h6>
-    <% if @tab.tab_items.any? %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= t('my_tab.product.title')%></th>
-            <th><%= t('my_tab.product.quantity') %></th>
-            <th><%= t('my_tab.product.price')%></th>
-          </tr>
-        </thead>
-        <tfoot>
-          <% if @tab.discount.present? %>
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+        <h4 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description') %></h6>
+      <% if @tab.tab_items.any? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= t('my_tab.product.title')%></th>
+              <th><%= t('my_tab.product.quantity') %></th>
+              <th><%= t('my_tab.product.price')%></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <% if @tab.discount.present? %>
+              <tr>
+                <td></td>
+                <td><%= t('my_tab.discount') %>:</td>
+                <td><%= @tab.discount %>%</td>
+              </tr>
+            <% end %>
             <tr>
               <td></td>
-              <td><%= t('my_tab.discount') %>:</td>
-              <td><%= @tab.discount %>%</td>
+              <td><%= t('my_tab.sum') %></td>
+              <td><%= number_to_euro(@tab.total_price) %></td>
             </tr>
-          <% end %>
-          <tr>
-            <td></td>
-            <td><%= t('my_tab.sum') %></td>
-            <td><%= number_to_euro(@tab.total_price) %></td>
-          </tr>
-        </tfoot>
-        <tbody>
-            <%= render partial: @tab.tab_items %>
-        </tbody>
-      </table>
-    <% else %>
-     <p class="card-text text-center">
-       <%= t('my_tab.list.empty')%>
-     </p>
-      <%= link_to t('my_tab.list.product_link'), products_path, class: 'button text-center'%>
-    <% end %>
+          </tfoot>
+          <tbody>
+              <%= render partial: @tab.tab_items %>
+          </tbody>
+        </table>
+      <% else %>
+       <p class="card-text text-center">
+         <%= t('my_tab.list.empty')%>
+       </p>
+       <p class="card-text text-center">
+       <%= link_to t('my_tab.list.product_link'), products_path, class: 'button'%>
+       </p>
+      <% end %>
+    </div>
   </div>
 </div>
