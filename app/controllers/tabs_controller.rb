@@ -3,7 +3,8 @@ class TabsController < ApplicationController
 
   def index
     authorize! :read, @tab
-    @products = Product.order(:title)
+    @products = current_user.most_used_products
+    @products = Product.order(:title) if @products.empty?
   end
 
   def update

@@ -110,7 +110,7 @@ de:
       alert: "konnte Artikel nicht anschreiben"
   add_tab:
     item:
-      headline: "Zur Liste hinzufügen"
+      headline: "Am häufigsten verwendet"
       description: "Wähle einen Artikel aus der Liste um diesen deiner Tabliste hinzuzufügen."
       submit: "anschreiben"
   products:

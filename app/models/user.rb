@@ -9,7 +9,13 @@ class User < ApplicationRecord
 
   has_many :tabs
   has_many :bills, through: :tabs
+  has_many :tab_items, through: :tabs
+  has_many :products, through: :tab_items
   has_one :cart
+
+  def most_used_products
+    products.order('tab_items.quantity DESC')
+  end
 
   def admin?
     role == 'admin'
