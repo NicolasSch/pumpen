@@ -3,7 +3,7 @@ class TabsController < ApplicationController
 
   def index
     authorize! :read, @tab
-    @products = Product.all
+    @products = Product.order(:title)
   end
 
   def update

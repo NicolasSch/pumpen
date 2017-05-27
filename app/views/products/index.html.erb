@@ -1,7 +1,12 @@
+<% if @cart.tab_items.any? %>
+  <%= render partial: 'cart' %>
 <div class="col-md-8 col-s-12">
-  <div class="card row">
+<% else %>
+  <div class="col-md-12 col-s-12">
+<% end %>
+  <div class="card">
     <div class="card-block">
-      <h3 class="card-title text-center"><%= t('products.headline')%></h3>
+      <h4 class="card-title text-center"><%= t('products.headline')%></h3>
       <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('products.description') %></h6>
       <table class="table col-md-12">
         <thead>
@@ -15,36 +20,6 @@
             <%= render partial: @products %>
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
-  <div class="col-md-4 col-s12">
-    <div class="card row">
-      <div class="card-block">
-        <h3 class="card-title text-center"><%= t('cart.headline')%></h3>
-        <% if @cart.tab_items.any? %>
-          <table class="table col-md-12">
-            <thead>
-              <tr>
-                <th><%= t('cart.title')%></th>
-                <th><%= t('cart.quantity') %></th>
-                <th><%= t('cart.price')%></th>
-              </tr>
-            </thead>
-            <tfoot>
-              <td></td>
-              <td><%= t('my_tab.sum') %></td>
-              <td><%= number_to_euro(@cart.total_price) %></td>
-            </tfoot>
-            <tbody>
-                <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
-            </tbody>
-          </table>
-        <% end %>
-        <% if @cart.tab_items.any? && @cart.persisted? %>
-          <%= link_to t('cart.checkout'), cart_path(@cart), method: :put, class: 'button-cart' %>
-          <%= link_to t('cart.clear'), cart_path(@cart), method: :delete, class: 'button-cart' %>
-        <% end %></div>
     </div>
   </div>
 </div>

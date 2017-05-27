@@ -1,13 +1,13 @@
-<div class="card col-12">
+<div class="card">
   <div class="card-block">
-      <h3 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
+      <h4 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
       <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description') %></h6>
     <% if @tab.tab_items.any? %>
       <table class="table">
         <thead>
           <tr>
             <th><%= t('my_tab.product.title')%></th>
-            <th><%= t('my_tab.quantity') %></th>
+            <th><%= t('my_tab.product.quantity') %></th>
             <th><%= t('my_tab.product.price')%></th>
           </tr>
         </thead>
@@ -33,7 +33,7 @@
      <p class="card-text text-center">
        <%= t('my_tab.list.empty')%>
      </p>
-      <%= link_to t('my_tab.list.product_link'), products_path, class: 'button offset-md-5'%>
+      <%= link_to t('my_tab.list.product_link'), products_path, class: 'button text-center'%>
     <% end %>
   </div>
 </div>

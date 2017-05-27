@@ -118,7 +118,7 @@ de:
     description: "Füge Artikel deinem Tab hinzu. Achtung, Du kannst hinzufgefügte Artikel nicht wieder löschen.
       Solltest Du Probleme haben werden Dir unsere Tresenkräfte gerne behilflich sein."
     add_item: "hinzufügen"
-    title: "Title"
+    title: "Artikel"
     price: "Preis"
     number: "Nummer (Sumup Nummer)"
     action: "Aktion"

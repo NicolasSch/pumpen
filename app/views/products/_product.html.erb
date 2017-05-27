@@ -2,7 +2,8 @@
   <td><%= product.title %></td>
   <td><%= number_to_euro(product.price) %></td>
   <td>
-    <%= link_to t('products.add_item'),
-      tab_items_path(@tab_item, cart_id: @cart&.id, tab_item: { product_id: product.id}), method: :post, class: 'btn btn-primary' %>
+    <%= link_to tab_items_path(@tab_item, cart_id: @cart&.id, tab_item: { product_id: product.id}), method: :post do %>
+      <%= fa_icon "plus-square 2x", class: 'icon-blue', title: 'hinzufügen' %>
+    <% end %>
   </td>
 </tr>
