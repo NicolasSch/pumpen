@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_one :cart
 
   def most_used_products
-    products.order('tab_items.quantity DESC')
+    products.group(:id).order('count(products.id) desc')
   end
 
   def admin?
