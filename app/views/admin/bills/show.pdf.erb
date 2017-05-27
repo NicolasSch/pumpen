@@ -1,16 +1,27 @@
   <div class="col-12">
-    <div class="row">
-      <h3 class="col-8">Tabrechnung <%= Date.new(Date.today.year,1,1) + @bill.tab.month.month %></h3>
-      <p class="col-4"><%= l Date.today, format: :long %></p>
-    </div>
+    <h4 class="bill__title">Tabrechnung <%= t("date.month_names")[@bill.tab.month]%>
+      <%= @bill.number %>
+      <p><%= l Date.today, format: :long %></p>
+    </h4>
+
     <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
 
     <p>bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= number_to_euro(@bill.tab.total_price) %> </strong> innerhalb von 14 Tagen auf
       auf das angegeben Konto. Geben sie als Vernwendungszweck die Rechnungnummer <strong><%= @bill.number%></strong> an.
     </p>
 
+    <p>
+      Mit freundlichen Grüßen, </br>
+      Das Crossfit HH Team
+    </p>
+
+
     <% if @bill.tab.tab_items.any? %>
-      <table class="table">
+      <h5>
+        Einzelauflistung:
+      </h5>
+
+      <table class="bill__table table">
         <thead>
           <tr>
             <th><%= t('my_tab.product.title')%></th>

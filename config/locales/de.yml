@@ -135,6 +135,7 @@ de:
       buy: "Artikel wurden der Tabliste hinzugefügt"
   my_tab:
     sum: "Gesamt:"
+    discount: "Rabatt"
     product:
       title: "Artikel"
       price: "Preis"

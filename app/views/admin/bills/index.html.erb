@@ -2,7 +2,7 @@
   <div class="card-block">
       <h3 class="card-title text-center"><%= t('admin.bills.headline')%></h3>
         <h6><%= t('admin.bills.open', count: @unbilled_tabs.count) %></h6>
-        <%= link_to t('admin.bills.create'), admin_bills_path, method: :post %>
+        <%= link_to t('admin.bills.create'), admin_bills_path, method: :post if @unbilled_tabs.any? %>
       <table class="table">
         <thead>
           <tr>
