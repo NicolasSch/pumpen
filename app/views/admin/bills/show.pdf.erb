@@ -5,14 +5,16 @@
     </div>
     <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
 
-    <p>bitte begleichen Sie den untenstehenden Betrag innerhalb von 14 Tagen.</p>
+    <p>bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= number_to_euro(@bill.tab.total_price) %> </strong> innerhalb von 14 Tagen auf
+      auf das angegeben Konto. Geben sie als Vernwendungszweck die Rechnungnummer <strong><%= @bill.number%></strong> an.
+    </p>
 
     <% if @bill.tab.tab_items.any? %>
       <table class="table">
         <thead>
           <tr>
             <th><%= t('my_tab.product.title')%></th>
-            <th><%= t('my_tab.quantity') %></th>
+            <th><%= t('my_tab.product.quantity') %></th>
             <th><%= t('my_tab.product.price')%></th>
           </tr>
         </thead>
