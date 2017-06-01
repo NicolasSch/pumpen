@@ -48,7 +48,7 @@ class Admin::ProductsController < AdminController
       :plu,
       :product_group,
       :product_group_id,
-      :product_group_type
+      :product_type
     )
   end
 end
