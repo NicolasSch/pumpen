@@ -10,7 +10,7 @@ class Admin::UsersController < AdminController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to admin_users_path, notice: 'User has been created'
+      redirect_to admin_users_path, notice: 'Benutzer wurde erfolgreich angelet'
     else
       render :new
     end
@@ -23,7 +23,7 @@ class Admin::UsersController < AdminController
   def update
     user = User.find(params[:id])
     if user.update!(user_params)
-      redirect_to admin_users_path, notice: 'User has been updated'
+      redirect_to admin_users_path, notice: 'Benutzer wurde erfolgreich gespeichert'
     else
       @user = user
       render :edit

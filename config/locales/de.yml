@@ -59,6 +59,10 @@ de:
         headline: "Neuen Artikel anlegen"
     users:
       headline: "Benutzer Liste"
+      new:
+        headline: "Neuen Benutzer anlegen"
+      edit:
+        headline: "Benutzer bearbeiten"
       description: "Bearbeite existierende Benutzer oder lege Neue an."
       create: "Neuen Benutzer erstellen"
       email: "E-Mail"
