@@ -15,7 +15,6 @@ class Admin::CartsController < AdminController
     end
     tab = cart.add_to_users_current_tab
     if tab
-      debugger
       tab.queue_items_added_mail(serializable_items) if tab
       cart.destroy!
       redirect_to admin_shops_path, notice: t('cart.notice.buy')
