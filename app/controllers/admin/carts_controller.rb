@@ -6,13 +6,27 @@ class Admin::CartsController < AdminController
 
   def update
     cart = Cart.find(params[:id])
-    cart.add_to_current_tab
-    redirect_to admin_shops_path, notice: t('cart.notice.buy')
+    serializable_items = cart.cart_items.map do |item|
+      {
+        title:         item.product.title,
+        quantity:     item.quantity,
+        price:  item.total_price.to_f
+      }
+    end
+    tab = cart.add_to_users_current_tab
+    if tab
+      debugger
+      tab.queue_items_added_mail(serializable_items) if tab
+      cart.destroy!
+      redirect_to admin_shops_path, notice: t('cart.notice.buy')
+    else
+      redirect_to admin_shops_path, alert: t('cart.alert.buy')
+    end
   end
 
   def destroy
     cart = Cart.find(params[:id])
-    cart.tab_items.destroy_all
+    cart.cart_items.destroy_all
     redirect_to admin_shops_path(cart_id: cart.id), notice: t('cart.notice.clear')
   end
 

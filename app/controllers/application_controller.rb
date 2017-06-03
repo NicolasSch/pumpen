@@ -9,12 +9,4 @@ class ApplicationController < ActionController::Base
     update_attrs = [:password, :password_confirmation, :current_password]
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
-
-  def ensure_cart
-    Cart.create!(user: current_user) unless current_user.cart.present?
-  end
-
-  def set_cart
-    @cart = params[:cart_id].present? ? Cart.find(params[:cart_id]) : current_user.cart
-  end
 end

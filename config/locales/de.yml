@@ -1,5 +1,8 @@
 de:
   alert: "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
+  mailer:
+    tab_mailer:
+      items_added: Änderung deines Tabs
   admin:
     nav_bar:
       home: "CrossFit HH"

@@ -24,17 +24,8 @@ class Tab < ActiveRecord::Base
     current_item
   end
 
-  def add_tab_items_from_cart(cart)
-    cart.line_items.each do |item|
-      current_item = tab_items.find_by_product_id(item.product_id)
-      if current_item
-        current_item.quantity += item.quantity
-        item.destroy!
-      else
-        item.cart_id = nil
-        tab_items << item
-      end
-    end
+  def queue_items_added_mail(serializable_items)
+    NotificationMailer.tab_items_added(serializable_items, self.user).deliver_later
   end
 
   private

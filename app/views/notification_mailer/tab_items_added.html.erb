@@ -1,0 +1,25 @@
+<!-- Email Body -->
+<tr>
+  <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+    <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+      <!-- Body content -->
+      <tr>
+        <td class="content-cell">
+          <p>Hallo <%= @user.first_name %> <%= @user.last_name %>,</p>
+          <p>folgenden Produkte wurden soeben deinem Tab hinzugefügt:</p>
+          <ul>
+          <% @items.each do |item| %>
+            <li><%= item[:quantity] %>x <%= item[:title] %>, <%= number_to_currency(item[:price], unit: '€', format: '%n %u') %></li>
+          <% end %>
+          </ul>
+          <p>Du kannst deinen aktuellen Tab jederzeit unter <%= link_to 'CrossFit HH Tab-List', 'https://www.cfhh-tab.de' %> einsehen.</p>
+          <p>Wenn du Fragen hast, kannst dich gern jederzeit an unser Team wenden. Schreib uns eine E-Mail an <%= mail_to 'service@cfhh-tab.de' %> oder sprich unsere Tresenkräfte an.</p>
+          <p>
+            Viele Grüße,<br>
+            Das CFHH Team
+          </p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
