@@ -1,5 +1,5 @@
 <div class="<%= @cart.tab_items.any? ? "col-8" : "col-12"%>">
-  <div class="card row">
+  <div class="card">
     <div class="card-block">
       <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.description') %></h6>
       <%= simple_form_for [:admin, @tab_item], url: tab_items_path(@tab_item, cart_id: @cart&.id) do |f| %>

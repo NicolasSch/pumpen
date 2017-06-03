@@ -1,24 +1,26 @@
-<div class="card col-12">
-  <div class="card-block">
-    <h3 class="card-title text-center"><%= t('admin.products.headline')%></h3>
-    <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.products.description') %></h6>
-    <%= link_to t('admin.products.create_link'), new_admin_product_path %>
-    <table class="table col-md-12">
-      <thead>
-        <tr>
-          <th><%= t('admin.products.title') %></th>
-          <th><%= t('admin.products.short_title') %></th>
-          <th><%= t('admin.products.price') %></th>
-          <th><%= t('admin.products.plu') %></th>
-          <th><%= t('admin.products.product_group') %></th>
-          <th><%= t('admin.products.product_type') %></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-          <%= render partial: 'admin/products/product', collection: @products, as: :product %>
-      </tbody>
-    </table>
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('admin.products.headline')%></h3>
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.products.description') %></h6>
+      <%= link_to t('admin.products.create_link'), new_admin_product_path %>
+      <table class="table col-md-12">
+        <thead>
+          <tr>
+            <th><%= t('admin.products.title') %></th>
+            <th><%= t('admin.products.short_title') %></th>
+            <th><%= t('admin.products.price') %></th>
+            <th><%= t('admin.products.plu') %></th>
+            <th><%= t('admin.products.product_group') %></th>
+            <th><%= t('admin.products.product_type') %></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <%= render partial: 'admin/products/product', collection: @products, as: :product %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
