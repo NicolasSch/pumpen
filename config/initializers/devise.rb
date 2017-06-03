@@ -15,6 +15,12 @@ Devise.setup do |config|
   config.mailer_sender = 'service@cfhh-tab.de'
 
   # Configure the class responsible to send e-mails.
+  # config.mailer = 'DeviseMailer'
+
+  # Configure the parent class responsible to send e-mails.
+  config.parent_mailer = 'BaseMailer'
+
+  # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.

@@ -8,7 +8,7 @@ FactoryGirl.define do
     password_confirmation 'changeme'
     role 'user'
     confirmed_at Time.now
-    
+
     trait :is_admin do
       role 'admin'
       email 'admin@test.com'
@@ -16,7 +16,6 @@ FactoryGirl.define do
 
     trait :not_admin do
       role 'user'
-      email 'user@test.com'
     end
   end
 
