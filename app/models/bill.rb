@@ -8,6 +8,12 @@ class Bill < ActiveRecord::Base
 
   serialize :items
 
+  after_create :queue_bill_added_mail
+
+  def queue_bill_added_mail
+    NotificationMailer.bill_added(self.user).deliver_later
+  end
+
   private
 
   def add_number

@@ -4,6 +4,10 @@ class NotificationPreview < ActionMailer::Preview
     NotificationMailer.tab_items_added(serializable_items, user)
   end
 
+  def bill_added
+    NotificationMailer.bill_added(bill.user)
+  end
+
   private
 
   def user
@@ -12,6 +16,10 @@ class NotificationPreview < ActionMailer::Preview
 
   def tab
     TabItem.first.tab
+  end
+
+  def bill
+    Bill.first
   end
 
   def serializable_items

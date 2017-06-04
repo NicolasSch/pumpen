@@ -27,6 +27,11 @@ RSpec.describe CartsController, type: :controller do
             expect(Tab.first.tab_items.count).to eq(3)
           end
 
+          it 'destroys cart items' do
+            subject
+            expect(cart.reload.cart_items).to be_empty
+          end
+
           it 'increases quantity of existing items' do
             product = tab.tab_items.first.product
             cart.cart_items.create!(product: product)

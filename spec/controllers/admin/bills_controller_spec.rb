@@ -82,6 +82,17 @@ RSpec.describe Admin::BillsController, type: :controller do
           expect(items.first[:quantity]).to eq(tab_with_item.tab_items.first.quantity)
           expect(items.first[:price]).to eq(tab_with_item.tab_items.first.total_price)
         end
+
+        it 'queues an bill_added notification mail', perform_enqueued: true do
+          expect(NotificationMailer).to receive(:bill_added).twice.and_call_original
+
+          perform_enqueued_jobs do
+            subject
+            expect(ActionMailer::Base.deliveries.size).to eq(1)
+            delivered_email = ActionMailer::Base.deliveries.last
+            assert_includes delivered_email.to, user.email
+          end
+        end
       end
 
       context 'not admin' do

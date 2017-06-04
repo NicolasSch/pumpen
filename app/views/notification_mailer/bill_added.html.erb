@@ -1,0 +1,20 @@
+<!-- Email Body -->
+<tr>
+  <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+    <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+      <!-- Body content -->
+      <tr>
+        <td class="content-cell">
+          <p>Hallo <%= @user.first_name %> <%= @user.last_name %>,</p>
+          <p>
+            eine neue Rechnung wurde Deinem Konto hinzugefügt. Du kannst diese
+            in deinem <%= link_to 'Profil', edit_user_url(@user) %> einsehen. </p>
+          <p>
+            Viele Grüße,<br>
+            Das CFHH Team
+          </p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

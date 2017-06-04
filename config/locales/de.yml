@@ -2,7 +2,8 @@ de:
   alert: "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
   mailer:
     tab_mailer:
-      items_added: Änderung deines Tabs
+      items_added: "Änderung deines Tabs"
+      bill_added: "Neue Rechnung hinzugefügt"
   admin:
     access_denied: "Zugriff verweigert"
     nav_bar:

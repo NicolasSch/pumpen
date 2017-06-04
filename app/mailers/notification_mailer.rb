@@ -4,4 +4,9 @@ class NotificationMailer < BaseMailer
     @items = serializable_items
     mail_with_defaults(to: @user.email, subject: t('mailer.tab_mailer.items_added'))
   end
+
+  def bill_added(user)
+    @user = user
+    mail_with_defaults(to: @user.email, subject: t('mailer.tab_mailer.bill_added'))
+  end
 end

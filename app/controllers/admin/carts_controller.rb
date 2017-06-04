@@ -8,9 +8,9 @@ class Admin::CartsController < AdminController
     cart = Cart.find(params[:id])
     serializable_items = cart.cart_items.map do |item|
       {
-        title:         item.product.title,
+        title:        item.product.title,
         quantity:     item.quantity,
-        price:  item.total_price.to_f
+        price:        item.total_price.to_f
       }
     end
     tab = cart.add_to_users_current_tab
