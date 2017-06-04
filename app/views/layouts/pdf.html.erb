@@ -3,29 +3,21 @@
   <head>
     <meta charset='utf-8' />
     <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
-    <%= wicked_pdf_javascript_include_tag "application" %>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <%= wicked_pdf_image_tag 'logo.png', class: "offset-4 col-4" %>
-      </div>
-      <div class="row">
-        <%= yield %>
-      </div>
+    <%= wicked_pdf_image_tag 'logo.png', class: "bill__logo--size bill__logo--center" %>
+    <%= yield %>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <p class="col-12 text-muted text-center">
-          Hamburg Elite Fitness GmbH
-          Steilshooper Str. 35 |
-          22305 Hamburg |
-        </p>
-        <p class="col-12 text-muted text-center">
-          Bankverbindung: Deutsche Bank 20070000 | Konto: 0864884 </br>
-          IBAN: DE 22 2007 0000 0086 4884 00 | BIC: DEUTDEHHXXX
-        </p>
-      </div>
+    <footer class="footer--center footer">
+      <p class="col-12 text-muted text-center">
+        Hamburg Elite Fitness GmbH
+        Steilshooper Str. 35 |
+        22305 Hamburg |
+      </p>
+      <p class="">
+        Bankverbindung: Deutsche Bank 20070000 | Konto: 0864884 </br>
+        IBAN: DE 22 2007 0000 0086 4884 00 | BIC: DEUTDEHHXXX
+      </p>
     </footer>
   </body>
 </html>

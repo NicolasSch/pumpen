@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525093003) do
+ActiveRecord::Schema.define(version: 20170604145244) do
 
   create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.integer  "tab_id"
-    t.string   "number",                     null: false
-    t.boolean  "paid",       default: false
+    t.string   "number",                                             null: false
+    t.boolean  "paid",                               default: false
+    t.decimal  "amount",     precision: 8, scale: 2,                 null: false
     t.index ["tab_id"], name: "index_bills_on_tab_id", using: :btree
   end
 

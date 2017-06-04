@@ -1,52 +1,50 @@
-  <div class="col-12">
-    <h4 class="bill__title">Tabrechnung <%= t("date.month_names")[@bill.tab.month]%>
-      <%= @bill.number %>
-      <p><%= l Date.today, format: :long %></p>
+  <h4 class="bill__title">Tabrechnung <%= t("date.month_names")[@bill.tab.month]%>
+    <%= @bill.number %>
+    <span class="bill__date"><%= l Date.today, format: :long %></span>
+  </h4>
+
+  <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
+
+  <p>bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= number_to_euro(@bill.tab.total_price) %> </strong> innerhalb von 14 Tagen auf
+    auf das angegeben Konto. Geben sie als Vernwendungszweck die Rechnungnummer <strong><%= @bill.number%></strong> an.
+  </p>
+
+  <p>
+    Mit freundlichen Grüßen, </br>
+    Das Crossfit HH Team
+  </p>
+
+
+  <% if @bill.tab.tab_items.any? %>
+    <h4>
+      Einzelauflistung:
     </h4>
 
-    <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
-
-    <p>bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= number_to_euro(@bill.tab.total_price) %> </strong> innerhalb von 14 Tagen auf
-      auf das angegeben Konto. Geben sie als Vernwendungszweck die Rechnungnummer <strong><%= @bill.number%></strong> an.
-    </p>
-
-    <p>
-      Mit freundlichen Grüßen, </br>
-      Das Crossfit HH Team
-    </p>
-
-
-    <% if @bill.tab.tab_items.any? %>
-      <h5>
-        Einzelauflistung:
-      </h5>
-
-      <table class="bill__table table">
-        <thead>
-          <tr>
-            <th><%= t('my_tab.product.title')%></th>
-            <th><%= t('my_tab.product.quantity') %></th>
-            <th><%= t('my_tab.product.price')%></th>
-          </tr>
-        </thead>
-        <tfoot>
-          <% if @bill.tab.discount.present? %>
-            <tr>
-              <td></td>
-              <td><%= t('my_tab.discount') %>:</td>
-              <td><%= @bill.tab.discount %>%</td>
-            </tr>
-          <% end %>
+    <table class=" bill__table">
+      <thead>
+        <tr>
+          <th><%= t('my_tab.product.title')%></th>
+          <th><%= t('my_tab.product.quantity') %></th>
+          <th><%= t('my_tab.product.price')%></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <% if @bill.tab.discount.present? %>
           <tr>
             <td></td>
-            <td><%= t('my_tab.sum') %></td>
-            <td><%= number_to_euro(@bill.tab.total_price) %></td>
+            <td><%= t('my_tab.discount') %>:</td>
+            <td><%= @bill.tab.discount %>%</td>
           </tr>
-        </tfoot>
-        <tbody>
-            <%= render partial: 'tab_items/tab_item.html.erb', collection: @bill.tab.tab_items, as: :tab_item %>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+        <% end %>
+        <tr>
+          <td></td>
+          <td><%= t('my_tab.sum') %></td>
+          <td><%= number_to_euro(@bill.amount) %></td>
+        </tr>
+      </tfoot>
+      <tbody>
+          <%= render partial: 'tab_items/tab_item.html.erb', collection: @bill.tab.tab_items, as: :tab_item %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
