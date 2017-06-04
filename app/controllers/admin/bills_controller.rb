@@ -48,7 +48,7 @@ class Admin::BillsController < AdminController
       bill.tab.update!(state: 'closed')
       redirect_to admin_bills_path, notice: t('admin.bills.paid')
     else
-      redirect_to admin_bills_path, alert: t('admin.alert')
+      redirect_to admin_bills_path, alert: t('admin.notice.alert')
     end
   end
 
