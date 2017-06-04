@@ -1,23 +1,23 @@
 class Admin::BillsController < AdminController
   def index
-    unbilled_tabs   = Tab.left_outer_joins(:bill).where('tab_id is NULL AND month < ?', Time.now.month)
+    unbilled_tabs   = Tab.where('month < ? AND state = ?', Time.now.month, 'open')
     @unbilled_tabs  = unbilled_tabs.select { |tab| tab.tab_items.any? }
     @filter         = filter_param.nil? ? 'all' : filter_param
-    @bills  = case @filter
-              when 'all'
-                Bill.order(created_at: :desc)
-              when 'paid'
-                Bill.where(paid: true).order(created_at: :desc)
-              when 'open'
-                Bill.where(paid: false).order(created_at: :desc)
-              end
+    @bills          = case @filter
+                      when 'all'
+                        Bill.order(created_at: :desc)
+                      when 'paid'
+                        Bill.where(paid: true).order(created_at: :desc)
+                      when 'open'
+                        Bill.where(paid: false).order(created_at: :desc)
+                      end
   end
 
   def create
     tabs =  Tab.where('month < ? AND state = ?', Time.now.month, 'open')
     tabs.each do |tab|
       if tab.tab_items.any?
-        tab.create_bill
+        tab.create_bill(amount: tab.total_price)
         tab.state = 'billed'
         tab.save
       else
@@ -28,10 +28,15 @@ class Admin::BillsController < AdminController
   end
 
   def show
-    @bill = Bill.find(params[:id])
+    @bill = Bill.joins(:tab).find(params[:id])
     respond_to do |format|
       format.pdf do
-        render pdf: @bill.number, layout: 'pdf.html.erb'
+        render pdf: @bill.number,
+               layout: 'pdf.html.erb',
+               disposition: 'attachment',
+               orientation: 'Portrait',
+               page_size: 'A4',
+               dpi: 300
       end
     end
   end

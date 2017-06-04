@@ -1,8 +1,8 @@
 <tr>
   <td><%= t("date.month_names")[bill.tab.month]%></td>
   <td><%= link_to bill.number, admin_bill_path(bill, format: :pdf)%></td>
-  <td><%= bill.tab.user.first_name%> <%= bill.tab.user.last_name%></td>
-  <td><%= bill.tab.total_price %></td>
+  <td><%= bill.user.first_name%> <%= bill.user.last_name%></td>
+  <td><%= bill.amount %></td>
   <td>
     <% if bill.paid? %>
       <%= fa_icon "check 2x", class: 'icon-green' %>
@@ -10,5 +10,7 @@
       <%= fa_icon "close 2x", class: 'icon-red' %>
     <% end %>
   </td>
-  <td><%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put %></td>
+  <td>
+    <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm', number: bill.number)} unless bill.paid? %>
+  </td>
 </tr>

@@ -30,6 +30,7 @@ de:
       headline: "Offene Rechnungen"
       show: "Rechnung ansehen"
       filter: "Filter"
+      confirm: "Die Rechnnung mit Nummer: %{number} als bezahlt markieren?"
       notice:
         created: "Rechnungen wurden erstellt"
         paid: "Rechnung wurde als beahlt markiert"

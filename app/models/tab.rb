@@ -2,6 +2,7 @@ class Tab < ActiveRecord::Base
   has_many :tab_items, dependent: :destroy
   belongs_to :user
   has_one :bill
+  has_many :products, through: :tab_items
 
   before_create :set_staff_discount
 

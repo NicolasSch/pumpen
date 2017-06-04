@@ -2,6 +2,9 @@ class Bill < ActiveRecord::Base
   belongs_to :tab
   before_save :add_number
   belongs_to :tab
+  has_one :user, through: :tab
+
+  has_many :products, through: :tab
 
   private
 
