@@ -42,10 +42,10 @@ de:
       create: "Rechnungen erstellen"
       pay: "bezahlen"
       month: 'Monat'
-      number: "Rechnungnummer"
+      number: "Nummer"
       user: "Mitglied"
       sum: "Betrag"
-      paid: "bezahlt?"
+      paid: "bezahlt"
     products:
       headline: "Artikelliste"
       description: "Erstelle neue Artikel oder editiere Bestehende."
