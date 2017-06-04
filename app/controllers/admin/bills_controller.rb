@@ -17,7 +17,11 @@ class Admin::BillsController < AdminController
     tabs =  Tab.where('month < ? AND state = ?', Time.now.month, 'open')
     tabs.each do |tab|
       if tab.tab_items.any?
-        tab.create_bill(amount: tab.total_price)
+        tab.create_bill(
+          amount: tab.total_price,
+          items: BillPresenter.serialized_items(tab.tab_items),
+          discount: tab.discount
+        )
         tab.state = 'billed'
         tab.save
       else
@@ -28,10 +32,11 @@ class Admin::BillsController < AdminController
   end
 
   def show
-    @bill = Bill.joins(:tab).find(params[:id])
+    bill = Bill.joins(:tab).find(params[:id])
+    @bill_presenter = BillPresenter.new(bill, view_context)
     respond_to do |format|
       format.pdf do
-        render pdf: @bill.number,
+        render pdf: @bill_presenter.number,
                layout: 'pdf.html.erb',
                disposition: 'attachment',
                orientation: 'Portrait',

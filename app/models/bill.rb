@@ -6,6 +6,8 @@ class Bill < ActiveRecord::Base
 
   has_many :products, through: :tab
 
+  serialize :items
+
   private
 
   def add_number

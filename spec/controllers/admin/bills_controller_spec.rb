@@ -73,6 +73,15 @@ RSpec.describe Admin::BillsController, type: :controller do
           subject
           expect(Bill.first.amount).to eq(tab_with_item.total_price)
         end
+
+        let(:items) { Bill.first.items }
+        it 'serializes tab_items' do
+          subject
+          expect(items.count).to eq(1)
+          expect(items.first[:title]).to eq(tab_with_item.tab_items.first.product.title)
+          expect(items.first[:quantity]).to eq(tab_with_item.tab_items.first.quantity)
+          expect(items.first[:price]).to eq(tab_with_item.tab_items.first.total_price)
+        end
       end
 
       context 'not admin' do

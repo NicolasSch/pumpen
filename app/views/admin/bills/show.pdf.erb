@@ -1,21 +1,22 @@
-  <h4 class="bill__title">Tabrechnung <%= t("date.month_names")[@bill.tab.month]%>
-    <%= @bill.number %>
+  <h4 class="bill__title">Abrechnung <%= @bill_presenter.month %>
+    <%= @bill_presenter.number %>
     <span class="bill__date"><%= l Date.today, format: :long %></span>
   </h4>
 
-  <p>Hallo <%= @bill.tab.user.first_name %> <%= @bill.tab.user.last_name %>,</p>
+  <p>Hallo <%= @bill_presenter.user %>,</p>
 
-  <p>bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= number_to_euro(@bill.tab.total_price) %> </strong> innerhalb von 14 Tagen auf
-    auf das angegeben Konto. Geben sie als Vernwendungszweck die Rechnungnummer <strong><%= @bill.number%></strong> an.
+  <p>
+    bitte überweisen Sie den ausstehenden Betrag in Höhe von  <strong> <%= @bill_presenter.amount %> </strong> innerhalb von 14 Tagen
+    auf das angegeben Konto. Geben sie als Verwendungszweck die Rechnungsnummer <strong><%= @bill_presenter.number%></strong> an.
   </p>
 
   <p>
     Mit freundlichen Grüßen, </br>
-    Das Crossfit HH Team
+    das Crossfit HH Team
   </p>
 
 
-  <% if @bill.tab.tab_items.any? %>
+  <% if @bill_presenter.items.any? %>
     <h4>
       Einzelauflistung:
     </h4>
@@ -29,21 +30,21 @@
         </tr>
       </thead>
       <tfoot>
-        <% if @bill.tab.discount.present? %>
+        <% if @bill_presenter.discount.present? %>
           <tr>
             <td></td>
             <td><%= t('my_tab.discount') %>:</td>
-            <td><%= @bill.tab.discount %>%</td>
+            <td><%= @bill_presenter.discount %>%</td>
           </tr>
         <% end %>
         <tr>
           <td></td>
           <td><%= t('my_tab.sum') %></td>
-          <td><%= number_to_euro(@bill.amount) %></td>
+          <td><%= @bill_presenter.amount %></td>
         </tr>
       </tfoot>
       <tbody>
-          <%= render partial: 'tab_items/tab_item.html.erb', collection: @bill.tab.tab_items, as: :tab_item %>
+          <%= render partial: 'admin/bills/items.html.erb', collection: @bill_presenter.items, as: :item %>
       </tbody>
     </table>
   <% end %>
