@@ -25,7 +25,6 @@ gem 'devise'
 gem 'cancancan'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem "non-stupid-digest-assets"
 gem "font-awesome-rails"
 gem 'sidekiq'              # background worker framework
 gem 'foreman'              # process runner
