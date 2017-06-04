@@ -4,6 +4,7 @@ de:
     tab_mailer:
       items_added: Änderung deines Tabs
   admin:
+    access_denied: "Zugriff verweigert"
     nav_bar:
       home: "CrossFit HH"
       logout: "abmelden"
@@ -28,6 +29,7 @@ de:
     bills:
       headline: "Offene Rechnungen"
       show: "Rechnung ansehen"
+      filter: "Filter"
       notice:
         created: "Rechnungen wurden erstellt"
         paid: "Rechnung wurde als beahlt markiert"

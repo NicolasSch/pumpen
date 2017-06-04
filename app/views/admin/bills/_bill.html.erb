@@ -5,7 +5,7 @@
   <td><%= bill.tab.total_price %></td>
   <td>
     <% if bill.paid? %>
-      <%= fa_icon "check" %>
+      <%= fa_icon "check 2x", class: 'icon-green' %>
     <% else %>
       <%= fa_icon "close 2x", class: 'icon-red' %>
     <% end %>

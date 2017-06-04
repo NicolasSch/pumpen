@@ -5,6 +5,6 @@ class AdminController < ActionController::Base
   private
 
   def ensure_admin
-    redirect_to :root unless current_user.admin?
+    redirect_to :root, notice: t('admin.access_denied') unless current_user.admin?
   end
 end

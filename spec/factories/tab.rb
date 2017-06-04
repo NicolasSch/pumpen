@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tab do
-    user
+    user {create(:user)}
     month Time.now.month
   end
 

@@ -21,4 +21,8 @@ $( document ).on('turbolinks:load', function (){
   $('#cart_user_id').on('change', function (e) {
     $(this).parents('form').submit();
   })
+
+  $('#bill_filter_term').on('change', function (e) {
+    $(this).parents('form').submit();
+  })
 });

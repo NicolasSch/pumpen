@@ -1,15 +1,28 @@
 class Admin::BillsController < AdminController
   def index
-    @unbilled_tabs = Tab.left_outer_joins(:bill).where('tab_id is NULL AND month < ?', Time.now.month,)
-    @bills = Bill.where(paid: false)
+    unbilled_tabs   = Tab.left_outer_joins(:bill).where('tab_id is NULL AND month < ?', Time.now.month)
+    @unbilled_tabs  = unbilled_tabs.select { |tab| tab.tab_items.any? }
+    @filter         = filter_param.nil? ? 'all' : filter_param
+    @bills  = case @filter
+              when 'all'
+                Bill.order(created_at: :desc)
+              when 'paid'
+                Bill.where(paid: true).order(created_at: :desc)
+              when 'open'
+                Bill.where(paid: false).order(created_at: :desc)
+              end
   end
 
   def create
     tabs =  Tab.where('month < ? AND state = ?', Time.now.month, 'open')
     tabs.each do |tab|
-      tab.create_bill
-      tab.state = 'billed'
-      tab.save
+      if tab.tab_items.any?
+        tab.create_bill
+        tab.state = 'billed'
+        tab.save
+      else
+        tab.destroy!
+      end
     end
     redirect_to admin_bills_path, notice: t('admin.bills.notice.created')
   end
@@ -32,5 +45,11 @@ class Admin::BillsController < AdminController
     else
       redirect_to admin_bills_path, alert: t('admin.alert')
     end
+  end
+
+  private
+
+  def filter_param
+    params.dig(:bill, :filter, :term)
   end
 end
