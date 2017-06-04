@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+    <% if Rails.env.production? %>
+      <%= stylesheet_link_tag('pdf') -%>
+    <% else %>
+      <%= wicked_pdf_stylesheet_link_tag('pdf') -%>
+    <% end %>
   </head>
   <body>
     <%= wicked_pdf_image_tag 'logo.png', class: "bill__logo--size bill__logo--center" %>
