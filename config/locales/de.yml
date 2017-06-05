@@ -36,7 +36,7 @@ de:
       confirm: "Die Rechnnung mit Nummer: %{number} als bezahlt markieren?"
       notice:
         created: "Rechnungen wurden erstellt."
-        paid: "Rechnung wurde als beahlt markiert"
+        paid: "Rechnung wurde als bezahlt markiert"
       no_unbilled_tabs: "Alle Rechnungen wurden erstellt"
       unbilled_tabs:
         one: "Für einen offenen Tab kann eine Rechnung erstellt werden."
