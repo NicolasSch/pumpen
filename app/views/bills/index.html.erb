@@ -1,7 +1,9 @@
-<div class="col-md-12 col-s-12">
+<div class="col-12">
   <div class="card">
+    <div class="card-header">
+      <h4 class="card-subtitle mb-2 text-center"><%= t('bills.headline') %></h4>
+    </div>
     <div class="card-block">
-      <h3 class="card-subtitle mb-2 text-center"><%= t('bills.headline') %></h6>
         <% if @bills.any? %>
           <table class="table">
             <thead>

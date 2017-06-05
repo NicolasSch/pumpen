@@ -12,4 +12,8 @@ module ApplicationHelper
   def translated_genders
     [[t('user.male'), 'male'],[t('user.female'), 'female']]
   end
+
+  def translated_month(month)
+    t("date.month_names")[month]
+  end
 end

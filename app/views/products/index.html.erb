@@ -5,9 +5,10 @@
   <div class="col-md-12 col-s-12">
 <% end %>
   <div class="card">
-    <div class="card-block">
+    <div class="card-header">
       <h4 class="card-title text-center"><%= t('products.headline')%></h3>
-      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('products.description') %></h6>
+    </div>
+    <div class="card-block">
       <table class="table col-md-12">
         <thead>
           <tr>
@@ -20,6 +21,9 @@
             <%= render partial: @products %>
         </tbody>
       </table>
+    </div>
+    <div class="card-footer text-center text-muted">
+      <h6 class="card-subtitle mb-2"><%= t('products.description') %></h6>
     </div>
   </div>
 </div>

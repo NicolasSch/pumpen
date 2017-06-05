@@ -174,6 +174,6 @@ de:
       quantity: "Anzahl"
     list:
       headline: "Meine Tabliste"
-      description: "Hier siehst du deine Tabliste des aktuellen Monats."
+      description: "Hier siehst du deinen aktuellen Tab für den Monat %{month}."
       empty: "Du hast bisher nichts auf deiner Tabliste. Dann mal los."
       product_link: "Artikel ansehen"
