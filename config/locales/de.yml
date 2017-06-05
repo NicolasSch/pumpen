@@ -1,5 +1,6 @@
 de:
   alert: "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
+  access_denied: "Zugriff verweigert"
   mailer:
     tab_mailer:
       items_added: "Änderung deines Tabs"
@@ -90,6 +91,7 @@ de:
     admin: "Admin-Bereich"
     private: "Privater Bereich"
     products: "Sortiment"
+    bills: "Rechnungen"
   session:
     login:
       headline: "Anmelden"
@@ -97,10 +99,14 @@ de:
       headline: "Registrieren"
     reset_password:
       headline: "Mein Passwort zurücksetzen"
+  bills:
+    headline: "Meine Rechnungen"
+    empty: "Es liegen noch keine Rechnungen vor"
+    month: "Monat"
+    number: "Nummmer"
+    sum: "Summe"
+    paid: "bezahlt"
   user:
-    bills:
-      headline: "Meine Rechnungen"
-      empty: "Sie haben noch keine Rechnungen."
     profile:
       alert: "konnte nicht gespeichert werden"
       password_save: "Passwort wurde gespeichert"

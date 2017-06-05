@@ -9,10 +9,18 @@ class Ability
       can :read, User, id: user.id
       can :read, Tab, user_id: user.id
       can :read, Product
-      can :write, Tab, user_id: user.id
+      can :read, Bill
+      can :download, Bill, user: user
+      can :write, Tab do |tab|
+        user.tab_manager? && tab.user_id == user.id
+      end
       can :write, User, id: user.id
-      can :write, TabItem
-      can :write, Cart, user_id: user.id
+      can :write, TabItem do |tab_item|
+        user.tab_manager? && tab_item.cart.user_id == user.id
+      end
+      can :write, Cart do |cart|
+        user.tab_manager? && cart.user_id == user.id
+      end
     end
   end
 end

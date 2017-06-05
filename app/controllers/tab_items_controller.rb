@@ -1,7 +1,7 @@
 class TabItemsController < ApplicationController
   def create
-    authorize! :write, TabItem
     @cart = Cart.find(params[:cart_id])
+    authorize! :write, @cart
     item = @cart.add_product(tab_item_params[:product_id])
     if item.save
 

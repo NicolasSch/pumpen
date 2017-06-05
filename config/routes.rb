@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   resources :tabs, only: [:index, :update]
   resources :products, only: :index
   resources :tab_items, only: [:create, :update, :destroy]
+  resources :bills, only: [:index, :show]
   resources :users, only: [:edit, :update]
 end

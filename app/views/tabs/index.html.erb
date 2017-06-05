@@ -1,5 +1,5 @@
 <div class="col-12">
-  <%= render partial: 'add_item' %>
+  <%= render partial: 'add_item' if current_user.tab_manager? %>
 </div>
 <div class="col-12">
   <%= render partial: 'my_tab' %>

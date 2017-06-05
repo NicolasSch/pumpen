@@ -1,6 +1,6 @@
 <tr>
   <td><%= t("date.month_names")[bill.tab.month]%></td>
-  <td><%= link_to bill.number, admin_bill_path(bill, format: :pdf)%></td>
+  <td><%= link_to(bill.number, bill_path(bill, format: :pdf))%></td>
   <td><%= number_to_euro(bill.amount) %></td>
   <td>
     <% if bill.paid? %>

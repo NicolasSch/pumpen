@@ -9,9 +9,15 @@
         <li class="nav-item <%= 'active' if current_page?(root_path) %>">
           <%= link_to t('nav_bar.home'), root_path, class: 'nav-link '%>
         </li>
+        <% if current_user.tab_manager? %>
         <li class="nav-item <%= 'active' if current_page?(products_path) %>">
           <%= link_to t('nav_bar.products'), products_path, class: 'nav-link '%>
         </li>
+        <% end %>
+        <li class="nav-item <%= 'active' if current_page?(bills_path) %>">
+          <%= link_to t('nav_bar.bills'), bills_path, class: 'nav-link '%>
+        </li>
+
       </ul>
       <ul class="navbar-nav mt-2 col-md-2 mt-md-0">
         <li class="nav-item dropdown">

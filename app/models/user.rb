@@ -25,6 +25,14 @@ class User < ApplicationRecord
     membership == 'staff'
   end
 
+  def full_member?
+    membership == 'full'
+  end
+
+  def tab_manager?
+    admin? || staff_member? || full_member?
+  end
+
   # Need to override devise method to send email asynchronously
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later

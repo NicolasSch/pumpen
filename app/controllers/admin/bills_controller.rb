@@ -38,7 +38,7 @@ class Admin::BillsController < AdminController
       format.pdf do
         render pdf: @bill_presenter.number,
                layout: 'pdf.html.erb',
-               disposition: 'attachment',
+               disposition: 'inline',
                orientation: 'Portrait',
                page_size: 'A4',
                dpi: 300
