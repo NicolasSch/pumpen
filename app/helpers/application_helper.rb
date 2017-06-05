@@ -8,4 +8,8 @@ module ApplicationHelper
       [t("user.membership.#{membership}"), membership]
     end
   end
+
+  def translated_genders
+    [[t('user.male'), 'male'],[t('user.female'), 'female']]
+  end
 end

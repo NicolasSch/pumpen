@@ -1,6 +1,7 @@
 de:
   alert: "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
   access_denied: "Zugriff verweigert"
+  not_found: "Die Ressource konnte nicht gefunden werden"
   mailer:
     tab_mailer:
       items_added: "Änderung deines Tabs"
@@ -75,12 +76,20 @@ de:
         headline: "Benutzer bearbeiten"
       description: "Bearbeite existierende Benutzer oder lege Neue an."
       create: "Neuen Benutzer erstellen"
+      notice:
+        created: "Benutzer wurde erfolgreich angelegt"
+        updated: "Benutzer wurde erfolgreich aktualisiert"
       email: "E-Mail"
       firstname: "Vorname"
       lastname: "Nachname"
       membership: "Mitgliedschaft"
       password: "Passwort"
       password_confirmation: "Passwort bestätigen"
+      gender: "Anrede"
+      city: "Stadt"
+      zip: "Postleitzahl"
+      street: "Straße"
+      member_number: "Mitgliednummer"
       role: "Rolle"
       role_hint: "Wenn admin ausgewählt wird, hat der Benutzer Zugriff auf den Adminbereich."
   nav_bar:
@@ -107,6 +116,9 @@ de:
     sum: "Summe"
     paid: "bezahlt"
   user:
+    member_number: "Mitgliedsnummer (Kann nicht geändert werden)"
+    male: 'Herr'
+    female: 'Frau'
     profile:
       alert: "konnte nicht gespeichert werden"
       password_save: "Passwort wurde gespeichert"
@@ -128,9 +140,10 @@ de:
       success: "Artikel %{title} wurde hinzugefügt"
       alert: "konnte Artikel nicht anschreiben"
   add_tab:
+    add_product: "%{product} wurde hinzugefügt"
     item:
       headline: "Am häufigsten verwendet"
-      description: "Wähle einen Artikel aus der Liste um diesen deiner Tabliste hinzuzufügen."
+      description: "Wähle einen Artikel um diesen deinem Tab hinzuzufügen."
       submit: "anschreiben"
   products:
     headline: "Artikel"
@@ -146,12 +159,12 @@ de:
     quantity: "Anzahl"
     price: "Preis"
     title: "Artikel"
-    checkout: "kaufen"
+    checkout: "anschreiben"
     sum: "Gesamt:"
     clear: "Warenkorb leeren"
     notice:
       clear: "Warenkorb wurde geleert"
-      buy: "Artikel wurden der Tabliste hinzugefügt"
+      buy: "Warenkorb wurden deinem Tab hinzugefügt"
   my_tab:
     sum: "Gesamt:"
     discount: "Rabatt"

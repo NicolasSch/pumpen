@@ -1,7 +1,13 @@
 <%= simple_form_for @user do |f| %>
+  <%= f.input :gender, label: t('admin.users.gender'), as: :select, collection: translated_genders, selected: @user.gender, wrapper_html: {class: 'col-12'} %>
   <%= f.input :first_name, label: t('admin.users.firstname'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.first_name} %>
   <%= f.input :last_name, label: t('admin.users.lastname'), wrapper_html: {class: 'col-12'},input_html: { value: @user.last_name} %>
   <%= f.input :email, label: t('admin.users.email'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.email} %>
+  <%= f.input :street, label: t('admin.users.street'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.street } %>
+  <%= f.input :zip, label: t('admin.users.zip'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.zip } %>
+  <%= f.input :city, label: t('admin.users.city'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.city } %>
+  <%= f.input :member_number, disabled: true, label: t('user.member_number'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.member_number } %>
+
   <div class="col-sm-12">
     <%= f.submit t('user.profile.submit'), class: 'button col-sm-12 col-md-4 push-md-4' %>
   </div>

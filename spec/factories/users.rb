@@ -7,6 +7,7 @@ FactoryGirl.define do
     password 'changeme'
     password_confirmation 'changeme'
     role 'user'
+    membership 'one'
     confirmed_at Time.now
 
     trait :is_admin do
@@ -16,6 +17,11 @@ FactoryGirl.define do
 
     trait :not_admin do
       role 'user'
+    end
+
+    trait :is_manager do
+      role 'user'
+      membership 'staff'
     end
   end
 

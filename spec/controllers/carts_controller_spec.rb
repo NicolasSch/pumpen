@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
-  let!(:user) { create(:user, :not_admin) }
+  let!(:user) { create(:user, :is_manager) }
 
   describe '#update' do
     describe 'signed_in' do

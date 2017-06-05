@@ -6,18 +6,18 @@ class UsersController < ApplicationController
   end
 
   def update
-  @user = User.find(params[:id])
-  authorize! :write, @user
+    @user = User.find(params[:id])
+    authorize! :write, @user
 
-  if update_user
-    bypass_sign_in(@user)
-    redirect_to edit_user_path(@user), notice: @notice
-  else
-    @bills = @user.bills
-    flash[:alert] = t('user.profile.alert')
-    render :edit
+    if update_user
+      bypass_sign_in(@user)
+      redirect_to edit_user_path(@user), notice: @notice
+    else
+      @bills = @user.bills
+      flash[:alert] = t('user.profile.alert')
+      render :edit
+    end
   end
-end
 
 private
 
@@ -38,9 +38,9 @@ private
   end
 
   def validate_password_params
-    @user.errors.add(:current_password, :blank) unless user_params[:current_password].present?
-    @user.errors.add(:password, :blank) unless user_params[:password].present?
-    @user.errors.add(:password_confirmation, :blank) unless user_params[:password_confirmation].present?
+    @user.errors.add(:current_password, :blank)       unless user_params[:current_password].present?
+    @user.errors.add(:password, :blank)               unless user_params[:password].present?
+    @user.errors.add(:password_confirmation, :blank)  unless user_params[:password_confirmation].present?
     !@user.errors.any?
   end
 

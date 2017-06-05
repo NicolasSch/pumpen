@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604183919) do
+ActiveRecord::Schema.define(version: 20170605131155) do
 
   create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",                                                       null: false
@@ -85,6 +85,10 @@ ActiveRecord::Schema.define(version: 20170604183919) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "street"
+    t.string   "zip"
+    t.string   "city"
+    t.integer  "member_number"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
