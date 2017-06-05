@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require toastr
 //= require tether
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
 $( document ).on('turbolinks:load', function (){
+
+  // on change listener
   $('#cart_user_id').on('change', function (e) {
     $(this).parents('form').submit();
   })
@@ -25,4 +28,20 @@ $( document ).on('turbolinks:load', function (){
   $('#bill_filter_term').on('change', function (e) {
     $(this).parents('form').submit();
   })
+
+  //toast message settings
+  toastr.options = {
+                   "closeButton": false,
+                   "debug": false,
+                   "positionClass": "toast-bottom-right",
+                   "onclick": null,
+                   "showDuration": "300",
+                   "hideDuration": "1000",
+                   "timeOut": "5000",
+                   "extendedTimeOut": "1000",
+                   "showEasing": "swing",
+                   "hideEasing": "linear",
+                   "showMethod": "fadeIn",
+                   "hideMethod": "fadeOut"
+               }
 });

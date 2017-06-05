@@ -12,7 +12,7 @@ class TabsController < ApplicationController
     authorize! :write, tab
     tab.add_product(params[:product_id])
     if tab.save
-      redirect_to :root
+      redirect_to :root, notice: 'Artikel hinzugefügt'
     else
       redirect_to :root, alert: 'Something went wrong'
     end
