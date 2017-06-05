@@ -3,13 +3,14 @@
     <div class="card-block">
         <h3 class="card-title text-center"><%= t('admin.bills.headline')%></h3>
           <% if @unbilled_tabs.any? %>
-            <h6><%= t('admin.bills.unbilled_tabs', count: @unbilled_tabs.count) %></h6>
+            <div class="alert alert-info" role="alert">
+              <h5 class="alert-heading">Offene Tabs!</h5>
+              <p><%= t('admin.bills.unbilled_tabs', count: @unbilled_tabs.count) %></p>
+              <p class="mb-0"><%= link_to t('admin.bills.create'), admin_bills_path, method: :post %></p>
+            </div>
           <% else %>
-            <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %></h6>
+            <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.</h6>
           <% end %>
-          <p>
-            <%= link_to t('admin.bills.create'), admin_bills_path, method: :post if @unbilled_tabs.any? %>
-          </p>
           <%= simple_form_for :bill, url: admin_bills_path, method: :get do |f| %>
             <%= f.simple_fields_for :filter do |p| %>
               <%= p.input :term,
