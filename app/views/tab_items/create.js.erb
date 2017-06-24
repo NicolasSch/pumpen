@@ -1,0 +1,5 @@
+cartTable = $('#cart-table');
+cartLink = $('#cart-link');
+cartTable.html("<%= j render partial: 'products/cart_table', locals: {cart: @cart} %>");
+cartLink.html("<i class='fa fa-cart-plus'></i> Warenkorb anzeigen (<%= j @cart.cart_items.count.to_s %>)");
+$("#flash").html('<%= j render partial: "shared/notification" %>');

@@ -12,8 +12,11 @@ body { background: #EBEBEB !important;}
 }
 
 .button-cart {
-  @extend .col-12;
+  @extend .col-md-4;
+  @extend .col-sm-12;
+  @extend .offset-md-4;
+  @extend .col;
+  @extend .align-self-center;
   @extend .btn;
   @extend .btn-primary;
-  margin-bottom: 1rem;
 }

@@ -1,29 +1,15 @@
-<div class="col-md-4 col-s-12">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="card-title text-center"><%= t('cart.headline')%></h3>
-    </div>
-    <div class="card-block">
-      <table class="table col-md-12">
-        <thead>
-          <tr>
-            <th><%= t('cart.title')%></th>
-            <th><%= t('cart.quantity') %></th>
-            <th><%= t('cart.price')%></th>
-          </tr>
-        </thead>
-        <tfoot>
-          <td></td>
-          <td><%= t('my_tab.sum') %></td>
-          <td><%= number_to_euro(@cart.total_price) %></td>
-        </tfoot>
-        <tbody>
-            <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
-        </tbody>
-      </table>
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title text-center"><%= t('cart.headline')%></h3>
+  </div>
+  <div class="card-block">
+    <div id="cart-table">
       <% if @cart.tab_items.any? && @cart.persisted? %>
-        <%= link_to t('cart.checkout'), cart_path(@cart), method: :put, class: 'button-cart' %>
-        <%= link_to t('cart.clear'), cart_path(@cart), method: :delete, class: 'button-cart' %>
+        <%= render partial: 'cart_table', locals: {cart: @cart} %>
+      <% else %>
+      <p>
+        Keine Waren gewählt
+      </p>
       <% end %>
     </div>
   </div>
