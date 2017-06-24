@@ -14,11 +14,10 @@
 //= require jquery_ujs
 //= require toastr
 //= require tether
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-$( document ).on('turbolinks:load', function (){
+$( document ).on('ready', function (){
 
   // on change listener
   $('#cart_user_id').on('change', function (e) {
@@ -44,4 +43,5 @@ $( document ).on('turbolinks:load', function (){
                    "showMethod": "fadeIn",
                    "hideMethod": "fadeOut"
                }
-});
+  }
+);

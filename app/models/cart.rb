@@ -4,12 +4,14 @@ class Cart < ActiveRecord::Base
   belongs_to :user
   has_many :tab_items
 
-  def add_product(product_id)
+  def add_product(properties)
+    product_id, quantity = properties.values_at(:product_id, :quantity)
+    quantity = quantity.present? ? quantity.to_i : 1
     current_item = cart_items.find_by_product_id(product_id)
     if current_item
-      current_item.quantity += 1
+      current_item.quantity += quantity
     else
-      current_item = cart_items.build(product_id: product_id)
+      current_item = cart_items.build(properties)
     end
     current_item
   end
