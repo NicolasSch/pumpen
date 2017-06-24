@@ -6,7 +6,7 @@ class TabItemsController < ApplicationController
     if item.save
       respond_to do |format|
         format.js   { flash.now[:notice] = t('tab_item.create.success', title: item.product.title) }
-        format.html { redirect_back fallback_location: root_path, notice: t('tab_item.create.success', title: @item.product.title) }
+        format.html { redirect_back fallback_location: root_path, notice: t('tab_item.create.success', title: item.product.title) }
       end
     else
       redirect_back fallback_location: root_path, alert: t('tab_item.create.alert')

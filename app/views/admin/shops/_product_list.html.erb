@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-              <%= render partial: 'products/product', collection: @products, as: :product, locals: {cart: @cart} %>
+              <%= render partial: 'admin/shops/product', collection: @products, as: :product, locals: {cart: @cart} %>
           </tbody>
         </table>
       <% end %>

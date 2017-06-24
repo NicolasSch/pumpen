@@ -20,3 +20,11 @@ body { background: #EBEBEB !important;}
   @extend .btn;
   @extend .btn-primary;
 }
+
+.admin__button-cart {
+  @extend .col-12;
+  @extend .col;
+  @extend .align-self-center;
+  @extend .btn;
+  @extend .btn-primary;
+}

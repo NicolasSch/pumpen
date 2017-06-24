@@ -19,8 +19,8 @@
             <%= render partial: 'tab_items/tab_item', collection: @cart.tab_items %>
         </tbody>
       </table>
-      <%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'button-cart' %>
-      <%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'button-cart' %>
+      <p><%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'admin__button-cart' %></p>
+      <p><%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'admin__button-cart' %></p>
     </div>
   </div>
 </div>
