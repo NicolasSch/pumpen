@@ -1,5 +1,21 @@
-<% require 'devise/version' %>
-<p><%= t('.greeting', recipient: @resource.email) %></p>
+<% require "devise/version" %>
+<!-- Email Body -->
+<tr>
+  <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+    <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+      <!-- Body content -->
+      <tr>
+        <td class="content-cell">
+          <p><%= t('.greeting', recipient: @resource.email) %></p>
 
-<p><%= t('.instruction') %></p>
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p>
+          <p><%= t('.instruction') %></p>
+          <p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p>
+          <p>
+            Viele Grüße,<br>
+            Das CFHH Team
+          </p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
