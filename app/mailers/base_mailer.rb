@@ -9,11 +9,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def host
-    if Rails.env.production?
-      I18n.t('mailer.host')
-    else
-      Rails.configuration.action_mailer.default_url_options[:host]
-    end
+    Rails.configuration.action_mailer.default_url_options[:host]
   end
 
   def mail_with_defaults(options = {})
