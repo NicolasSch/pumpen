@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
   def index
-    @users = User.order(:last_name)
+    @users = User.where(archived: show_archived?).order(:last_name)
   end
 
   def new
@@ -30,7 +30,17 @@ class Admin::UsersController < AdminController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy!
+    redirect_to admin_users_path, notice: t('admin.users.notice.destroy')
+  end
+
   private
+
+  def show_archived?
+    params['archived'] == 'true'
+  end
 
   def user_params
     params.require(:user).permit(
@@ -45,6 +55,8 @@ class Admin::UsersController < AdminController
       :member_number,
       :role,
       :password,
-      :password_confirmation)
+      :password_confirmation,
+      :archived
+    )
   end
 end

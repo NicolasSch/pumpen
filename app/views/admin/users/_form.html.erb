@@ -1,20 +1,24 @@
 <%= simple_form_for [:admin, @user] do |f| %>
-  <div>
-    <%= f.input :gender, label: t('admin.users.gender'), as: :select, collection: translated_genders, selected: @user.gender %>
-    <%= f.input :first_name, label: t('admin.users.firstname'), input_html: { value: @user.first_name } %>
-    <%= f.input :last_name, label: t('admin.users.lastname'), input_html: { value: @user.last_name } %>
-    <%= f.input :email, label: t('admin.users.email'), input_html: { value: @user.email } %>
-    <%= f.input :street, label: t('admin.users.street'), input_html: { value: @user.street } %>
-    <%= f.input :zip, label: t('admin.users.zip'), input_html: { value: @user.zip } %>
-    <%= f.input :city, label: t('admin.users.city'), input_html: { value: @user.city } %>
-    <%= f.input :member_number, label: t('admin.users.member_number'), input_html: { value: @user.member_number } %>
-    <% unless @user.persisted? %>
-      <%= f.input :password, label: t('admin.users.password') %>
-      <%= f.input :password_confirmation, label: t('admin.users.password_confirmation') %>
-    <% end %>
-    <%= f.input :membership, label: t('admin.users.membership'), collection: translated_memberships, include_blank: false, select: @user.membership %>
-    <%= f.input :role, label: t('admin.users.role'), collection: User::ROLES, select: @user.membership, include_blank: false,
+<div>
+  <%= f.input :gender, label: t('admin.users.gender'), as: :select, collection: translated_genders, selected: @user.gender %>
+  <%= f.input :first_name, label: t('admin.users.firstname'), input_html: { value: @user.first_name } %>
+  <%= f.input :last_name, label: t('admin.users.lastname'), input_html: { value: @user.last_name } %>
+  <%= f.input :email, label: t('admin.users.email'), input_html: { value: @user.email } %>
+  <%= f.input :street, label: t('admin.users.street'), input_html: { value: @user.street } %>
+  <%= f.input :zip, label: t('admin.users.zip'), input_html: { value: @user.zip } %>
+  <%= f.input :city, label: t('admin.users.city'), input_html: { value: @user.city } %>
+  <%= f.input :member_number, label: t('admin.users.member_number'), input_html: { value: @user.member_number } %>
+  <% unless @user.persisted? %>
+  <%= f.input :password, label: t('admin.users.password') %>
+  <%= f.input :password_confirmation, label: t('admin.users.password_confirmation') %>
+  <% end %>
+  <%= f.input :membership, label: t('admin.users.membership'), collection: translated_memberships, include_blank: false, select: @user.membership %>
+  <%= f.input :role, label: t('admin.users.role'), collection: User::ROLES, select: @user.membership, include_blank: false,
       hint: t('admin.users.role_hint')%>
-    <%= f.submit class: 'button' %>
-  </div>
+  <%= f.input :archived, as: :boolean, label: t('admin.users.archived'), hint: t('admin.users.archived_hint'), input_html: { value: @user.archived} %>
+  <%= f.submit class: 'button' %>
+  <% if @user.persisted? %>
+  <%= link_to t('admin.users.destroy_link'), admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t('admin.users.destroy_confirm') } %>
+  <% end %>
+</div>
 <% end %>

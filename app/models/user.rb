@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :tabs
+  has_many :tabs, dependent: :destroy
   has_many :bills, through: :tabs
   has_many :tab_items, through: :tabs
   has_many :products, through: :tab_items
@@ -36,5 +36,9 @@ class User < ApplicationRecord
   # Need to override devise method to send email asynchronously
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def active_for_authentication?
+    super and !self.archived?
   end
 end
