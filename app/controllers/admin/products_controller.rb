@@ -1,10 +1,10 @@
 class Admin::ProductsController < AdminController
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
   def index
-    @filterrific = initialize_filterrific(
-      Product,
-      params[:filterrific]
-    ) or return
-    @products = @filterrific.find.page(params[:page])
+  products_scope = params[:archived] == '1' ?  Product.archived : Product.active
+  @products = smart_listing_create(:products, products_scope, partial: "admin/products/listing", default_sort: { title: 'asc' })
   end
 
   def new

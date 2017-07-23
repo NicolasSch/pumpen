@@ -15,6 +15,7 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require toastr
+//= require smart_listing
 //= require_tree .
 
 $(document).on('ready', function() {

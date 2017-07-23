@@ -3,5 +3,6 @@ class Product < ActiveRecord::Base
   validates :price, :title, presence: true
   validates :title, uniqueness: true
 
-  default_scope { where(archived: false) }
+  scope :active,    -> { where(archived: false) }
+  scope :archived,  -> { where(archived: true) }
 end

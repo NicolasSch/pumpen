@@ -3,8 +3,8 @@ class TabsController < ApplicationController
 
   def index
     authorize! :read, @tab
-    @products = current_user.most_used_products
-    @products = Product.order(:title) if @products.empty?
+    @products = current_user.most_used_products.active
+    @products = Product.active.order(:title) if @products.empty?
     @tab_items = @tab.tab_items.includes(:product)
   end
 
