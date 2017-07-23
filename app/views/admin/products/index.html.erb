@@ -4,14 +4,19 @@
       <h3 class="card-title text-center"><%= t('admin.products.headline')%></h3>
       <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.products.description') %></h6>
       <%= link_to t('admin.products.create_link'), new_admin_product_path %>
-      <% # Render smart listing controls form %>
       <%= smart_listing_controls_for(:products, {class: "form-inline text-right float-right"}) do %>
-      <% # Add checkbox to form - switching it submits the form %>
+      <div class="form-group filter input-append">
+        <label class="select mr-sm-2">
+          <%= t('admin.products.product_group') %>
+          <%= select_tag :filter, options_for_select(@products.map {|product| [product.product_group, product.product_group] }.uniq ),
+                                  class: 'form-control' %>
+        </label>
+      </div>
       <div class="checkbox">
-        <label class="checkbox inline">
+        <label class="checkbox mb-2 mr-sm-2 mb-sm-0">
           <%= hidden_field_tag :archived, "0" %>
-          <%= check_box_tag :archived %>
           <%= t('admin.products.archived') %>
+          <%= check_box_tag :archived %>
         </label>
       </div>
       <% end %>

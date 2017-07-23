@@ -10,7 +10,7 @@ class TabsController < ApplicationController
 
   def update
     tab = current_user.tabs.find(params[:id])
-    authorize! :write, tab
+    authorize! :write, tab 
     item = tab.add_product(params[:product_id])
     if tab.save
       redirect_to :root, notice: t('add_tab.add_product', product: item.product.title)
