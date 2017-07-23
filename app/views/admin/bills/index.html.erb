@@ -1,41 +1,25 @@
 <div class="col-12">
   <div class="card">
     <div class="card-block">
-        <h3 class="card-title text-center"><%= t('admin.bills.headline')%></h3>
-          <% if @unbilled_tabs.any? %>
-            <div class="alert alert-info" role="alert">
-              <h5 class="alert-heading">Offene Tabs!</h5>
-              <p><%= t('admin.bills.unbilled_tabs', count: @unbilled_tabs.count) %></p>
-              <p class="mb-0"><%= link_to t('admin.bills.create'), admin_bills_path, method: :post %></p>
-            </div>
-          <% else %>
-            <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.</h6>
-          <% end %>
-          <%= simple_form_for :bill, url: admin_bills_path, method: :get do |f| %>
-            <%= f.simple_fields_for :filter do |p| %>
-              <%= p.input :term,
-                            required: false,
-                            label: t('admin.bills.filter'),
-                            as: :select,
-                            selected: @filter,
-                            collection: [['', 'all'], ['offen', 'open'], ['bezahlt', 'paid']] %>
-            <% end %>
-          <% end %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th><%= t('admin.bills.month')%></th>
-              <th><%= t('admin.bills.number')%></th>
-              <th><%= t('admin.bills.user')%></th>
-              <th><%= t('admin.bills.sum')%></th>
-              <th><%= t('admin.bills.paid')%></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render partial: @bills %>
-          </tbody>
-        </table>
+      <h3 class="card-title text-center"><%= t('admin.bills.headline')%></h3>
+      <% if @unbilled_tabs.any? %>
+      <div class="alert alert-info" role="alert">
+        <h5 class="alert-heading">Offene Tabs!</h5>
+        <p><%= t('admin.bills.unbilled_tabs', count: @unbilled_tabs.count) %></p>
+        <p class="mb-0"><%= link_to t('admin.bills.create'), admin_bills_path, method: :post %></p>
+      </div>
+      <% else %>
+      <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.</h6>
+      <% end %>
+      <%= smart_listing_controls_for(:bills, {class: "form"}) do %>
+        <div class="form-group filter input-append">
+          <%= text_field_tag :filter, '', class: "search form-control", placeholder: "Name...", autocomplete: :off %>
+          <%= select_tag :paid, options_for_select([['offen', '0'], ['bezahlt', '1']]), class: 'form-control select optinal', prompt: t('admin.bills.filter'), include_blank: false %>
+        </div>
+      <% end %>
+
+      <%= smart_listing_render(:bills) %>
+
     </div>
   </div>
 </div>
