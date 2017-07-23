@@ -1,11 +1,33 @@
-<tr>
-  <td><%= user.email %></td>
-  <td><%= user.first_name %> </td>
-  <td><%= user.last_name %> </td>
-  <td><%= t("user.membership.#{user.membership}") %> </td>
-  <td>
-    <%= link_to edit_admin_user_path(user), method: :get do %>
-      <%= fa_icon "edit lg", class: 'icon-red' %>
+<% unless smart_listing.empty? %>
+<table class="table col-md-12">
+  <thead>
+    <tr>
+      <th><%= smart_listing.sortable t('admin.users.email'),      :email%></th>
+      <th><%= smart_listing.sortable t('admin.users.firstname'),  :first_name %></th>
+      <th><%= smart_listing.sortable t('admin.users.lastname'),   :last_name %></th>
+      <th><%= smart_listing.sortable t('admin.users.membership'), :membership %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% smart_listing.collection.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= t("user.membership.#{user.membership}") %></td>
+      <td>
+        <%= link_to edit_admin_user_path(user), method: :get do %>
+          <%= fa_icon "edit lg", class: 'icon-red' %>
+        <% end %>
+      </td>
+    </tr>
     <% end %>
-  </td>
-</tr>
+  </tbody>
+</table>
+<%= smart_listing.paginate kaminari_options: { theme: 'bootstrap4' } %>
+<% else %>
+<p>
+  Keine Einträge gefunden
+</p>
+<% end %>

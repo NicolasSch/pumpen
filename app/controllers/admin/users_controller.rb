@@ -1,6 +1,11 @@
 class Admin::UsersController < AdminController
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
   def index
-    @users = User.where(archived: show_archived?).order(:last_name)
+    users_scope = params[:archived] == '1' ?  User.archived : User.active
+    users_scope = users_scope.name_like(params[:filter]) if params[:filter].present?
+    @users = smart_listing_create(:users, users_scope, partial: "admin/users/user", default_sort: { last_name: 'asc' })
   end
 
   def new

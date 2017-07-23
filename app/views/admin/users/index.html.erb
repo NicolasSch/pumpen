@@ -3,21 +3,27 @@
     <div class="card-block">
       <h3 class="card-title text-center"><%= t('admin.users.headline')%></h3>
       <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.users.description') %></h6>
-      <%= link_to t('admin.users.create'), new_admin_user_path %>
-      <table class="table col-md-12">
-        <thead>
-          <tr>
-            <th><%= t('admin.users.email') %></th>
-            <th><%= t('admin.users.firstname') %></th>
-            <th><%= t('admin.users.lastname') %></th>
-            <th><%= t('admin.users.membership') %></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-            <%= render partial: 'admin/users/user', collection: @users, as: :user %>
-        </tbody>
-      </table>
+
+      <%= link_to t('admin.users.create'), new_admin_user_path, class: 'float-right' %>
+
+      <%= smart_listing_controls_for(:users, {class: "form"}) do %>
+      <div class="checkbox">
+        <label class="checkbox control-label">
+          <%= t('admin.users.archived') %>
+        </label>
+        <%= hidden_field_tag :archived, "0" %>
+        <%= check_box_tag :archived %>
+      </div>
+      <div class="form-group filter input-append">
+        <%= text_field_tag :filter, '', class: "search form-control", placeholder: "Name...", autocomplete: :off %>
+        <!-- <button class="btn btn-primary disabled" type="<%= :submit %>">
+            <%= fa_icon "search lg" %>
+        </button> -->
+      </div>
+      <% end %>
+
+      <%= smart_listing_render(:users) %>
+
     </div>
   </div>
 </div>

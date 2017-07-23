@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :products, through: :tab_items
   has_one :cart
 
+  scope :active,    -> { where(archived: false) }
+  scope :archived,  -> { where(archived: true) }
+  scope :name_like, ->(name) { where("(concat(first_name, ' ', last_name) like ?) OR (concat(last_name, ' ', first_name) like ?)","%#{name}%", "%#{name}%") }
+
   def most_used_products
     products.group(:id).order('count(products.id) desc')
   end
