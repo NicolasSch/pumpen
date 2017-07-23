@@ -3,9 +3,9 @@ class Admin::ProductsController < AdminController
   helper  SmartListing::Helper
 
   def index
-  products_scope = params[:archived] == '1' ?  Product.archived : Product.active
-  products_scope = products_scope.where(product_group: params[:filter]) if params[:filter].present?
-  @products = smart_listing_create(:products, products_scope, partial: "admin/products/product", default_sort: { title: 'asc' })
+    products_scope = params[:archived] == '1' ?  Product.archived : Product.active
+    products_scope = products_scope.where(product_group: params[:filter]) if params[:filter].present?
+    @products = smart_listing_create(:products, products_scope, partial: "admin/products/product", default_sort: { title: 'asc' })
   end
 
   def new
