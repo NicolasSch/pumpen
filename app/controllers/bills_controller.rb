@@ -1,6 +1,7 @@
 class BillsController < ApplicationController
   def index
     authorize! :read, Bill
+    @open_bills = current_user.bills.open
     @bills = current_user.bills.order(created_at: :desc)
   end
 

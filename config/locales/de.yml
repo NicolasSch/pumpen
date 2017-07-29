@@ -1,20 +1,25 @@
 de:
+  shared:
+    open_bills_count:
+      one:                 "Du hast eine offene Rechnung!"
+      other:               "Du hast %{count} offene Rechnungen!"
+    bills_link:            "Rechnungen anzeigen"
   views:
     pagination:
-      first: "&laquo; Erste"
-      last: "Letzte &raquo;"
-      previous: "&lsaquo; Vorherige"
-      next: "Nächste &rsaquo;"
-      truncate: "&hellip;"
+      first:                 "&laquo; Erste"
+      last:                  "Letzte &raquo;"
+      previous:              "&lsaquo; Vorherige"
+      next:                  "Nächste &rsaquo;"
+      truncate:              "&hellip;"
   helpers:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "Keine %{entry_name} gefunden"
-          one: "Zeige <b>1</b> %{entry_name}"
-          other: "Zeige <b>alle %{count}</b> %{entry_name}"
+          zero:              "Keine %{entry_name} gefunden"
+          one:               "Zeige <b>1</b> %{entry_name}"
+          other:             "Zeige <b>alle %{count}</b> %{entry_name}"
       more_pages:
-        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+        display_entries:     "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
   alert:                     "Ein Fehler ist aufgetreten, versuchen Sie es erneut."
   access_denied:             "Zugriff verweigert"
   not_found:                 "Die Ressource konnte nicht gefunden werden"
@@ -27,9 +32,9 @@ de:
     statistics:
       index:
         headline:            "Auswertung"
-        description:          "Zeige die Anzahl und den Gesamtpreis der verkauften Produkte über den angegebenen Zeitraum."
-        sum_quantity:         "Anzahl"
-        sum_price:            "Summe"
+        description:         "Zeige die Anzahl und den Gesamtpreis der verkauften Produkte über den angegebenen Zeitraum."
+        sum_quantity:        "Anzahl"
+        sum_price:           "Summe"
     nav_bar:
       home:                  "CrossFit HH"
       logout:                "abmelden"

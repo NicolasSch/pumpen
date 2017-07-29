@@ -1,4 +1,7 @@
 <div class="col-12">
+  <%= render partial: 'shared/bill_reminder' %>
+</div>
+<div class="col-12">
   <%= render partial: 'add_item' if current_user.tab_manager? %>
 </div>
 <div class="col-12">

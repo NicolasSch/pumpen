@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     authorize! :read, Product
+    @open_bills = current_user.bills.open
     @products = Product.order(:title).active
     @tab_item = TabItem.new
   end
