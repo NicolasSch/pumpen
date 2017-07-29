@@ -7,6 +7,7 @@
       <th><%= t('admin.bills.user')%></th>
       <th><%= t('admin.bills.sum')%></th>
       <th><%= smart_listing.sortable  t('admin.bills.paid'), :paid%></th>
+      <th><%= t('admin.bills.reminded_at')%></th>
       <th></th>
     </tr>
   </thead>
@@ -24,11 +25,17 @@
           <%= fa_icon "close lg", class: 'icon-red' %>
         <% end %>
       </td>
+      <% if bill.reminded_at %>
+        <td>
+          <%= link_to l(bill.reminded_at, format: :short), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
+        </td>
+      <% else %>
+        <td>
+          <%= link_to t('admin.bills.remind'), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
+        </td>
+      <% end %>
       <td>
         <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm_paaid', number: bill.number)} unless bill.paid? %>
-      </td>
-      <td>
-        <%= link_to t('admin.bills.remind'), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
       </td>
     </tr>
     <% end %>

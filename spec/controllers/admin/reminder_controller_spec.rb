@@ -13,6 +13,11 @@ RSpec.describe Admin::ReminderController, type: :controller do
 
         subject { put :show , params: { bill_id: bill.id} }
 
+        it 'sets reminded at' do
+          subject
+          expect(bill.reload.reminded_at).not_to be nil
+        end
+
         it 'queues an bill_added notification mail', perform_enqueued: true do
           expect(NotificationMailer).to receive(:open_bills_reminder).twice.and_call_original
 
