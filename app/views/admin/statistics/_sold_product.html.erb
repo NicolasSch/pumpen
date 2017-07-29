@@ -14,7 +14,7 @@
       <tr>
         <td><%= product.title %></td>
         <td><%= product.sum_quantity %></td>
-        <td><%= product.sum_price %></td>
+        <td><%= number_to_euro(product.sum_price) %></td>
         <td><%= product.product_group %></td>
         <td><%= product.product_type %></td>
       </tr>
