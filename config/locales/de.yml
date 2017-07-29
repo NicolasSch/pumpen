@@ -24,16 +24,23 @@ de:
       bill_added:            "Neue Rechnung hinzugefügt"
   admin:
     access_denied:           "Zugriff verweigert"
+    statistics:
+      index:
+        headline:            "Auswertung"
+        description:          "Zeige die Anzahl der verkauften Product des angegebene Zeitraums."
+        sum_quantity:         "Anzahl"
+        sum_price:            "Summe"
     nav_bar:
       home:                  "CrossFit HH"
       logout:                "abmelden"
-      account:               "Mein Konto"
-      admin:                 "Admin-Bereich"
+      account:               "mein Konto"
+      admin:                 "Admin Bereich"
       private:               "Privater Bereich"
       users:                 "Benutzer"
       products:              "Sortiment"
       bills:                 "Rechnungen"
       shop:                  "Shop"
+      statistics:            "Auswertung"
     shop:
       headline:              "Benutzer Tab verwalten"
       description:           "Füge der akteullen Tabliste eines Benutzers Artikel hinzu"
