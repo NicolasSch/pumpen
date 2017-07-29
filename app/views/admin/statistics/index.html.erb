@@ -8,7 +8,7 @@
           <label class="control-label string" for="timespan">Zeitspanne:</label>
           <div class="input-daterange input-group" id="timespan">
             <input type="text" class="input-sm form-control string datepicker" name="start" value="<%= @start.strftime('%d/%m/%Y') %>"/>
-            <span class="input-group-addon">to</span>
+            <span class="input-group-addon">bis</span>
             <input type="text" class="input-sm form-control datepicker" name="end" value="<%= @end.strftime('%d/%m/%Y') %>"/>
             <button class="btn btn-primary input-group-addon" type='submit'>
               <%= fa_icon "search lg" %>
