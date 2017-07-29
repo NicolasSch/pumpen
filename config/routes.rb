@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
     resources :users
     resources :products
+    resources :statistics, only: :index
     resources :tabs, only: [:index, :update]
     resources :bills, only: [:index, :show, :create, :update]
     resources :shops, only: :index

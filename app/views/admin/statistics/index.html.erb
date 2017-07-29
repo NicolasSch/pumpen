@@ -1,0 +1,29 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('.headline')%></h3>
+      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('.description') %></h6>
+      <%= form_tag(admin_statistics_path, method: "get") do %>
+        <div class="form-group string filter input-append">
+          <label class="control-label string" for="timespan">Zeitspanne:</label>
+          <div class="input-daterange input-group" id="timespan">
+            <input type="text" class="input-sm form-control string datepicker" name="start" value="<%= @start.strftime('%d/%m/%Y') %>"/>
+            <span class="input-group-addon">to</span>
+            <input type="text" class="input-sm form-control datepicker" name="end" value="<%= @end.strftime('%d/%m/%Y') %>"/>
+            <button class="btn btn-primary input-group-addon" type='submit'>
+              <%= fa_icon "search lg" %>
+            </button>
+          </div>
+        </div>
+      <% end %>
+      <%= smart_listing_controls_for(:products, {class: "form"}) do %>
+
+      <div class="form-group string filter input-append">
+        <label class="control-label" for="product_group">Artikelgruppe:</label>
+        <%= select_tag :filter, options_for_select(@products.map { |product| [product.product_group, product.product_group] }.uniq ), class: 'form-control select optinal', prompt: t('admin.products.product_group'), include_blank: false, id: 'product_group'%>
+      </div>
+      <% end %>
+      <%= smart_listing_render(:products) %>
+    </div>
+  </div>
+</div>
