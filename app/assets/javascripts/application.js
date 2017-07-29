@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require toastr
 //= require smart_listing
+//= require bootstrap-datepicker
 //= require_tree .
 
 $(document).on('ready', function() {
@@ -28,5 +29,12 @@ $(document).on('ready', function() {
   $('#bill_filter_term').on('change', function(e) {
     $(this).parents('form').submit();
   })
+
+   $('.datepicker').datepicker({
+     clearBtn: true,
+     autoclose: true,
+     format: 'dd/mm/yyyy'
+   }
+   );
 
 });
