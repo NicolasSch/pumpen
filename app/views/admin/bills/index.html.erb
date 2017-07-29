@@ -8,18 +8,18 @@
         <p><%= t('admin.bills.unbilled_tabs', count: @unbilled_tabs.count) %></p>
         <p class="mb-0"><%= link_to t('admin.bills.create'), admin_bills_path, method: :post %></p>
       </div>
-      <% else %>
+    <% else %>
       <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.</h6>
       <% end %>
       <%= smart_listing_controls_for(:bills, {class: "form"}) do %>
-        <div class="form-group filter input-append">
-          <%= text_field_tag :filter, '', class: "search form-control", placeholder: "Name...", autocomplete: :off %>
-          <%= select_tag :paid, options_for_select([['offen', '0'], ['bezahlt', '1']]), class: 'form-control select optinal', prompt: t('admin.bills.filter'), include_blank: false %>
-        </div>
+      <div class="form-group filter input-append">
+        <%= text_field_tag :filter, '', class: "search form-control string", placeholder: "Name...", autocomplete: :off %>
+      </div>
+      <div class="form-group string filter input-append">
+        <%= select_tag :paid, options_for_select([['offen', '0'], ['bezahlt', '1']]), class: 'form-control select optinal', prompt: t('admin.bills.filter'), include_blank: false %>
+      </div>
       <% end %>
-
       <%= smart_listing_render(:bills) %>
-
     </div>
   </div>
 </div>
