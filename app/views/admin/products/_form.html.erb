@@ -5,7 +5,7 @@
   <%= f.input :plu, label: t('admin.products.plu'), input_html: { value: @product.plu} %>
   <%= f.input :product_group, label: t('admin.products.product_group'), input_html: { value: @product.product_group} %>
   <%= f.input :product_group_id, label: t('admin.products.product_group_id'), input_html: { value: @product.product_group_id} %>
-  <%= f.input :product_group_type, label: t('admin.products.product_type'), input_html: { value: @product.product_type} %>
+  <%= f.input :product_type, label: t('admin.products.product_type'), input_html: { value: @product.product_type} %>
   <%= f.input :archived, as: :boolean, label: t('admin.products.archived'), hint: t('admin.products.archived_hint'), input_html: { value: @product.archived} %>
   <%= f.submit class: 'button' %>
   <% if @product.persisted? %>
