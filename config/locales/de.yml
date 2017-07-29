@@ -1,9 +1,9 @@
 de:
   shared:
     open_bills_count:
-      one:                 "Du hast eine offene Rechnung!"
-      other:               "Du hast %{count} offene Rechnungen!"
-    bills_link:            "Rechnungen anzeigen"
+      one:                   "Du hast eine offene Rechnung!"
+      other:                 "Du hast %{count} offene Rechnungen!"
+    bills_link:              "Rechnungen anzeigen"
   views:
     pagination:
       first:                 "&laquo; Erste"
@@ -27,8 +27,11 @@ de:
     tab_mailer:
       items_added:           "Änderung deines Tabs"
       bill_added:            "Neue Rechnung hinzugefügt"
+      bill_added_reminder:   "Erinnerung offene Rechnung"
   admin:
     access_denied:           "Zugriff verweigert"
+    reminder:
+      notice:                "Erinnerung wurde versendet"
     statistics:
       index:
         headline:            "Auswertung"
@@ -61,7 +64,9 @@ de:
       headline:              "Offene Rechnungen"
       show:                  "Rechnung ansehen"
       filter:                "Filter"
-      confirm: "Die Rechnnung mit Nummer: %{number} als bezahlt markieren?"
+      remind:                "erinnern"
+      confirm_paid:          "Die Rechnnung mit Nummer: %{number} als bezahlt markieren?"
+      confirm_remind:        "Für die Rechnung: %{number} eine Erinnerung an %{email} schicken?"
       notice:
         created:             "Rechnungen wurden erstellt."
         paid:                "Rechnung wurde als bezahlt markiert"

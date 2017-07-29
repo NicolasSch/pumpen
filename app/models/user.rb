@@ -45,4 +45,8 @@ class User < ApplicationRecord
   def active_for_authentication?
     super and !self.archived?
   end
+
+  def queue_open_bills_reminder
+    NotificationMailer.open_bills_reminder(self).deliver_later
+  end
 end

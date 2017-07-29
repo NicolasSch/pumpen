@@ -1,0 +1,22 @@
+<!-- Email Body -->
+<tr>
+  <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+    <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+      <!-- Body content -->
+      <tr>
+        <td class="content-cell">
+          <p>Hallo <%= @user.first_name %> <%= @user.last_name %>,</p>
+          <p>
+            du hast noch immer offene Rechnungen. Diese kannst du
+            in deinem <%= link_to 'Profil', bills_url %> einsehen.
+            Solltest du offene Rechnungen nicht gebleichen, werden wir deinen Tab für neue Einkäufe sperren.
+          </p>
+          <p>
+            Viele Grüße,<br>
+            Das CFHH Team
+          </p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

@@ -8,6 +8,10 @@ class NotificationPreview < ActionMailer::Preview
     NotificationMailer.bill_added(bill.user)
   end
 
+  def open_bills_reminder
+    NotificationMailer.open_bills_reminder(bill.user)
+  end
+
   private
 
   def user

@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :products
     resources :statistics, only: :index
     resources :tabs, only: [:index, :update]
-    resources :bills, only: [:index, :show, :create, :update]
+    resources :bills, only: [:index, :show, :create, :update] do
+      resource :reminder, only: :show, controller: 'reminder'
+    end
     resources :shops, only: :index
     resources :carts, only: [:new, :update, :destroy] do
       member do

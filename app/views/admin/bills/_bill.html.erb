@@ -25,7 +25,10 @@
         <% end %>
       </td>
       <td>
-        <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm', number: bill.number)} unless bill.paid? %>
+        <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm_paaid', number: bill.number)} unless bill.paid? %>
+      </td>
+      <td>
+        <%= link_to t('admin.bills.remind'), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
       </td>
     </tr>
     <% end %>
