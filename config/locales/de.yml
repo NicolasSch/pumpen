@@ -27,7 +27,7 @@ de:
     statistics:
       index:
         headline:            "Auswertung"
-        description:          "Zeige die Anzahl der verkauften Product des angegebene Zeitraums."
+        description:          "Zeige die Anzahl und den Gesamtpreis der verkauften Produkte über den angegebenen Zeitraum."
         sum_quantity:         "Anzahl"
         sum_price:            "Summe"
     nav_bar:
