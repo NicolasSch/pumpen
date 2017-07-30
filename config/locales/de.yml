@@ -81,7 +81,7 @@ de:
       user:                  "Mitglied"
       sum:                   "Betrag"
       paid:                  "bezahlt"
-      reminded_at:           "Erinnerung am"
+      reminded_at:           "Erinnerung"
     products:
       headline:              "Artikelliste"
       description:           "Erstelle neue Artikel oder editiere Bestehende."
