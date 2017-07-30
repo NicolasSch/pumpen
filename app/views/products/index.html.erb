@@ -4,7 +4,7 @@
 
 <p class="col-md-12 col-s-12">
   <a id="cart-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-cart-plus"></i> Warenkorb anzeigen (<%= @cart.cart_items.count %>)
+    <i class="fa fa-cart-arrow-down fa-lg"></i> Warenkorb anzeigen (<%= @cart.cart_items.count %>)
   </a>
 </p>
 <div class="collapse col-md-12 col-s-12" id="collapseExample">
@@ -16,18 +16,10 @@
       <h4 class="card-title text-center"><%= t('products.headline')%></h3>
     </div>
     <div class="card-block">
-      <table class="table col-md-12">
-        <thead>
-          <tr>
-            <th><%= t('products.title') %></th>
-            <th><%= t('products.price') %></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-            <%= render partial: @products %>
-        </tbody>
-      </table>
+      <div class="list-group">
+        <div class="list-group">
+        <%= render partial: @products %>
+      </div>
     </div>
     <div class="card-footer text-center text-muted">
       <h6 class="card-subtitle mb-2"><%= t('products.description') %></h6>

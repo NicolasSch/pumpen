@@ -181,7 +181,7 @@ de:
       save:                  "Artikel wurde gespeichert"
       destroy:               "Artikel wurde gelöscht"
     create:
-      success:               "Artikel %{title} wurde hinzugefügt"
+      success:               "%{title} zum Warenkorb hinzugefügt"
       alert:                 "konnte Artikel nicht anschreiben"
   add_tab:
     add_product:             "%{product} wurde hinzugefügt"

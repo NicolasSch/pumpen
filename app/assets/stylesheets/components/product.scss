@@ -1,0 +1,7 @@
+.list-group-item:focus {
+  outline: none !important;
+}
+
+.icon-primary {
+  @extend .text-primary;
+}
