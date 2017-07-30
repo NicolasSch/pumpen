@@ -1,35 +1,46 @@
-<%= link_to '', onclick: 'return false;', class: "list-group-item list-group-item-action", data: { toggle: 'modal', target: "#confirmModal#{product.id.to_s}" }  do %>
-  <div class="d-flex w-100 justify-content-between">
-    <p class="mb-1"><%= product.title %></p>
-    <small><%= number_to_euro(product.price) %></small>
-  </div>
-  <div class="d-flex w-100 justify-content-between">
-    <small class="text-muted mb-1"><%= product.product_group %></small>
-    <%= fa_icon "cart-plus lg", class: 'icon-primary' %>
-  </div>
-<% end %>
-
-<!-- Modal -->
-<div class="modal fade" id="confirmModal<%= product.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <%= simple_form_for @tab_item, remote: true do |f| %>
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= product.title %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= f.input :quantity, as: :integer, label: t('products.quantity'), input_html: { value: 1 } %>
-        <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
-        <%= f.input :cart_id, as: :hidden, input_html: { value: @cart&.id } %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('products.cancel') %></button>
-        <%= f.submit t('products.add'), class: 'btn btn-primary', data: {toggle: 'modal', target: "#confirmModal#{product.id.to_s}"} %>
-      </div>
-      <% end %>
+<% unless smart_listing.empty? %>
+<div class="list-group">
+  <% smart_listing.collection.each do |product| %>
+    <!-- List group item -->
+    <%= link_to '', onclick: 'return false;', class: "list-group-item list-group-item-action", data: { toggle: 'modal', target: "#confirmModal#{product.id.to_s}" }  do %>
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1"><%= product.title %></p>
+      <small><%= number_to_euro(product.price) %></small>
     </div>
-  </div>
+    <div class="d-flex w-100 justify-content-between">
+      <small class="text-muted mb-1"><%= product.product_group %></small>
+      <%= fa_icon "cart-plus lg", class: 'icon-primary' %>
+    </div>
+    <% end %>
+    <!-- List group item end -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmModal<%= product.id.to_s %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= simple_form_for @tab_item, remote: true do |f| %>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><%= product.title %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= f.input :quantity, as: :integer, label: t('products.quantity'), input_html: { value: 1 } %>
+            <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
+            <%= f.input :cart_id, as: :hidden, input_html: { value: @cart&.id } %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('products.cancel') %></button>
+            <%= f.submit t('products.add'), class: 'btn btn-primary', data: {toggle: 'modal', target: "#confirmModal#{product.id.to_s}"} %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!--  Modal end -->
+
+  <% end %>
 </div>
+ <%= smart_listing.paginate kaminari_options: { theme: 'bootstrap4' } %>
+<% end %>

@@ -17,12 +17,16 @@
     </div>
     <div class="card-block">
       <div class="list-group">
-        <div class="list-group">
-        <%= render partial: @products %>
-      </div>
-    </div>
-    <div class="card-footer text-center text-muted">
-      <h6 class="card-subtitle mb-2"><%= t('products.description') %></h6>
+
+        <%= smart_listing_controls_for(:products, {class: "form"}) do %>
+        <div class="form-group filter input-append">
+            <%= select_tag :filter, options_for_select(Product.all.map { |product| [product.product_group, product.product_group] }.uniq ),
+                                    class: 'form-control select optinal',
+                                    prompt: t('products.filter'),
+                                    include_blank: false %>
+        </div>
+        <% end %>
+        <%= smart_listing_render(:products) %>
     </div>
   </div>
 </div>
