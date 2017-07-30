@@ -6,10 +6,10 @@ de:
     bills_link:              "Rechnungen anzeigen"
   views:
     pagination:
-      first:                 "&laquo; Erste"
-      last:                  "Letzte &raquo;"
-      previous:              "&lsaquo; Vorherige"
-      next:                  "Nächste &rsaquo;"
+      first:                 "&laquo;"
+      last:                  "&raquo;"
+      previous:              "&lsaquo;"
+      next:                  "&rsaquo;"
       truncate:              "&hellip;"
   helpers:
     page_entries_info:
@@ -201,6 +201,7 @@ de:
     quantity:                "Anzahl angeben"
     add:                     "hinzufügen"
     cancel:                  "abbrechen"
+    filter: "Artikelgruppe filtern..."
   cart:
     headline:                "Warenkorb"
     quantity:                "Anzahl"
