@@ -7,10 +7,10 @@ SmartListing.configure do |config|
     #},
     #:array                          => false,                       # controls whether smart list should be using arrays or AR collections
     #:max_count                      => nil,                         # limit number of rows
-    #:unlimited_per_page             => false,                       # allow infinite page size
+    :unlimited_per_page             => true,                         #  allow infinite page size
     #:paginate                       => true,                        # allow pagination
     #:memorize_per_page              => false,                       # save per page settings in the cookie
-    :page_sizes                     => [20, 40, 80, 100],          # set available page sizes array
+    :page_sizes                     => [50, 100, 150, 200],            # set available page sizes array
     :kaminari_options               => {:theme => "boostrap4"}, # Kaminari's paginate helper options
   })
 
@@ -45,9 +45,9 @@ SmartListing.configure do |config|
     #:icon_trash            => "glyphicon glyphicon-trash",
     #:icon_inactive         => "glyphicon glyphicon-circle",
     #:icon_show             => "glyphicon glyphicon-share-alt",
-    #:icon_sort_none        => "glyphicon glyphicon-resize-vertical",
-    #:icon_sort_up          => "glyphicon glyphicon-chevron-up",
-    #:icon_sort_down        => "glyphicon glyphicon-chevron-down",
+    :icon_sort_none        => "fa fa-sort",
+    :icon_sort_up          => "fa fa-chevron-up",
+    :icon_sort_down        => "fa fa-chevron-down",
   }
 
   config.constants :data_attributes, {
