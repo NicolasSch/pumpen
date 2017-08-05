@@ -54,6 +54,11 @@ RSpec.describe Admin::BillsController, type: :controller do
           expect{ subject }.to change { Bill.count }.from(0).to(1)
         end
 
+        it 'assigns tab_id to bill' do
+          subject
+          expect(Bill.first.tab_id).to eq tab_with_item.id
+        end
+
         it 'destroys tab with no items' do
           expect{ subject }.to change { Tab.count }.from(3).to(2)
           expect(Tab.where(id: tab_empty.id).first).to be_nil
