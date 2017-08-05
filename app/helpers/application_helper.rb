@@ -16,4 +16,9 @@ module ApplicationHelper
   def translated_month(month)
     t("date.month_names")[month]
   end
+
+  def product_group_select(product)
+    collection = product.map { |product| [product.product_group, product.product_group] }.uniq
+    collection.sort { |a,b| a[0] <=> b[0] }
+  end
 end

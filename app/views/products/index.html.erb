@@ -20,10 +20,10 @@
 
         <%= smart_listing_controls_for(:products, {class: "form"}) do %>
         <div class="form-group filter input-append">
-            <%= select_tag :filter, options_for_select(Product.all.map { |product| [product.product_group, product.product_group] }.uniq ),
-                                    class: 'form-control select optinal',
-                                    prompt: t('products.filter'),
-                                    include_blank: false %>
+          <%= select_tag :filter, options_for_select(product_group_select(Product.all)),
+                                  class: 'form-control select optinal',
+                                  prompt: t('products.filter'),
+                                  include_blank: false %>
         </div>
         <% end %>
         <%= smart_listing_render(:products) %>
