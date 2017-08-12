@@ -16,10 +16,9 @@ class Admin::CartsController < AdminController
     tab = cart.add_to_users_current_tab
     if tab
       tab.queue_items_added_mail(serializable_items) if tab
-      cart.destroy!
-      redirect_to admin_shops_path, notice: t('cart.notice.buy')
+      redirect_to admin_shops_path(cart_id: cart.id), notice: t('cart.notice.buy')
     else
-      redirect_to admin_shops_path, alert: t('cart.alert.buy')
+      redirect_to admin_shops_path(cart_id: cart.id), alert: t('cart.alert.buy')
     end
   end
 

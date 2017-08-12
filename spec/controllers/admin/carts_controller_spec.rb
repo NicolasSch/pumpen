@@ -22,11 +22,11 @@ RSpec.describe Admin::CartsController, type: :controller do
             end
 
             it 'redirects to product path' do
-              expect(subject).to redirect_to(admin_shops_path)
+              expect(subject).to redirect_to(admin_shops_path(cart_id: cart.id))
             end
 
-            it 'destroys cart' do
-              expect{ subject }.to change{ Cart.count }.from(1).to(0)
+            it 'clears cart' do
+              expect{ subject }.to change{ cart.tab_items.count }.from(2).to(0)
             end
 
             it 'adds new items' do
