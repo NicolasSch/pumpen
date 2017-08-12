@@ -2,14 +2,6 @@
   <%= render partial: 'shared/bill_reminder' %>
 </div>
 
-<p class="col-md-12 col-s-12">
-  <a id="cart-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-cart-arrow-down fa-lg"></i> Warenkorb anzeigen (<%= @cart.cart_items.count %>)
-  </a>
-</p>
-<div class="collapse col-md-12 col-s-12" id="collapseExample">
-  <%= render partial: 'cart' %>
-</div>
 <div class="col-md-12 col-s-12">
   <div class="card">
     <div class="card-header">

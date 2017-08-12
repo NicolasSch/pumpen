@@ -15,6 +15,16 @@ class Tab < ActiveRecord::Base
     discount.present? ? sum * (100 - discount).to_f / 100 : sum
   end
 
+  def add_or_sum_up_product(item)
+    existing_item = self.tab_items.where(product_id: item[:product_id]).first
+    if existing_item.present?
+      existing_item.quantity += item[:quantity].to_i
+      existing_item
+    else
+      new_item = self.tab_items.build(item)
+    end
+  end
+
   def add_product(product_id)
     current_item = tab_items.find_by_product_id(product_id)
     if current_item
