@@ -24,7 +24,7 @@ gem 'wkhtmltopdf-binary'
 gem "font-awesome-rails"
 gem 'sidekiq'              # background worker framework
 gem 'foreman'              # process runner
-gem 'smart_listing', git: "git://github.com/akostadinov/smart_listing.git", branch: 'master'
+gem 'smart_listing', git: "git://github.com/nicolassch/smart_listing.git", branch: 'master' # has error after rails update 5.1.1 uses deprecated method any on params object
 gem 'devise-i18n'
 
 group :development, :test do

@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/akostadinov/smart_listing.git
-  revision: 3ef53e754dce806d0b05c922e531faed90da2bba
+  remote: git://github.com/nicolassch/smart_listing.git
+  revision: 9a551b06e58ff69cb06dc9c267e2e43684837110
   branch: master
   specs:
-    smart_listing (1.1.2)
+    smart_listing (1.2.0)
       coffee-rails
       jquery-rails
-      kaminari (~> 0.16)
+      kaminari (~> 0.17)
       rails (>= 3.2)
 
 GEM
