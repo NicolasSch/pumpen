@@ -1,16 +1,21 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1.3'
 gem 'mysql2'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'toastr-rails'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.11.1'
 gem 'autoprefixer-rails'
 gem 'tether-rails'
+gem 'bootstrap', '4.0.0.alpha6'
+gem 'bootstrap-datepicker-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'cancancan'
@@ -19,12 +24,8 @@ gem 'wkhtmltopdf-binary'
 gem "font-awesome-rails"
 gem 'sidekiq'              # background worker framework
 gem 'foreman'              # process runner
-gem 'smart_listing', :git => "git://github.com/akostadinov/smart_listing.git", :branch => 'master'
+gem 'smart_listing', git: "git://github.com/akostadinov/smart_listing.git", branch: 'master'
 gem 'devise-i18n'
-gem 'toastr-rails'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.5'
-gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
