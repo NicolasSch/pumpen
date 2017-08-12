@@ -1,7 +1,7 @@
 <tr>
   <td><%= tab_item.product.title %></td>
   <td><%= number_to_euro(tab_item.total_price) %></td>
-  <%= simple_form_for tab_item do |f| %>
+  <%= simple_form_for [:admin, tab_item] do |f| %>
     <td>
       <%= f.input :quantity, as: :integer, label: false, input_html: { value: tab_item.quantity } %>
     </td>
@@ -10,7 +10,7 @@
     </td>
   <% end %>
   <td>
-    <%= link_to tab_item_path(tab_item), method: :delete do %>
+    <%= link_to admin_tab_item_path(tab_item), method: :delete do %>
       <%= fa_icon "remove 2x", class: 'icon-red' %>
     <% end %>
   </td>

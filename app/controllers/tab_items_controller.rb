@@ -1,6 +1,6 @@
 class TabItemsController < ApplicationController
   def create
-    tab  = current_user.tabs.tab_of_the_month
+    tab = current_user.tabs.tab_of_the_month
     authorize! :write, tab
     item = tab.add_or_sum_up_product(tab_item_params)
     if item.save
@@ -16,6 +16,6 @@ class TabItemsController < ApplicationController
   private
 
   def tab_item_params
-    params.require(:tab_item).permit(:quantity, :product_id, :cart_id)
+    params.require(:tab_item).permit(:quantity, :product_id)
   end
 end

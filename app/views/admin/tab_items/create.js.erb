@@ -1,0 +1,3 @@
+cart = $('#cart');
+cart.html("<%= j render partial: 'admin/shops/cart/cart', locals: {cart: @cart} %>");
+$("#flash").html('<%= j render partial: "shared/notification" %>');

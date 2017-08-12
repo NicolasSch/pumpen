@@ -18,7 +18,7 @@
       <td><%= t("user.membership.#{user.membership}") %></td>
       <td>
         <%= link_to edit_admin_user_path(user), method: :get do %>
-          <%= fa_icon "edit lg", class: 'icon-red' %>
+        <%= fa_icon "edit lg", class: 'icon-red' %>
         <% end %>
       </td>
     </tr>
@@ -26,6 +26,7 @@
   </tbody>
 </table>
 <%= smart_listing.paginate kaminari_options: { theme: 'bootstrap4' } %>
+<%= smart_listing. pagination_per_page_links %>
 <% else %>
 <p>
   Keine Einträge gefunden

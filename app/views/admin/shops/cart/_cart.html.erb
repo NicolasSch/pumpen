@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-subtitle mb-2 text-center"><%= t('cart.headline')%></h4>
+  </div>
+  <div class="card-block">
+    <% if @cart.cart_items.any? %>
+    <table class="table col-md-12">
+      <thead>
+        <tr>
+          <th><%= t('cart.title')%></th>
+          <th><%= t('cart.quantity') %></th>
+          <th><%= t('cart.price')%></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <td></td>
+        <td><%= t('cart.sum') %></td>
+        <td><%= number_to_euro(@cart.total_price) %></td>
+      </tfoot>
+      <tbody>
+        <%= render partial: 'admin/shops/cart/tab_item', collection: @cart.tab_items %>
+      </tbody>
+    </table>
+    <p><%= link_to t('cart.checkout'), admin_cart_path(@cart), method: :put, class: 'admin__button-cart' %></p>
+    <p><%= link_to t('cart.clear'), admin_cart_path(@cart), method: :delete, class: 'admin__button-cart' %></p>
+  <% else %>
+    <p class="text-muted text-center">Keine Artikel vorhanden.</p>
+    <% end %>
+  </div>
+</div>

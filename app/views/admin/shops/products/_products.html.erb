@@ -1,0 +1,17 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title text-center"><%= t('products.headline')%></h3>
+    </div>
+    <div class="card-block">
+      <div class="list-group">
+        <%= smart_listing_controls_for(:products, {class: "form"}) do %>
+        <div class="form-group filter input-append">
+          <%= select_tag :filter, options_for_select(product_group_select(Product.all)), class: 'form-control select optinal', prompt: t('products.filter'), include_blank: false %>
+        </div>
+        <% end %>
+        <%= smart_listing_render(:products) %>
+      </div>
+    </div>
+  </div>
+</div>

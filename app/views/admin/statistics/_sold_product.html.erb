@@ -1,27 +1,30 @@
 <% unless smart_listing.empty? %>
-  <table class="table col-md-12">
-    <thead>
-      <tr>
-        <th><%= smart_listing.sortable(t('admin.products.title'), :title) %></th>
-        <th><%= smart_listing.sortable t('admin.statistics.index.sum_quantity'), :sum_quantity %></th>
-        <th><%= smart_listing.sortable t('admin.statistics.index.sum_price'), :sum_price %></th>
-        <th><%= smart_listing.sortable t('admin.products.product_group'), :product_group %></th>
-        <th><%= smart_listing.sortable t('admin.products.product_type'), :product_type %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% smart_listing.collection.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.sum_quantity %></td>
-        <td><%= number_to_euro(product.sum_price) %></td>
-        <td><%= product.product_group %></td>
-        <td><%= product.product_type %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= smart_listing.paginate kaminari_options: {theme: 'bootstrap4'} %>
+<table class="table col-md-12">
+  <thead>
+    <tr>
+      <th><%= smart_listing.sortable(t('admin.products.title'), :title) %></th>
+      <th><%= smart_listing.sortable t('admin.statistics.index.sum_quantity'), :sum_quantity %></th>
+      <th><%= smart_listing.sortable t('admin.statistics.index.sum_price'), :sum_price %></th>
+      <th><%= smart_listing.sortable t('admin.products.product_group'), :product_group %></th>
+      <th><%= smart_listing.sortable t('admin.products.product_type'), :product_type %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% smart_listing.collection.each do |product| %>
+    <tr>
+      <td><%= product.title %></td>
+      <td><%= product.sum_quantity %></td>
+      <td><%= number_to_euro(product.sum_price) %></td>
+      <td><%= product.product_group %></td>
+      <td><%= product.product_type %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= smart_listing.paginate kaminari_options: {theme: 'bootstrap4'} %>
+<%= smart_listing. pagination_per_page_links %>
 <% else %>
-  <p> Keine Ergebnisse gefunden </p>
+<p>
+  Keine Ergebnisse gefunden
+</p>
 <% end %>

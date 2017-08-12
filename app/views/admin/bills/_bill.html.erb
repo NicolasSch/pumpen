@@ -16,23 +16,24 @@
     <tr>
       <td><%= translated_month(bill.tab.month)%></td>
       <td><%= link_to bill.number, admin_bill_path(bill, format: :pdf)%></td>
-      <td><%= bill.user.first_name%> <%= bill.user.last_name%></td>
+      <td><%= bill.user.first_name%>
+        <%= bill.user.last_name%></td>
       <td><%= number_to_euro(bill.amount) %></td>
       <td>
         <% if bill.paid? %>
-          <%= fa_icon "check lg", class: 'icon-green' %>
-        <% else %>
-          <%= fa_icon "close lg", class: 'icon-red' %>
+        <%= fa_icon "check lg", class: 'icon-green' %>
+      <% else %>
+        <%= fa_icon "close lg", class: 'icon-red' %>
         <% end %>
       </td>
       <% if bill.reminded_at %>
-        <td>
-          <%= link_to l(bill.reminded_at, format: :short), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
-        </td>
-      <% else %>
-        <td>
-          <%= link_to t('admin.bills.remind'), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
-        </td>
+      <td>
+        <%= link_to l(bill.reminded_at, format: :short), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
+      </td>
+    <% else %>
+      <td>
+        <%= link_to t('admin.bills.remind'), admin_bill_reminder_path(bill), data: {confirm: t('admin.bills.confirm_remind', email: bill.user.email, number: bill.number)} unless bill.paid? %>
+      </td>
       <% end %>
       <td>
         <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm_paaid', number: bill.number)} unless bill.paid? %>
@@ -42,6 +43,7 @@
   </tbody>
 </table>
 <%= smart_listing.paginate kaminari_options: { theme: 'bootstrap4' } %>
+<%= smart_listing. pagination_per_page_links %>
 <% else %>
 <p>
   Keine Einträge gefunden

@@ -29,6 +29,12 @@ de:
       bill_added:            "Neue Rechnung hinzugefügt"
       bill_added_reminder:   "Erinnerung offene Rechnung"
   admin:
+    tab_items:
+      destroy:
+        success:             "Artikel wurde entfernt"
+      create:
+        success:             "%{title} zum Warenkorb hinzugefügt"
+        alert:               "konnte Artikel nicht hinzufügen"
     access_denied:           "Zugriff verweigert"
     reminder:
       notice:                "Erinnerung wurde versendet"
@@ -55,8 +61,9 @@ de:
       choose_user:           Bitte wähle zunächst einen Benutzer aus der Liste aus.
       user:                  "Benutzer"
       tab:
-        description:         Bearbeite die aktuelle Tabliste von %{user}.
+        description:         Tab von %{user}
         title:               "Artikel"
+        delete_action:       "löschen"
         quantity:            "Anzahl"
         price:               "Summe"
         submit:              "speichern"
@@ -201,7 +208,7 @@ de:
     quantity:                "Anzahl angeben"
     add:                     "hinzufügen"
     cancel:                  "abbrechen"
-    filter: "Artikelgruppe filtern..."
+    filter:                  "Artikelgruppe filtern..."
   cart:
     headline:                "Warenkorb"
     quantity:                "Anzahl"

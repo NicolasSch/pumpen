@@ -1,7 +1,9 @@
 <div class="col-md-12">
   <div class="card">
+    <div class="card-header">
+      <h5 class="card-subtitle mb-2 text-center"><%= t('admin.shop.tab.description', user: "#{@tab.user.first_name} #{@tab.user.last_name}") %></h5>
+    </div>
     <div class="card-block">
-      <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('admin.shop.tab.description', user: "#{@tab.user.first_name} #{@tab.user.last_name}") %></h6>
       <% if @tab.tab_items.any? %>
         <table class="table">
           <thead>
@@ -10,11 +12,11 @@
               <th><%= t('admin.shop.tab.price')%></th>
               <th><%= t('admin.shop.tab.quantity') %></th>
               <th></th>
-              <th></th>
+              <th><%= t('admin.shop.tab.delete_action') %></th>
             </tr>
           </thead>
           <tbody>
-              <%= render partial: "admin/shops/tab_item", collection: @tab.tab_items, as: :tab_item %>
+              <%= render partial: "admin/shops/user_tab/tab_item", collection: @tab.tab_items, as: :tab_item %>
           </tbody>
         </table>
       <% else %>
