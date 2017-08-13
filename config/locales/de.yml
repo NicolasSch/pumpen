@@ -193,7 +193,7 @@ de:
   add_tab:
     add_product:             "%{product} wurde hinzugefügt"
     item:
-      headline:              "Am häufigsten verwendet"
+      headline:              "Häufig verwendet"
       description:           "Wähle einen Artikel um diesen deinem Tab hinzuzufügen."
       submit:                "anschreiben"
   products:
@@ -228,7 +228,7 @@ de:
       price:                 "Preis"
       quantity:              "Anzahl"
     list:
-      headline:              "Meine Tabliste"
-      description:           "Hier siehst du deinen aktuellen Tab für den Monat %{month}."
+      headline:              "Mein Tab"
+      description:           "%{month}"
       empty:                 "Du hast bisher nichts auf deiner Tabliste. Dann mal los."
       product_link:          "Artikel ansehen"
