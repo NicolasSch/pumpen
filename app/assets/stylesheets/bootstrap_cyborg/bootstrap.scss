@@ -4748,8 +4748,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 2;
   color: #fff;
-  background-color: #2A9FD6;
-  border-color: #2A9FD6;
+  background-color: $brand-danger;
+  border-color: $brand-danger;
 }
 .page-item.disabled .page-link {
   color: #555;
@@ -4772,7 +4772,7 @@ tbody.collapse.show {
 .page-link:focus, .page-link:hover {
   color: #fff;
   text-decoration: none;
-  background-color: #2A9FD6;
+  background-color: $brand-danger;
   border-color: transparent;
 }
 
