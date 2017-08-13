@@ -18,7 +18,7 @@
   <%= f.input :archived, as: :boolean, label: t('admin.users.archived'), hint: t('admin.users.archived_hint'), input_html: { value: @user.archived} %>
   <%= f.submit class: 'button' %>
   <% if @user.persisted? %>
-  <%= link_to t('admin.users.destroy_link'), admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t('admin.users.destroy_confirm') } %>
+  <%= link_to t('admin.users.destroy_link'), admin_user_path(@user), class: 'btn btn-secondary', method: :delete, data: { confirm: t('admin.users.destroy_confirm') } %>
   <% end %>
 </div>
 <% end %>

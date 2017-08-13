@@ -9,7 +9,7 @@
   <%= f.input :archived, as: :boolean, label: t('admin.products.archived'), hint: t('admin.products.archived_hint'), input_html: { value: @product.archived} %>
   <%= f.submit class: 'button' %>
   <% if @product.persisted? %>
-  <%= link_to t('admin.products.destroy_link'), admin_product_path(@product), class: 'btn btn-danger', method: :delete, data: { confirm: t('admin.products.destroy_confirm') } %>
+  <%= link_to t('admin.products.destroy_link'), admin_product_path(@product), class: 'btn btn-secondary', method: :delete, data: { confirm: t('admin.products.destroy_confirm') } %>
   <% end %>
 </div>
 <% end %>

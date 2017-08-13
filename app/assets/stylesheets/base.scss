@@ -1,5 +1,3 @@
-// body { background: #EBEBEB !important;}
-
 .card {
     margin-bottom: 1rem;
     @extend .card;
@@ -7,7 +5,7 @@
 
 .button {
   @extend .btn;
-  @extend .btn-primary;
+  @extend .btn-danger;
   text-align: center;
 }
 
@@ -27,4 +25,12 @@
   @extend .align-self-center;
   @extend .btn;
   @extend .btn-primary;
+}
+
+.icon-red {
+  color: $brand-danger;
+}
+
+.icon-green {
+  color: green;
 }

@@ -416,12 +416,12 @@ blockquote {
 }
 
 a {
-  color: #2A9FD6;
-  text-decoration: none;
+  color: $link-color;
+  text-decoration: $link-decoration;
 }
 a:focus, a:hover {
-  color: #1d7097;
-  text-decoration: underline;
+  color: $link-hover-color;
+  text-decoration: $link-hover-decoration;
 }
 
 a:not([href]):not([tabindex]) {
@@ -3277,12 +3277,12 @@ tbody.collapse.show {
 .dropdown-item:focus, .dropdown-item:hover {
   color: #fff;
   text-decoration: none;
-  background-color: #2A9FD6;
+  background-color: $brand-danger;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #2A9FD6;
+  background-color: $brand-danger;
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #555;

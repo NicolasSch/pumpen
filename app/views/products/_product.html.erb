@@ -9,7 +9,7 @@
     </div>
     <div class="d-flex w-100 justify-content-between">
       <small class="text-muted mb-1"><%= product.product_group %></small>
-      <%= fa_icon "cart-plus lg", class: 'icon-primary' %>
+      <%= fa_icon "cart-plus lg", class: 'icon-red' %>
     </div>
     <% end %>
     <!-- List group item end -->
@@ -31,7 +31,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('products.cancel') %></button>
-            <%= f.submit t('products.add'), class: 'btn btn-primary', data: {toggle: 'modal', target: "#confirmModal#{product.id.to_s}"} %>
+            <%= f.submit t('products.add'), class: 'btn btn-danger', data: {toggle: 'modal', target: "#confirmModal#{product.id.to_s}"} %>
           </div>
           <% end %>
         </div>
