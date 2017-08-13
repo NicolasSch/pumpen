@@ -4,7 +4,7 @@ namespace :product do
   desc "imports sumup csv export file"
 
   task import: :environment do
-    file = 'db/products.csv'
+    file = 'db/data/products.csv'
     CSV.foreach(file, :headers => true) do |row|
       product = Product.where(title: row['Artikel']).first
       unless product
