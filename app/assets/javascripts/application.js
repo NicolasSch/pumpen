@@ -18,6 +18,7 @@
 //= require toastr
 //= require smart_listing
 //= require bootstrap-datepicker
+//= require bootstrap-select
 //= require_tree
 
 $(document).on('ready', function() {
@@ -38,4 +39,5 @@ $(document).on('ready', function() {
    }
    );
 
+   $('.selectpicker').selectpicker({});
 });
