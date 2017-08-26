@@ -1,7 +1,11 @@
 class Admin::CartsController < AdminController
   def new
-    cart = Cart.where(cart_params).first_or_create(cart_params)
-    redirect_to admin_shops_path(cart_id: cart.id)
+    if cart_params[:user_id].present?
+      cart = Cart.where(cart_params).first_or_create(cart_params)
+      redirect_to admin_shops_path(cart_id: cart.id)
+    else
+      redirect_to admin_shops_path
+    end
   end
 
   def update
