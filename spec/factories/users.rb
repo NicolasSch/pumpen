@@ -8,6 +8,7 @@ FactoryGirl.define do
     password_confirmation 'changeme'
     role 'user'
     membership 'one'
+    sequence(:member_number) { |n| n }
     confirmed_at Time.now
 
     trait :is_admin do
