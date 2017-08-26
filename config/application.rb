@@ -13,6 +13,7 @@ module Pumpen
     # -- all .rb files in that directory are automatically loaded.
     I18n.available_locales = [:de, :en]
     I18n.default_locale = :de
+    config.time_zone = 'Europe/Berlin'
    config.active_job.queue_adapter = :sidekiq
   end
 end
