@@ -6,7 +6,6 @@ class TabsController < ApplicationController
     @open_bills = current_user.bills.open
     @products = current_user.most_used_products.active
     @products = Product.active.order(:title) if @products.empty?
-    @tab_items = @tab.tab_items.includes(:product)
   end
 
   def update
@@ -27,6 +26,6 @@ class TabsController < ApplicationController
   end
 
   def ensure_tab
-    @tab = current_user.tabs.where(month: Time.now.month).first_or_create
+    @tab = current_user.tabs.includes(:products).where(month: Time.now.month).first_or_create
   end
 end

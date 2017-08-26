@@ -4,7 +4,7 @@
     <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description', month: translated_month(@tab.month)) %></h6>
   </div>
   <div class="card-block">
-    <% if @tab_items.any? %>
+    <% if @tab.tab_items.any? %>
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -28,7 +28,7 @@
           </tr>
         </tfoot>
         <tbody>
-            <%= render partial: @tab_items %>
+            <%= render partial: @tab.tab_items %>
         </tbody>
       </table>
     <% else %>
