@@ -7,6 +7,10 @@ class BillPresenter < BasePresenter
     @model.number
   end
 
+  def date
+    @model.created_at.to_date
+  end
+
   def discount
     @model.discount
   end

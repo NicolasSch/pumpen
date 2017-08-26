@@ -1,6 +1,6 @@
 <h4 class="bill__title">Abrechnung <%= bill_presenter.month %>
   <%= bill_presenter.number %>
-  <span class="bill__date"><%= l Date.today, format: :long %></span>
+  <span class="bill__date"><%= l bill_presenter.date, format: :long %></span>
 </h4>
 
 <p>Hallo <%= bill_presenter.user %>,</p>
