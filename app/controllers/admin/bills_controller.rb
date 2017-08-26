@@ -5,19 +5,22 @@ class Admin::BillsController < AdminController
   def index
     bills_scope = params[:paid].present? ? Bill.where(paid: params[:paid] == '1' ) : Bill.all
     bills_scope = bills_scope.name_like(params[:filter]) if params[:filter].present?
-    @bills = smart_listing_create(:bills, bills_scope, partial: "admin/bills/bill", default_sort: { created_at: 'asc' })
+    @bills = smart_listing_create(:bills, bills_scope.includes(:tab, :user), partial: "admin/bills/bill", default_sort: { created_at: 'asc' })
     unbilled_tabs   = Tab.where('month < ? AND state = ?', Time.now.month, 'open')
     @unbilled_tabs  = unbilled_tabs.select { |tab| tab.tab_items.any? }
   end
 
   def create
     tabs =  Tab.where('month < ? AND state = ?', Time.now.month, 'open')
+    bills_for_accounting = []
     tabs.each do |tab|
       if tab.tab_items.any?
-        tab.create_bill(
-          amount: tab.total_price,
-          items: BillPresenter.serialized_items(tab.tab_items),
-          discount: tab.discount
+        bills_for_accounting.push(
+          tab.create_bill(
+            amount: tab.total_price,
+            items: BillPresenter.serialized_items(tab.tab_items),
+            discount: tab.discount
+          )
         )
         tab.state = 'billed'
         tab.save
@@ -25,6 +28,7 @@ class Admin::BillsController < AdminController
         tab.destroy!
       end
     end
+    Bill.queue_accouting_bills_summary_mail(bills_for_accounting)
     redirect_to admin_bills_path, notice: t('admin.bills.notice.created')
   end
 

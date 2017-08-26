@@ -24,6 +24,7 @@ de:
   access_denied:             "Zugriff verweigert"
   not_found:                 "Die Ressource konnte nicht gefunden werden"
   mailer:
+    accounting_bills_summary_mail: "CrossFit HH Übersicht Tabrechnungen"
     tab_mailer:
       items_added:           "Änderung deines Tabs"
       bill_added:            "Neue Rechnung hinzugefügt"

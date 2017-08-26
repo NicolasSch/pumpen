@@ -93,9 +93,20 @@ RSpec.describe Admin::BillsController, type: :controller do
 
           perform_enqueued_jobs do
             subject
-            expect(ActionMailer::Base.deliveries.size).to eq(1)
-            delivered_email = ActionMailer::Base.deliveries.last
+            expect(ActionMailer::Base.deliveries.size).to eq(2)
+            delivered_email = ActionMailer::Base.deliveries.first
             assert_includes delivered_email.to, user.email
+          end
+        end
+
+        it 'queues an accounting_bills_summary_mail notification mail', perform_enqueued: true do
+          expect(NotificationMailer).to receive(:accounting_bills_summary_mail).twice.and_call_original
+
+          perform_enqueued_jobs do
+            subject
+            expect(ActionMailer::Base.deliveries.size).to eq(2)
+            delivered_email = ActionMailer::Base.deliveries.last
+            assert_includes delivered_email.to, NotificationMailer::ACCOUNTING_MAIL_ADDRESS
           end
         end
       end
