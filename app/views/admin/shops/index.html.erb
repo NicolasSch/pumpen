@@ -8,8 +8,8 @@
       <%= f.association :user,
             label: t('admin.shop.user'),
             collection: @users.map {|user| ["#{user.last_name} #{user.first_name}", user.id]},
-            input_html: {class: 'selectpicker'
-            data: {show_subtext: true, live_search: true, live_search_placeholder: 'Suche...', none_selected_text: 'Kein Benutzer ausgewählt...'} }%>
+            input_html: { class: 'selectpicker',
+            data: { show_subtext: true, live_search: true, live_search_placeholder: 'Suche...', none_selected_text: 'Kein Benutzer ausgewählt...'} }%>
       <% end %>
     </div>
   </div>
