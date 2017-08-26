@@ -26,6 +26,7 @@ gem 'sidekiq'              # background worker framework
 gem 'foreman'              # process runner
 gem 'smart_listing', git: "git://github.com/nicolassch/smart_listing.git", branch: 'master' # has error after rails update 5.1.1 uses deprecated method any on params object
 gem 'devise-i18n'
+gem 'bootstrap-select-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

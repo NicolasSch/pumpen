@@ -59,6 +59,7 @@ GEM
       sass (>= 3.4.19)
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
+    bootstrap-select-rails (1.12.1)
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (2.0.0)
@@ -283,6 +284,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap (= 4.0.0.alpha6)
   bootstrap-datepicker-rails
+  bootstrap-select-rails
   byebug
   cancancan
   coffee-rails (~> 4.2)
