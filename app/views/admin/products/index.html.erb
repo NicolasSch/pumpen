@@ -13,7 +13,7 @@
         </label>
       </div>
       <div class="form-group filter input-append">
-          <%= select_tag :filter, options_for_select(Product.all.map { |product| [product.product_group, product.product_group] }.uniq ),
+          <%= select_tag :filter, options_for_select(Product.active.map { |product| [product.product_group, product.product_group] }.uniq ),
                                   class: 'form-control select optinal',
                                   prompt: t('admin.products.product_group'),
                                   include_blank: false %>
