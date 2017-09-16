@@ -5,8 +5,8 @@ class Admin::BillsController < AdminController
   def index
     bills_scope = params[:paid].present? ? Bill.where(paid: params[:paid] == '1' ) : Bill.all
     bills_scope = bills_scope.name_like(params[:filter]) if params[:filter].present?
-    @bills = smart_listing_create(:bills, bills_scope.includes(:tab, :user), partial: "admin/bills/bill", default_sort: { created_at: 'asc' })
-    unbilled_tabs   = Tab.where('month < ? AND state = ?', Time.now.month, 'open')
+    @bills = smart_listing_create(:bills, bills_scope.includes(:tab, :user), partial: "admin/bills/bill", default_sort: { 'bills.created_at' => :desc })
+    unbilled_tabs   = Tab.where('month < ? AND state = ?', Time.now.month, 'open').includes(:tab_items)
     @unbilled_tabs  = unbilled_tabs.select { |tab| tab.tab_items.any? }
   end
 
