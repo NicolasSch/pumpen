@@ -21,4 +21,8 @@ module ApplicationHelper
     collection = product.map { |product| [product.product_group, product.product_group] }.uniq
     collection.sort { |a,b| a[0] <=> b[0] }
   end
+
+  def show_new_tag?(product)
+    ((Time.now.to_f - product.created_at.to_f).to_f/60/60/24).to_i < 30
+  end
 end
