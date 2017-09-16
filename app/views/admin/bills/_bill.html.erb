@@ -36,7 +36,7 @@
       </td>
       <% end %>
       <td>
-        <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm_paaid', number: bill.number)} unless bill.paid? %>
+        <%= link_to t('admin.bills.pay'), admin_bill_path(bill), method: :put, data: {confirm: t('admin.bills.confirm_paid', number: bill.number)} unless bill.paid? %>
       </td>
     </tr>
     <% end %>
