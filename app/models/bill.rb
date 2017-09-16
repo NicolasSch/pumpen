@@ -2,6 +2,7 @@ require 'csv'
 
 class Bill < ActiveRecord::Base
   belongs_to :tab
+  has_many :tab_items, through: :tab
   before_save :add_number
   belongs_to :tab
   has_one :user, through: :tab
