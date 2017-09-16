@@ -17,10 +17,11 @@
         </div>
       <% end %>
       <%= smart_listing_controls_for(:products, {class: "form"}) do %>
-
       <div class="form-group string filter input-append">
         <label class="control-label" for="product_group">Artikelgruppe:</label>
         <%= select_tag :filter, options_for_select(@products.map { |product| [product.product_group, product.product_group] }.uniq ), class: 'form-control select optinal', prompt: t('admin.products.product_group'), include_blank: false, id: 'product_group'%>
+        <%= hidden_field_tag(:start, @start&.strftime('%d/%m/%Y')) %>
+        <%= hidden_field_tag(:end, @end&.strftime('%d/%m/%Y')) %>
       </div>
       <% end %>
       <%= smart_listing_render(:products) %>
