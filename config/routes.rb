@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :bills, only: :create do
       collection do
-        resource :reminders, only: :update
+        resources :reminders, only: :create
       end
     end
   end

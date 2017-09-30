@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Api::RemindersController, type: :controller do
   before { authenticate }
 
-  describe '#update' do
+  describe '#create' do
     let!(:user) { create(:user) }
     let!(:tab)  { create(:tab, month: Time.now.month - 1 ) }
     let!(:bill) { create(:bill, tab: tab, user: user) }
 
-    subject { put :update }
+    subject { post :create }
 
     it 'sets reminded at' do
       subject
