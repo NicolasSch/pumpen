@@ -12,6 +12,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :bills, only: :create do
+      collection do
+        resource :reminders, only: :update
+      end
+    end
+  end
+
   namespace :admin do
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'

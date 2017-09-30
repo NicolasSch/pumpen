@@ -29,6 +29,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerHelpers, type: :controller
+  config.include ApiHelper, type: :controller
   config.include ActiveJob::TestHelper, perform_enqueued: true
 
   config.before(:each, perform_enqueued: true) do
