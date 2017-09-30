@@ -69,6 +69,12 @@ de:
         price:               "Summe"
         submit:              "speichern"
     bills:
+      index:
+        export_bills: "Zusammenfassung herunterladen"
+      export:
+        month: "Monat"
+        year: "Jahr"
+        download: "CSV herunterladen"
       headline:              "Offene Rechnungen"
       show:                  "Rechnung ansehen"
       filter:                "Filter"

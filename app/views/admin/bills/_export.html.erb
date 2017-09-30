@@ -1,0 +1,20 @@
+<div class="collapse" id="collapseExample">
+  <div class="card card-block">
+  <%= simple_form_for :date, method: :get, url: admin_export_index_path do |f| %>
+    <%= f.input :month, label: t('.month'),
+      as: :select,
+      include_blank: false,
+      collection: translates_month_collection,
+      selected: Date.today.month,
+      wrapper_html: { class: "col col-md-6 offset-md-3"} %>
+    <%= f.input :year,
+      label: t('.year'),
+      as: :select,
+      include_blank: false,
+      collection: Date.today.year-2..Date.today.year,
+      selected: Date.today.year,
+      wrapper_html: { class: "col col-md-6 offset-md-3"}  %>
+    <%= f.submit t('.download'), class: 'button col col-md-4 offset-md-4', data: { disable_with: false } %>
+  <% end %>
+  </div>
+</div>

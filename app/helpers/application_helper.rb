@@ -25,4 +25,8 @@ module ApplicationHelper
   def show_new_tag?(product)
     ((Time.now.to_f - product.created_at.to_f).to_f/60/60/24).to_i < 30
   end
+
+  def translates_month_collection
+    [1,2,3,4,5,6,7,8,9,10,11,12].map { |month| [translated_month(month), month] }
+  end
 end

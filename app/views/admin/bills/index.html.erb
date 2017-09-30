@@ -9,7 +9,12 @@
         <p class="mb-0"><%= link_to t('admin.bills.create'), admin_bills_path, method: :post %></p>
       </div>
     <% else %>
-      <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.</h6>
+      <h6><%= t('admin.bills.no_unbilled_tabs', count: @unbilled_tabs.count) %>.
+        <a class="float-right" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <%= t('.export_bills') %>
+        </a>
+      </h6>
+      <%= render partial: 'export' %>
       <% end %>
       <%= smart_listing_controls_for(:bills, {class: "form"}) do %>
       <div class="form-group filter input-append">

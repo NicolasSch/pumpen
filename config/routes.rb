@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :tab_items, only: [:create, :destroy, :update]
     resources :bills, only: [:index, :show, :create, :update] do
       resource :reminder, only: :show, controller: 'reminder'
+      collection do
+        resources :export, only: :index, controller: 'export'
+      end
     end
     resources :shops, only: :index
     resources :carts, only: [:new, :update, :destroy] do
