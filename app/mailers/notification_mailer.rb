@@ -1,5 +1,6 @@
 class NotificationMailer < BaseMailer
   ACCOUNTING_MAIL_ADDRESS = 'M.Kutschewenko@beyer-foertsch.de'.freeze
+  CFHH_MAIL_ADDRESS       = 'michael@crossfithh.de'.freeze
 
   def tab_items_added(serializable_items, user)
     @user = user
@@ -19,6 +20,6 @@ class NotificationMailer < BaseMailer
 
   def accounting_bills_summary_mail(attachment)
     attachments['tab_summary.csv'] = attachment
-    mail_with_defaults(to: ACCOUNTING_MAIL_ADDRESS, subject: t('mailer.accounting_bills_summary_mail'))
+    mail_with_defaults(to: ACCOUNTING_MAIL_ADDRESS, cc: CFHH_MAIL_ADDRESS, subject: t('mailer.accounting_bills_summary_mail'))
   end
 end
