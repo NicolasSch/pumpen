@@ -12,6 +12,10 @@ class NotificationPreview < ActionMailer::Preview
     NotificationMailer.open_bills_reminder(bill.user)
   end
 
+  def accounting_bills_summary_mail
+    NotificationMailer.accounting_bills_summary_mail(nil)
+  end
+
   private
 
   def user
