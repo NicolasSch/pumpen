@@ -2,12 +2,11 @@ require 'csv'
 
 class Bill < ActiveRecord::Base
   belongs_to :tab
-  has_many :tab_items, through: :tab
-  before_save :add_number
-  belongs_to :tab
   has_one :user, through: :tab
-
   has_many :products, through: :tab
+  has_many :tab_items, through: :tab
+
+  before_save :add_number
 
   serialize :items
 
@@ -57,6 +56,6 @@ class Bill < ActiveRecord::Base
   end
 
   def add_number
-    self.number = "RG-#{self.tab.user.id}-#{Date.today.year}-#{tab.month}"
+    self.number = "RG-#{self.tab.user.id}-#{Date.today.year % 100}-#{tab.month}"
   end
 end
