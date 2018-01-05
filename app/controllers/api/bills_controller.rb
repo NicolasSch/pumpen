@@ -1,6 +1,6 @@
 class Api::BillsController < ApiController
   def create
-    tabs =  Tab.where('month < ? AND state = ?', Time.now.month, 'open')
+    tabs = Tab.ready_for_billing
     bills_for_accounting = []
     tabs.each do |tab|
       if tab.tab_items.any?

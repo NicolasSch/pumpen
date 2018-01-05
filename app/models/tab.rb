@@ -6,6 +6,10 @@ class Tab < ActiveRecord::Base
 
   before_create :set_staff_discount
 
+  scope :ready_for_billing, -> do
+    where('created_at < ? AND state = ?', DateTime.now.beginning_of_month, 'open')
+  end
+
   def self.tab_of_the_month
     where(month: Time.now.month).first_or_create
   end
@@ -21,7 +25,7 @@ class Tab < ActiveRecord::Base
       existing_item.quantity += item[:quantity].to_i
       existing_item
     else
-      new_item = self.tab_items.build(item)
+      tab_items.build(item)
     end
   end
 

@@ -6,8 +6,8 @@ RSpec.describe Admin::BillsController, type: :controller do
   describe '#index' do
     describe 'signed_in' do
       context 'is admin' do
-        let!(:tab_with_item)  { create(:tab, :with_tab_item, month: Time.now.month - 1, user: user) }
-        let!(:tab_empty)      { create(:tab, month: Time.now.month - 1 ) }
+        let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
+        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month ) }
 
         before(:each) { sign_in(user) }
 
@@ -42,9 +42,9 @@ RSpec.describe Admin::BillsController, type: :controller do
   describe '#create' do
     describe 'signed_in' do
       context 'is admin' do
-        let!(:tab_current)    { create(:tab, :with_tab_item, month: Time.now.month, user: user) }
-        let!(:tab_with_item)  { create(:tab, :with_tab_item, month: Time.now.month - 1, user: user) }
-        let!(:tab_empty)      { create(:tab, month: Time.now.month - 1 ) }
+        let!(:tab_current)    { create(:tab, :with_tab_item, created_at: Time.now, user: user) }
+        let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
+        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month) }
 
         before(:each) { sign_in(user) }
 
@@ -138,7 +138,7 @@ RSpec.describe Admin::BillsController, type: :controller do
   describe '#update' do
     describe 'signed_in' do
       context 'is admin' do
-        let!(:tab) { create(:tab, month: Time.now.month - 1 ) }
+        let!(:tab) { create(:tab, created_at: Time.now - 1.month) }
         let!(:bill) { create(:bill, tab: tab) }
 
         before(:each) { sign_in(user) }
