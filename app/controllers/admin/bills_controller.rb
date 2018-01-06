@@ -23,7 +23,7 @@ class Admin::BillsController < AdminController
           )
         )
         tab.state = 'billed'
-        tab.save
+        tab.save!
       else
         tab.destroy!
       end

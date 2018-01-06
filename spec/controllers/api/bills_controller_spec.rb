@@ -24,7 +24,7 @@ RSpec.describe Api::BillsController, type: :controller do
 
     it 'assigns a number bill' do
       subject
-      expect(Bill.first.number).to eq "RG-#{Bill.first.user.id}-#{Date.today.year % 100}-#{Bill.first.tab.month}"
+      expect(Bill.first.number).to eq "RG-#{Bill.first.tab.id}-#{Bill.first.tab.created_at.year % 100}#{Bill.first.tab.month}"
     end
 
     it 'destroys tab with no items' do

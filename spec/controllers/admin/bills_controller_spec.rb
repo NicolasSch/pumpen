@@ -7,7 +7,7 @@ RSpec.describe Admin::BillsController, type: :controller do
     describe 'signed_in' do
       context 'is admin' do
         let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
-        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month ) }
+        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month) }
 
         before(:each) { sign_in(user) }
 
@@ -51,7 +51,7 @@ RSpec.describe Admin::BillsController, type: :controller do
         subject { post :create }
 
         it 'creates a bill for tabs of last month' do
-          expect{ subject }.to change { Bill.count }.from(0).to(1)
+          expect { subject }.to change { Bill.count }.from(0).to(1)
         end
 
         it 'assigns tab_id to bill' do
@@ -61,7 +61,7 @@ RSpec.describe Admin::BillsController, type: :controller do
 
         it 'assigns a number bill' do
           subject
-          expect(Bill.first.number).to eq "RG-#{Bill.first.user.id}-#{Date.today.year % 100}-#{Bill.first.tab.month}"
+          expect(Bill.first.number).to eq "RG-#{Bill.first.tab.id}-#{Bill.first.tab.created_at.year % 100}#{Bill.first.tab.month}"
         end
 
         it 'destroys tab with no items' do

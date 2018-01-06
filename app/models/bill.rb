@@ -6,11 +6,12 @@ class Bill < ActiveRecord::Base
   has_many :products, through: :tab
   has_many :tab_items, through: :tab
 
-  before_save :add_number
-
   serialize :items
 
+  before_validation :add_number, on: :create
   after_create :queue_bill_added_mail
+
+  validates :number, presence: true
 
   scope :name_like, ->(name) { joins(:user).where("(concat(first_name, ' ', last_name) like ?) OR (concat(last_name, ' ', first_name) like ?)","%#{name}%", "%#{name}%") }
   scope :open, -> { where(paid: false) }
@@ -39,7 +40,7 @@ class Bill < ActiveRecord::Base
         csv << [
             bill.tab.month,
             bill.number,
-            bill.created_at.to_date,
+            bill.created_at,
             "#{bill.tab.user.first_name} #{bill.tab.user.first_name}",
             bill.tab.user.member_number,
             bill.amount,
@@ -56,6 +57,7 @@ class Bill < ActiveRecord::Base
   end
 
   def add_number
-    self.number = "RG-#{self.tab.user.id}-#{Date.today.year % 100}-#{tab.month}"
+    return if number.present?
+    self.number = "RG-#{tab.id}-#{tab.created_at.year % 100}#{tab.month}"
   end
 end
