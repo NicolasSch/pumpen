@@ -1,17 +1,13 @@
-<tr>
-  <td><%= tab_item.product.title %></td>
-  <td><%= number_to_euro(tab_item.total_price) %></td>
-  <%= simple_form_for [:admin, tab_item] do |f| %>
-    <td>
-      <%= f.input :quantity, as: :integer, label: false, input_html: { value: tab_item.quantity } %>
-    </td>
-    <td>
-      <%= f.submit t('admin.shop.tab.submit'), class: 'btn btn-primary' %>
-    </td>
-  <% end %>
-  <td>
-    <%= link_to admin_tab_item_path(tab_item), method: :delete do %>
-      <%= fa_icon "remove 2x", class: 'icon-red' %>
-    <% end %>
-  </td>
-</tr>
+<%= simple_form_for [:admin, tab_item] do |f| %>
+<div class="row">
+    <div class="col-sm-3"><%= tab_item.product.title %></div>
+    <div class="col-sm-3"><%= number_to_euro(tab_item.total_price) %></div>
+    <div class="col-sm-2"><%= f.input :quantity, as: :integer, label: false, input_html: { value: tab_item.quantity } %></div>
+    <div class="col-sm-2"><%= f.submit t('admin.shop.tab.submit'), class: 'btn btn-primary' %></div>
+    <div class="col-sm-2">
+      <%= link_to admin_tab_item_path(tab_item), method: :delete do %>
+        <%= fa_icon "remove 2x", class: 'icon-red' %>
+      <% end %>
+    </div>
+</div>
+<% end %>

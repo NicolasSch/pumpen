@@ -5,20 +5,14 @@
     </div>
     <div class="card-block">
       <% if @tab.tab_items.any? %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th><%= t('admin.shop.tab.title')%></th>
-              <th><%= t('admin.shop.tab.price')%></th>
-              <th><%= t('admin.shop.tab.quantity') %></th>
-              <th></th>
-              <th><%= t('admin.shop.tab.delete_action') %></th>
-            </tr>
-          </thead>
-          <tbody>
-              <%= render partial: "admin/shops/user_tab/tab_item", collection: @tab.tab_items, as: :tab_item %>
-          </tbody>
-        </table>
+        <div class="row table-header">
+          <div class="col-sm-3"><%= t('admin.shop.tab.title')%></div>
+          <div class="col-sm-3"><%= t('admin.shop.tab.price')%></div>
+          <div class="col-sm-2"><%= t('admin.shop.tab.quantity') %></div>
+          <div class="col-sm-2"></div>
+          <div class="col-sm-2"><%= t('admin.shop.tab.delete_action') %></div>
+        </div>
+        <%= render partial: "admin/shops/user_tab/tab_item", collection: @tab.tab_items, as: :tab_item %>
       <% else %>
        <p class="card-text text-center">
          <%= t('shop.list.empty')%>
