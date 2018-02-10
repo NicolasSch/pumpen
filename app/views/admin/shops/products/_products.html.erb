@@ -7,6 +7,7 @@
       <div class="list-group">
         <%= smart_listing_controls_for(:products) do %>
         <div class="form-group filter input-append">
+          <%= hidden_field_tag(:cart_id, @cart.id) %>
           <%= select_tag :filter, options_for_select(product_group_select(Product.all)),
                           class: 'form-control select optional',
                           prompt: t('admin.shop.products.prompt'),
