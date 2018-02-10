@@ -1,16 +1,16 @@
 <div class="col-md-8">
   <div class="card">
     <div class="card-header">
-      <h4 class="card-title text-center"><%= t('products.headline')%></h3>
+      <h4 class="card-title text-center"><%= t('products.headline')%></h4>
     </div>
     <div class="card-block">
       <div class="list-group">
-        <%= smart_listing_controls_for(:products, { class: 'form' }) do %>
+        <%= smart_listing_controls_for(:products) do %>
         <div class="form-group filter input-append">
           <%= select_tag :filter, options_for_select(product_group_select(Product.all)),
-                          class: 'form-control select optinal selectpicker',
-                          include_blank: true,
-                          data: {show_subtext: true, live_search: true, live_search_placeholder: 'Suche...', none_selected_text: t('products.filter')} %>
+                          class: 'form-control select optional',
+                          prompt: t('admin.shop.products.prompt'),
+                          include_blank: false %>
         </div>
         <% end %>
         <%= smart_listing_render(:products) %>

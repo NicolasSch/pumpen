@@ -10,8 +10,8 @@ SmartListing.configure do |config|
     :unlimited_per_page             => true,                         #  allow infinite page size
     #:paginate                       => true,                        # allow pagination
     #:memorize_per_page              => false,                       # save per page settings in the cookie
-    :page_sizes                     => [50, 100, 150, 200],            # set available page sizes array
-    :kaminari_options               => {:theme => "boostrap4"}, # Kaminari's paginate helper options
+    :page_sizes                     => [20, 40, 60, 80],            # set available page sizes array
+    :kaminari_options               => { theme: "boostrap4" }, # Kaminari's paginate helper options
   })
 
   config.constants :classes, {

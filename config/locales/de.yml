@@ -57,6 +57,8 @@ de:
       shop:                  "Shop"
       statistics:            "Auswertung"
     shop:
+      products:
+        prompt: Artikelgruppe filtern...
       headline:              "Benutzer Tab verwalten"
       description:           "Füge der akteullen Tabliste eines Benutzers Artikel hinzu"
       choose_user:           Bitte wähle zunächst einen Benutzer aus der Liste aus.
