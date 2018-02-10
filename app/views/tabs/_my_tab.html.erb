@@ -5,41 +5,7 @@
       <%= t('my_tab.list.description', month: translated_month(@tab.month)) %>
     </h6>
   </div>
-  <div class="card-block">
-    <% if @tab.tab_items.any? %>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th><%= t('my_tab.product.title')%></th>
-            <th><%= t('my_tab.product.quantity') %></th>
-            <th><%= t('my_tab.product.price')%></th>
-          </tr>
-        </thead>
-        <tbody>
-            <%= render partial: @tab.tab_items %>
-        </tbody>
-        <tfoot>
-          <% if @tab.discount.present? %>
-            <tr>
-              <td></td>
-              <td><%= t('my_tab.discount') %>:</td>
-              <td><%= @tab.discount %>%</td>
-            </tr>
-          <% end %>
-          <tr>
-            <td></td>
-            <td><%= t('my_tab.sum') %></td>
-            <td><%= number_to_euro(@tab.total_price) %></td>
-          </tr>
-        </tfoot>
-      </table>
-    <% else %>
-     <p class="card-text text-center">
-       <%= t('my_tab.list.empty')%>
-     </p>
-     <p class="card-text text-center">
-     <%= link_to t('my_tab.list.product_link'), products_path, class: 'button'%>
-     </p>
-    <% end %>
+  <div class="card-block" id="tab-table">
+    <%= render partial: 'tab_table' %>
   </div>
 </div>

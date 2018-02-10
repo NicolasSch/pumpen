@@ -4,9 +4,13 @@
     <h6 class="card-subtitle mb-2 text-muted"><%= t('add_tab.item.description') %></h6>
   </div>
   <div class="card-block">
-    <%= simple_form_for @tab do |f| %>
+    <%= simple_form_for @tab, remote: true do |f| %>
       <div>
-        <%= f.input :product_id, include_blank: false, label: false, as: :fake_select, collection: @products.map {|product| [product.title, product.id] } %>
+        <%= f.input :product_id,
+                    include_blank: false,
+                    label: false,
+                    as: :fake_select,
+                    collection: @products.map {|product| [product.title, product.id] } %>
         <%= f.submit t('add_tab.item.submit'), class: 'button' %>
       </div>
     <% end %>
