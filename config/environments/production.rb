@@ -104,4 +104,8 @@ Rails.application.configure do
 
   # redirect to https
   config.force_ssl = true
+
+  Raven.configure do |config|
+    config.dsn = 'https://faf1eedb98164f1c95159ccb50e2d711:cf23ba57805a4a6ba30bf6002e7e9096@sentry.io/286273'
+  end
 end

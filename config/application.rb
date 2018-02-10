@@ -14,6 +14,7 @@ module Pumpen
     I18n.available_locales = [:de, :en]
     I18n.default_locale = :de
     config.time_zone = 'Europe/Berlin'
-   config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
+    config.filter_parameters << :password
   end
 end
