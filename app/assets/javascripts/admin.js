@@ -18,5 +18,13 @@ $(document).on('ready', function () {
     $(this).parents('form').submit();
   })
 
+  $('.datepicker').datepicker({
+    clearBtn: true,
+    autoclose: true,
+    format: 'dd/mm/yyyy',
+    language: 'de'
+  }
+  );
+
   $('.selectpicker').selectpicker({});
 });

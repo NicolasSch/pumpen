@@ -54,9 +54,6 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap (4.0.0.alpha6)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     bootstrap-select-rails (1.12.1)
@@ -144,7 +141,6 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
-    popper_js (1.11.1)
     puma (3.9.1)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -282,7 +278,6 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap (= 4.0.0.alpha6)
   bootstrap-datepicker-rails
   bootstrap-select-rails
   byebug
@@ -300,7 +295,6 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mailcatcher
   mysql2
-  popper_js (~> 1.11.1)
   puma (~> 3.0)
   rails (~> 5.1.3)
   rails-controller-testing
@@ -324,4 +318,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.3
+   1.16.0

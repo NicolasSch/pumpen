@@ -1,8 +1,8 @@
-<%= simple_form_for [:admin, tab_item] do |f| %>
+<%= simple_form_for [:admin, tab_item], html: { id: nil } do |f| %>
 <div class="row">
     <div class="col-sm-3"><%= tab_item.product.title %></div>
     <div class="col-sm-3"><%= number_to_euro(tab_item.total_price) %></div>
-    <div class="col-sm-2"><%= f.input :quantity, as: :integer, label: false, input_html: { value: tab_item.quantity } %></div>
+    <div class="col-sm-2"><%= f.input :quantity, as: :integer, label: false, input_html: { id: nil, value: tab_item.quantity } %></div>
     <div class="col-sm-2"><%= f.submit t('admin.shop.tab.submit'), class: 'btn btn-primary' %></div>
     <div class="col-sm-2">
       <%= link_to admin_tab_item_path(tab_item), method: :delete do %>
