@@ -26,6 +26,7 @@ gem 'smart_listing', git: "git://github.com/nicolassch/smart_listing.git", branc
 gem 'devise-i18n'
 gem 'bootstrap-select-rails'
 gem "sentry-raven"
+gem 'nokogiri'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
