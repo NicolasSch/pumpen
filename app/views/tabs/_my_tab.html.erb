@@ -1,7 +1,9 @@
 <div class="card">
   <div class="card-header">
-    <h4 class="card-title text-center"><%= t('my_tab.list.headline')%></h3>
-    <h6 class="card-subtitle mb-2 text-muted text-center"><%= t('my_tab.list.description', month: translated_month(@tab.month)) %></h6>
+    <h4 class="card-title text-center"><%= t('my_tab.list.headline')%></h4>
+    <h6 class="card-subtitle mb-2 text-muted text-center">
+      <%= t('my_tab.list.description', month: translated_month(@tab.month)) %>
+    </h6>
   </div>
   <div class="card-block">
     <% if @tab.tab_items.any? %>
@@ -13,6 +15,9 @@
             <th><%= t('my_tab.product.price')%></th>
           </tr>
         </thead>
+        <tbody>
+            <%= render partial: @tab.tab_items %>
+        </tbody>
         <tfoot>
           <% if @tab.discount.present? %>
             <tr>
@@ -27,9 +32,6 @@
             <td><%= number_to_euro(@tab.total_price) %></td>
           </tr>
         </tfoot>
-        <tbody>
-            <%= render partial: @tab.tab_items %>
-        </tbody>
       </table>
     <% else %>
      <p class="card-text text-center">

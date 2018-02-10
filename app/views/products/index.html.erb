@@ -5,11 +5,10 @@
 <div class="col-md-12 col-s-12">
   <div class="card">
     <div class="card-header">
-      <h4 class="card-title text-center"><%= t('products.headline')%></h3>
+      <h4 class="card-title text-center"><%= t('products.headline')%></h4>
     </div>
     <div class="card-block">
       <div class="list-group">
-
         <%= smart_listing_controls_for(:products, {class: "form"}) do %>
         <div class="form-group filter input-append">
           <%= select_tag :filter, options_for_select(product_group_select(Product.active)),
@@ -19,6 +18,7 @@
         </div>
         <% end %>
         <%= smart_listing_render(:products) %>
+      </div>    
     </div>
   </div>
 </div>
