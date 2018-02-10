@@ -3,9 +3,8 @@
 //= require tether
 //= require toastr
 //= require smart_listing
-//= require bootstrap-datepicker
 //= require bootstrap-select
-//= require_tree
+//= require bootstrap
 
 $(document).on('ready', function () {
 

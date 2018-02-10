@@ -3,9 +3,10 @@
 //= require tether
 //= require toastr
 //= require smart_listing
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.de.js
 //= require bootstrap-select
-//= require_tree
+//= require bootstrap
 
 $(document).on('ready', function () {
 
