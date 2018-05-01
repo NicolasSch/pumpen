@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class NotificationMailer < BaseMailer
-  ACCOUNTING_MAIL_ADDRESS = 'M.Kutschewenko@beyer-foertsch.de'.freeze
-  CFHH_MAIL_ADDRESS       = 'michael@crossfithh.de'.freeze
+  ACCOUNTING_MAIL_ADDRESS = 'M.Kutschewenko@beyer-foertsch.de'
+  CFHH_MAIL_ADDRESS       = 'michael@crossfithh.de'
 
   def tab_items_added(serializable_items, user)
     @user = user

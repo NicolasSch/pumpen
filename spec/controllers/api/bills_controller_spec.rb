@@ -1,20 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::BillsController, type: :controller do
   before { authenticate }
 
   describe '#create' do
-    let!(:user) { create(:user) }
-    let!(:tab_current)    { create(:tab, :with_tab_item, created_at: Time.now, user: user) }
-    let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
-    let!(:tab_empty)      { create(:tab, created_at: Time.now- 1.month ) }
-
-    before(:each) { sign_in(user) }
-
     subject { post :create }
 
+    let!(:user) { create(:user) }
+    let!(:tab_current)    { create(:tab, :with_tab_item, created_at: Time.zone.now, user: user) }
+    let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.zone.now - 1.month, user: user) }
+    let!(:tab_empty)      { create(:tab, created_at: Time.zone.now - 1.month) }
+    let(:items) { Bill.first.items }
+
+    before { sign_in(user) }
+
     it 'creates a bill for tabs of last month' do
-      expect{ subject }.to change { Bill.count }.from(0).to(1)
+      expect { subject }.to change(Bill, :count).from(0).to(1)
     end
 
     it 'assigns tab_id to bill' do
@@ -28,7 +31,7 @@ RSpec.describe Api::BillsController, type: :controller do
     end
 
     it 'destroys tab with no items' do
-      expect{ subject }.to change { Tab.count }.from(3).to(2)
+      expect { subject }.to change(Tab, :count).from(3).to(2)
       expect(Tab.where(id: tab_empty.id).first).to be_nil
     end
 
@@ -47,7 +50,6 @@ RSpec.describe Api::BillsController, type: :controller do
       expect(Bill.first.amount).to eq(tab_with_item.total_price)
     end
 
-    let(:items) { Bill.first.items }
     it 'serializes tab_items' do
       subject
       expect(items.count).to eq(1)

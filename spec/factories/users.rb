@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
-    first_name {Faker::Name.first_name }
-    last_name {Faker::Name.last_name }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
     gender 'male'
     email { Faker::Internet.email }
     password 'changeme'
@@ -9,7 +11,7 @@ FactoryBot.define do
     role 'user'
     membership 'one'
     sequence(:member_number) { |n| n }
-    confirmed_at Time.now
+    confirmed_at { Time.zone.now }
 
     trait :is_admin do
       role 'admin'
@@ -25,5 +27,4 @@ FactoryBot.define do
       membership 'staff'
     end
   end
-
 end

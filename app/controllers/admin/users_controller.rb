@@ -1,11 +1,14 @@
+
+# frozen_string_literal: true
+
 class Admin::UsersController < AdminController
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
 
   def index
-    users_scope = params[:archived] == '1' ?  User.archived : User.active
+    users_scope = params[:archived] == '1' ? User.archived : User.active
     users_scope = users_scope.name_like(params[:filter]) if params[:filter].present?
-    @users = smart_listing_create(:users, users_scope, partial: "admin/users/user", default_sort: { last_name: 'asc' })
+    @users = smart_listing_create(:users, users_scope, partial: 'admin/users/user', default_sort: { last_name: 'asc' })
   end
 
   def new
@@ -49,18 +52,10 @@ class Admin::UsersController < AdminController
 
   def user_params
     params.require(:user).permit(
-      :first_name,
-      :last_name,
-      :email,
-      :membership,
-      :gender,
-      :street,
-      :zip,
-      :city,
-      :member_number,
-      :role,
-      :password,
-      :password_confirmation,
+      :first_name, :last_name, :email,
+      :membership, :gender, :street,
+      :zip, :city, :member_number,
+      :role, :password, :password_confirmation,
       :archived
     )
   end

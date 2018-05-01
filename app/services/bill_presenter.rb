@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class BillPresenter < BasePresenter
   def month
-    h.t("date.month_names")[@model.tab.month]
+    h.t('date.month_names')[@model.tab.month]
   end
 
   def number

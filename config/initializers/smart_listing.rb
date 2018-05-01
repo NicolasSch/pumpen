@@ -1,54 +1,55 @@
+# frozen_string_literal: true
+
 SmartListing.configure do |config|
-  config.global_options({
+  config.global_options(
     #:param_names  => {                                              # param names
-      #:page                         => :page,
-      #:per_page                     => :per_page,
-      #:sort                         => :sort,
-    #},
+    #:page                         => :page,
+    #:per_page                     => :per_page,
+    #:sort                         => :sort,
+    # },
     #:array                          => false,                       # controls whether smart list should be using arrays or AR collections
     #:max_count                      => nil,                         # limit number of rows
-    :unlimited_per_page             => true,                         #  allow infinite page size
+    unlimited_per_page: true, #  allow infinite page size
     #:paginate                       => true,                        # allow pagination
     #:memorize_per_page              => false,                       # save per page settings in the cookie
-    :page_sizes                     => [20, 40, 60, 80],            # set available page sizes array
-    :kaminari_options               => { theme: "boostrap4" }, # Kaminari's paginate helper options
-  })
+    page_sizes: [20, 40, 60, 80], # set available page sizes array
+    kaminari_options: { theme: 'boostrap4' }, # Kaminari's paginate helper options
+  )
 
-  config.constants :classes, {
-    #:main                  => "smart-listing",
-    #:editable              => "editable",
-    #:content               => "content",
-    #:loading               => "loading",
-    #:status                => "smart-listing-status",
-    #:item_actions          => "actions",
-    #:new_item_placeholder  => "new-item-placeholder",
-    #:new_item_action       => "new-item-action",
-    #:new_item_button       => "btn",
-    #:hidden                => "hidden",
-    #:autoselect            => "autoselect",
-    #:callback              => "callback",
-    #:pagination_per_page   => "pagination-per-page text-center",
-    #:pagination_count      => "count",
-    #:inline_editing        => "info",
-    #:no_records            => "no-records",
-    #:limit                 => "smart-listing-limit",
-    #:limit_alert           => "smart-listing-limit-alert",
-    #:controls              => "smart-listing-controls",
-    #:controls_reset        => "reset",
-    #:filtering             => "filter",
-    #:filtering_search      => "glyphicon-search",
-    #:filtering_cancel      => "glyphicon-remove",
-    #:filtering_disabled    => "disabled",
-    #:sortable              => "sortable",
-    #:icon_new              => "glyphicon glyphicon-plus",
-    #:icon_edit             => "glyphicon glyphicon-pencil",
-    #:icon_trash            => "glyphicon glyphicon-trash",
-    #:icon_inactive         => "glyphicon glyphicon-circle",
-    #:icon_show             => "glyphicon glyphicon-share-alt",
-    :icon_sort_none        => "fa fa-sort",
-    :icon_sort_up          => "fa fa-chevron-up",
-    :icon_sort_down        => "fa fa-chevron-down",
-  }
+  config.constants :classes,
+                   #:main                  => "smart-listing",
+                   #:editable              => "editable",
+                   #:content               => "content",
+                   #:loading               => "loading",
+                   #:status                => "smart-listing-status",
+                   #:item_actions          => "actions",
+                   #:new_item_placeholder  => "new-item-placeholder",
+                   #:new_item_action       => "new-item-action",
+                   #:new_item_button       => "btn",
+                   #:hidden                => "hidden",
+                   #:autoselect            => "autoselect",
+                   #:callback              => "callback",
+                   #:pagination_per_page   => "pagination-per-page text-center",
+                   #:pagination_count      => "count",
+                   #:inline_editing        => "info",
+                   #:no_records            => "no-records",
+                   #:limit                 => "smart-listing-limit",
+                   #:limit_alert           => "smart-listing-limit-alert",
+                   #:controls              => "smart-listing-controls",
+                   #:controls_reset        => "reset",
+                   #:filtering             => "filter",
+                   #:filtering_search      => "glyphicon-search",
+                   #:filtering_cancel      => "glyphicon-remove",
+                   #:filtering_disabled    => "disabled",
+                   #:sortable              => "sortable",
+                   #:icon_new              => "glyphicon glyphicon-plus",
+                   #:icon_edit             => "glyphicon glyphicon-pencil",
+                   #:icon_trash            => "glyphicon glyphicon-trash",
+                   #:icon_inactive         => "glyphicon glyphicon-circle",
+                   #:icon_show             => "glyphicon glyphicon-share-alt",
+                   icon_sort_none: 'fa fa-sort',
+                   icon_sort_up: 'fa fa-chevron-up',
+                   icon_sort_down: 'fa fa-chevron-down'
 
   config.constants :data_attributes, {
     #:main                  => "smart-listing",

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::ReminderController, type: :controller do
@@ -5,13 +7,13 @@ RSpec.describe Admin::ReminderController, type: :controller do
 
   describe '#update' do
     describe 'signed_in' do
-      context 'is admin' do
-        let!(:tab) { create(:tab, month: Time.now.month - 1 ) }
+      context 'when is admin' do
+        subject { put :show, params: { bill_id: bill.id } }
+
+        let!(:tab) { create(:tab, month: Time.zone.now.month - 1) }
         let!(:bill) { create(:bill, tab: tab, user: user) }
 
-        before(:each) { sign_in(user) }
-
-        subject { put :show , params: { bill_id: bill.id} }
+        before { sign_in(user) }
 
         it 'sets reminded at' do
           subject
@@ -30,11 +32,11 @@ RSpec.describe Admin::ReminderController, type: :controller do
         end
       end
 
-      context 'not admin' do
-        before(:each) { sign_in(create(:user, :not_admin)) }
+      context 'when not admin' do
+        before { sign_in(create(:user, :not_admin)) }
 
-        it 'it redirects to root if not admin' do
-          put :show , params: { bill_id: 666 }
+        it 'redirects to root if not admin' do
+          put :show, params: { bill_id: 666 }
           expect(response).to redirect_to :root
           expect(flash[:notice]).to eq('Zugriff verweigert')
         end
@@ -43,7 +45,7 @@ RSpec.describe Admin::ReminderController, type: :controller do
 
     describe 'logged out' do
       it 'redirects to login page' do
-        put :show , params: { bill_id: 999 }
+        put :show, params: { bill_id: 999 }
         expect(response).to redirect_to(new_user_session_path)
       end
     end

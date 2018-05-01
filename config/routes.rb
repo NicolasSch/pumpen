@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
@@ -21,36 +23,36 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    authenticate :user, lambda { |u| u.admin? } do
+    authenticate :user, ->(u) { u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
     resources :users
     resources :products
     resources :statistics, only: :index
-    resources :tabs, only: [:index, :update]
-    resources :tab_items, only: [:create, :destroy, :update]
-    resources :bills, only: [:index, :show, :create, :update] do
+    resources :tabs, only: %i[index update]
+    resources :tab_items, only: %i[create destroy update]
+    resources :bills, only: %i[index show create update] do
       resource :reminder, only: :show, controller: 'reminder'
       collection do
         resources :export, only: :index, controller: 'export'
       end
     end
     resources :shops, only: :index
-    resources :carts, only: [:new, :update, :destroy] do
+    resources :carts, only: %i[new update destroy] do
       member do
         put :checkout
       end
     end
   end
 
-  resources :carts, only: [:update, :destroy] do
+  resources :carts, only: %i[update destroy] do
     member do
       put :checkout
     end
   end
-  resources :tabs, only: [:index, :update]
+  resources :tabs, only: %i[index update]
   resources :products, only: :index
   resources :tab_items, only: :create
-  resources :bills, only: [:index, :show]
-  resources :users, only: [:edit, :update]
+  resources :bills, only: %i[index show]
+  resources :users, only: %i[edit update]
 end

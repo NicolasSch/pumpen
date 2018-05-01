@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :tab do
-    user {create(:user)}
-    month Time.now.month
+    user { create(:user) }
+    month { Time.zone.now.month }
   end
 
   trait :with_tab_item do

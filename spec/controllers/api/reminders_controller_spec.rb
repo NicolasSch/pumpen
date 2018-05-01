@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::RemindersController, type: :controller do
   before { authenticate }
 
   describe '#create' do
-    let!(:user) { create(:user) }
-    let!(:tab)  { create(:tab, month: Time.now.month - 1 ) }
-    let!(:bill) { create(:bill, tab: tab, user: user) }
-
     subject { post :create }
+
+    let!(:user) { create(:user) }
+    let!(:tab)  { create(:tab, month: Time.zone.now.month - 1) }
+    let!(:bill) { create(:bill, tab: tab, user: user) }
 
     it 'sets reminded at' do
       subject

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::ProductsController, type: :controller do
@@ -8,28 +10,28 @@ RSpec.describe Admin::ProductsController, type: :controller do
   let(:plu)                 { '123' }
   let(:product_group)       { 'Questbar' }
   let(:product_group_id)    { 1234 }
-  let(:product_type)  { 'Standard' }
-
+  let(:product_type) { 'Standard' }
 
   describe '#create' do
     describe 'signed_in' do
       subject do
         post :create,
-          params: {
-             product: {
-                title: title,
-                price: price,
-                plu: plu,
-                product_group: product_group,
-                product_type: product_type,
-                product_group_id: product_group_id
-            }
-          }
+             params: {
+               product: {
+                 title: title,
+                 price: price,
+                 plu: plu,
+                 product_group: product_group,
+                 product_type: product_type,
+                 product_group_id: product_group_id
+               }
+             }
       end
 
       before { sign_in(admin) }
 
       let(:product) { Product.last }
+
       it 'creates a new Prodcut' do
         subject
         expect(product.title).to eq title
@@ -54,22 +56,22 @@ RSpec.describe Admin::ProductsController, type: :controller do
     describe 'signed_in' do
       subject do
         post :update,
-          params: {
-            id: product.id,
-            product: {
-               title: title,
-               price: price,
-               plu: plu,
-               archived: true,
-               product_group: product_group,
-               product_type: product_type,
-               product_group_id: product_group_id
-           }
-        }
+             params: {
+               id: product.id,
+               product: {
+                 title: title,
+                 price: price,
+                 plu: plu,
+                 archived: true,
+                 product_group: product_group,
+                 product_type: product_type,
+                 product_group_id: product_group_id
+               }
+             }
       end
 
       before do
-         sign_in(admin)
+        sign_in(admin)
       end
 
       let!(:product) { create(:product) }
@@ -101,13 +103,13 @@ RSpec.describe Admin::ProductsController, type: :controller do
       end
 
       before do
-         sign_in(admin)
+        sign_in(admin)
       end
 
       let!(:product) { create(:product) }
 
       it 'destroys an user' do
-        expect{ subject }.to change { Product.count }.from(1).to(0)
+        expect { subject }.to change(Product, :count).from(1).to(0)
       end
     end
   end

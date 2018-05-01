@@ -5,14 +5,14 @@
       as: :select,
       include_blank: false,
       collection: translates_month_collection,
-      selected: Date.today.month,
+      selected: Time.zone.now.month,
       wrapper_html: { class: "col col-md-6 offset-md-3"} %>
     <%= f.input :year,
       label: t('.year'),
       as: :select,
       include_blank: false,
-      collection: Date.today.year-2..Date.today.year,
-      selected: Date.today.year,
+      collection: Time.zone.now.year-2..Time.zone.now.year,
+      selected: Time.zone.now.year,
       wrapper_html: { class: "col col-md-6 offset-md-3"}  %>
     <%= f.submit t('.download'), class: 'button col col-md-4 offset-md-4', data: { disable_with: false } %>
   <% end %>

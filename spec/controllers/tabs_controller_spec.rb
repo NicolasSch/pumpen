@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TabsController, type: :controller do
@@ -6,20 +8,20 @@ RSpec.describe TabsController, type: :controller do
   let(:admin)    { create(:user, :is_admin) }
 
   describe '#index' do
-    subject {  get :index }
+    subject { get :index }
 
-    context 'signed_in' do
+    context 'when signed_in' do
       describe 'view specs' do
         render_views
-        context 'user is manager' do
-          before(:each) { sign_in(manager) }
+        context 'when user is manager' do
+          before { sign_in(manager) }
 
           it 'does render add_item partial' do
             expect(subject).to render_template(partial: '_add_item')
           end
 
-          context 'user is not manager' do
-            before(:each) { sign_in(user) }
+          context 'when user is not manager' do
+            before { sign_in(user) }
 
             it 'does not render add_item partial' do
               expect(subject).not_to render_template(partial: '_add_item')
@@ -28,14 +30,16 @@ RSpec.describe TabsController, type: :controller do
         end
       end
 
-      context 'tab exists' do
-        let!(:older_tab) { create(:tab, user: manager, month: Time.now.month - 1 ) }
-        let!(:tab)       { create(:tab, user: manager, month: Time.now.month) }
+      context 'when tab exists' do
+        let!(:tab) { create(:tab, user: manager, month: Time.zone.now.month) }
 
-        before(:each) { sign_in(manager) }
+        before do
+          sign_in(manager)
+          create(:tab, user: manager, month: Time.zone.now.month - 1)
+        end
 
         it 'uses existing tab' do
-          expect{ subject }.not_to change { Tab.count }
+          expect { subject }.not_to change(Tab, :count)
         end
 
         it 'renders users current tab of the month' do
@@ -44,25 +48,26 @@ RSpec.describe TabsController, type: :controller do
         end
       end
 
-      context 'tab does not exist' do
-        before(:each) { sign_in(user) }
+      context 'when tab does not exist' do
+        before { sign_in(user) }
 
         it 'creates a new tab' do
-          expect{ subject }.to change { Tab.count }.from(0).to(1)
+          expect { subject }.to change(Tab, :count).from(0).to(1)
         end
       end
     end
   end
 
   describe '#update' do
-    context 'signed_in' do
-      let(:product) { create(:product) }
-      let!(:tab)    { create(:tab, user: manager, month: Time.now.month) }
+    context 'when signed_in' do
       subject       { put :update, params: { id: tab.id, product_id: product.id } }
 
-      before(:each) { sign_in(manager) }
+      let(:product) { create(:product) }
+      let!(:tab)    { create(:tab, user: manager, month: Time.zone.now.month) }
 
-      context 'user is manager' do
+      before { sign_in(manager) }
+
+      context 'when user is manager' do
         describe 'adds cart_items to users current tab of the month' do
           it 'redirects to product path' do
             expect(subject).to redirect_to(:root)
@@ -82,7 +87,7 @@ RSpec.describe TabsController, type: :controller do
         end
       end
 
-      context 'user is not manager' do
+      context 'when user is not manager' do
         it 'redirects to root with error' do
           manager.update!(membership: 'one')
           expect(subject).to redirect_to(:root)
@@ -90,8 +95,8 @@ RSpec.describe TabsController, type: :controller do
         end
       end
 
-      context 'different user' do
-        before(:each) { sign_in(user) }
+      context 'when different user' do
+        before { sign_in(user) }
         it 'redirects to root with error' do
           manager.update!(membership: 'one')
           expect(subject).to redirect_to(:root)

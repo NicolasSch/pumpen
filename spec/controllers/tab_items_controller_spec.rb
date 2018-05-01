@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TabItemsController, type: :controller do
   let!(:user) { create(:user, :is_manager) }
-  let!(:tab)  { create(:tab, user: user, month: Time.now.month) }
+  let!(:tab)  { create(:tab, user: user, month: Time.zone.now.month) }
 
   describe '#create' do
     describe 'signed_in' do
-      before(:each) { sign_in(user) }
+      before { sign_in(user) }
 
       describe 'adds tab_item to users current tab' do
         let!(:product)  { create(:product) }
@@ -30,7 +32,7 @@ RSpec.describe TabItemsController, type: :controller do
         end
 
         describe 'with existing item' do
-          let!(:item) { tab.tab_items.create!(product: product) }
+          before { tab.tab_items.create!(product: product) }
 
           it 'increases quantity of existing items by n' do
             request_with_quantity

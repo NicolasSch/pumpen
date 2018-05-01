@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 raise 'seed.rb is not meant to be run in production' if Rails.env.production?
 
 FactoryBot.create(:user, :is_admin, email: 'admin@test.com') unless User.exists?(role: 'admin')

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::BillsController, type: :controller do
@@ -5,13 +7,15 @@ RSpec.describe Admin::BillsController, type: :controller do
 
   describe '#index' do
     describe 'signed_in' do
-      context 'is admin' do
-        let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
-        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month) }
-
-        before(:each) { sign_in(user) }
-
+      context 'when user is admin' do
         subject { get :index }
+
+        let!(:tab_with_item) { create(:tab, :with_tab_item, created_at: Time.zone.now - 1.month, user: user) }
+
+        before do
+          sign_in(user)
+          create(:tab, created_at: Time.zone.now - 1.month)
+        end
 
         it 'creates link to create bills for tabs with tab_items' do
           subject
@@ -20,10 +24,10 @@ RSpec.describe Admin::BillsController, type: :controller do
         end
       end
 
-      context 'not admin' do
-        before(:each) { sign_in(create(:user, :not_admin)) }
+      context 'when user is not admin' do
+        before { sign_in(create(:user, :not_admin)) }
 
-        it 'it redirects to root if not admin' do
+        it 'redirects to root if not admin' do
           get :index
           expect(response).to redirect_to :root
           expect(flash[:notice]).to eq('Zugriff verweigert')
@@ -41,17 +45,18 @@ RSpec.describe Admin::BillsController, type: :controller do
 
   describe '#create' do
     describe 'signed_in' do
-      context 'is admin' do
-        let!(:tab_current)    { create(:tab, :with_tab_item, created_at: Time.now, user: user) }
-        let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.now - 1.month, user: user) }
-        let!(:tab_empty)      { create(:tab, created_at: Time.now - 1.month) }
-
-        before(:each) { sign_in(user) }
-
+      context 'when user is admin' do
         subject { post :create }
 
+        let!(:tab_current)    { create(:tab, :with_tab_item, created_at: Time.zone.now, user: user) }
+        let!(:tab_with_item)  { create(:tab, :with_tab_item, created_at: Time.zone.now - 1.month, user: user) }
+        let!(:tab_empty)      { create(:tab, created_at: Time.zone.now - 1.month) }
+        let(:items) { Bill.first.items }
+
+        before { sign_in(user) }
+
         it 'creates a bill for tabs of last month' do
-          expect { subject }.to change { Bill.count }.from(0).to(1)
+          expect { subject }.to change(Bill, :count).from(0).to(1)
         end
 
         it 'assigns tab_id to bill' do
@@ -65,7 +70,7 @@ RSpec.describe Admin::BillsController, type: :controller do
         end
 
         it 'destroys tab with no items' do
-          expect{ subject }.to change { Tab.count }.from(3).to(2)
+          expect { subject }.to change(Tab, :count).from(3).to(2)
           expect(Tab.where(id: tab_empty.id).first).to be_nil
         end
 
@@ -84,7 +89,6 @@ RSpec.describe Admin::BillsController, type: :controller do
           expect(Bill.first.amount).to eq(tab_with_item.total_price)
         end
 
-        let(:items) { Bill.first.items }
         it 'serializes tab_items' do
           subject
           expect(items.count).to eq(1)
@@ -116,10 +120,10 @@ RSpec.describe Admin::BillsController, type: :controller do
         end
       end
 
-      context 'not admin' do
-        before(:each) { sign_in(create(:user, :not_admin)) }
+      context 'when not admin' do
+        before { sign_in(create(:user, :not_admin)) }
 
-        it 'it redirects to root if not admin' do
+        it 'redirects to root if not admin' do
           post :create
           expect(response).to redirect_to :root
           expect(flash[:notice]).to eq('Zugriff verweigert')
@@ -137,13 +141,13 @@ RSpec.describe Admin::BillsController, type: :controller do
 
   describe '#update' do
     describe 'signed_in' do
-      context 'is admin' do
-        let!(:tab) { create(:tab, created_at: Time.now - 1.month) }
+      context 'when user is admin' do
+        subject { put :update, params: { id: bill.id } }
+
+        let!(:tab) { create(:tab, created_at: Time.zone.now - 1.month) }
         let!(:bill) { create(:bill, tab: tab) }
 
-        before(:each) { sign_in(user) }
-
-        subject { put :update , params: { id: bill.id} }
+        before { sign_in(user) }
 
         it 'marks bill as paid' do
           subject
@@ -156,11 +160,11 @@ RSpec.describe Admin::BillsController, type: :controller do
         end
       end
 
-      context 'not admin' do
-        before(:each) { sign_in(create(:user, :not_admin)) }
+      context 'when user is not admin' do
+        before { sign_in(create(:user, :not_admin)) }
 
-        it 'it redirects to root if not admin' do
-          put :update , params: { id: 666 }
+        it 'redirects to root if not admin' do
+          put :update, params: { id: 666 }
           expect(response).to redirect_to :root
           expect(flash[:notice]).to eq('Zugriff verweigert')
         end
@@ -169,7 +173,7 @@ RSpec.describe Admin::BillsController, type: :controller do
 
     describe 'logged out' do
       it 'redirects to login page' do
-        put :update , params: { id: 999 }
+        put :update, params: { id: 999 }
         expect(response).to redirect_to(new_user_session_path)
       end
     end

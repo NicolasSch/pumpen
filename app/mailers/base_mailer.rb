@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseMailer < ActionMailer::Base
   layout 'mailer'
   default from: 'CrossFit HH Service <service@cfhh-tab.de>'
@@ -15,7 +17,7 @@ class BaseMailer < ActionMailer::Base
   def mail_with_defaults(options = {})
     default_options = {
       from: 'CrossFit HH Service <service@cfhh-tab.de>',
-      reply_to: 'CrossFit HH Service <service@cfhh-tab.de>',
+      reply_to: 'CrossFit HH Service <service@cfhh-tab.de>'
     }
     mail(default_options.merge(options))
   end

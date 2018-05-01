@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ApiController < ActionController::Base
-  USERNAME = "cfhh"
-  PASSWORD = "bis1Stirbt"
+  USERNAME = 'cfhh'
+  PASSWORD = 'bis1Stirbt'
 
   before_action :authenticate
 
@@ -17,14 +19,14 @@ class ApiController < ActionController::Base
   end
 
   def rescue_from_record_invalid
-    render json: { error: "something went wrong" }, status: :unprocessable_entity
+    render json: { error: 'something went wrong' }, status: :unprocessable_entity
   end
 
-  def rescue_from_parameter_missing(e)
-    render json: { error: e.message }, status: :unprocessable_entity
+  def rescue_from_parameter_missing(error)
+    render json: { error: error.message }, status: :unprocessable_entity
   end
 
-  def rescue_from_record_not_found(e)
-    render json: { error: "not found" }, status: :not_found
+  def rescue_from_record_not_found
+    render json: { error: 'not found' }, status: :not_found
   end
 end

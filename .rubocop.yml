@@ -1,0 +1,20 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rspec
+
+Rails/InverseOf:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - '**/schema.rb'
+    - '**/db/migrate/**/*'
+    - 'Gemfile'
+    - 'config/environments/**/*'
+    - 'config/initializers/cors.rb'
+    - 'config/routes.rb'
+  TargetRubyVersion: 2.5.1
+
+Metrics/BlockLength:
+  Enabled: false

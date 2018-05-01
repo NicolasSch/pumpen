@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def edit
     @user = current_user
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
-private
+  private
 
   def update_user
     if save_password?
@@ -38,13 +40,11 @@ private
   end
 
   def validate_password_params
-    @user.errors.add(:current_password, :blank)       unless user_params[:current_password].present?
-    @user.errors.add(:password, :blank)               unless user_params[:password].present?
-    @user.errors.add(:password_confirmation, :blank)  unless user_params[:password_confirmation].present?
-    !@user.errors.any?
+    @user.errors.add(:current_password, :blank)       if user_params[:current_password].blank?
+    @user.errors.add(:password, :blank)               if user_params[:password].blank?
+    @user.errors.add(:password_confirmation, :blank)  if user_params[:password_confirmation].blank?
+    @user.errors.none?
   end
-
-  private
 
   def user_params
     params.require(:user).permit(

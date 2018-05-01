@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::BillsController < ApiController
   def create
     tabs = Tab.ready_for_billing

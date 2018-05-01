@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -6,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Pumpen
   class Application < Rails::Application
-    I18n.available_locales = [:de, :en]
+    I18n.available_locales = %i[de en]
     I18n.default_locale = :de
     config.time_zone = 'Europe/Berlin'
     config.active_job.queue_adapter = :sidekiq

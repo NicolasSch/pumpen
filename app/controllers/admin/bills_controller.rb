@@ -1,11 +1,18 @@
+# frozen_string_literal: true
+
 class Admin::BillsController < AdminController
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
 
   def index
-    bills_scope = params[:paid].present? ? Bill.where(paid: params[:paid] == '1' ) : Bill.all
+    bills_scope = params[:paid].present? ? Bill.where(paid: params[:paid] == '1') : Bill.all
     bills_scope = bills_scope.name_like(params[:filter]) if params[:filter].present?
-    @bills = smart_listing_create(:bills, bills_scope.includes(:tab, :user), partial: "admin/bills/bill", default_sort: { 'bills.created_at' => :desc })
+    @bills = smart_listing_create(
+      :bills,
+      bills_scope.includes(:tab, :user),
+      partial: 'admin/bills/bill',
+      default_sort: { 'bills.created_at' => :desc }
+    )
     unbilled_tabs   = Tab.ready_for_billing.includes(:tab_items)
     @unbilled_tabs  = unbilled_tabs.select { |tab| tab.tab_items.any? }
   end

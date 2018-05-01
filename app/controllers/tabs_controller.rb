@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TabsController < ApplicationController
   before_action :ensure_tab, only: :index
 
@@ -14,9 +16,9 @@ class TabsController < ApplicationController
     item = @tab.add_product(params[:product_id])
     if @tab.save
       respond_to do |format|
-         format.js { flash.now[:notice] = t('add_tab.add_product', product: item.product.title) }
-         format.html { redirect_to :root, notice: t('add_tab.add_product', product: item.product.title) }
-       end
+        format.js { flash.now[:notice] = t('add_tab.add_product', product: item.product.title) }
+        format.html { redirect_to :root, notice: t('add_tab.add_product', product: item.product.title) }
+      end
     else
       redirect_to :root, alert: 'Something went wrong'
     end
@@ -29,6 +31,6 @@ class TabsController < ApplicationController
   end
 
   def ensure_tab
-    @tab = current_user.tabs.includes(:products).where(month: Time.now.month).first_or_create
+    @tab = current_user.tabs.includes(:products).where(month: Time.zone.now.month).first_or_create
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::CartsController, type: :controller do
@@ -6,19 +8,19 @@ RSpec.describe Admin::CartsController, type: :controller do
 
   describe '#update' do
     describe 'signed_in' do
-
-      context 'is admin' do
-        before(:each) { sign_in(admin) }
+      context 'when user is admin' do
+        before { sign_in(admin) }
 
         describe 'adds cart_items to users current tab of the month' do
-          let!(:cart) { create(:cart, :with_cart_items, user: user ) }
           subject     { put :update, params: { id: cart.id } }
 
+          let!(:cart) { create(:cart, :with_cart_items, user: user) }
+
           describe 'tab exists' do
-            let!(:tab)  { create(:tab, :with_tab_item, month: Time.now.month, user: user) }
+            let!(:tab)  { create(:tab, :with_tab_item, month: Time.zone.now.month, user: user) }
 
             it 'uses existing tab' do
-              expect{ subject }.not_to change { Tab.count }
+              expect { subject }.not_to change(Tab, :count)
             end
 
             it 'redirects to product path' do
@@ -26,7 +28,7 @@ RSpec.describe Admin::CartsController, type: :controller do
             end
 
             it 'clears cart' do
-              expect{ subject }.to change{ cart.tab_items.count }.from(2).to(0)
+              expect { subject }.to change { cart.tab_items.count }.from(2).to(0)
             end
 
             it 'adds new items' do
@@ -55,16 +57,16 @@ RSpec.describe Admin::CartsController, type: :controller do
 
           describe 'tab does not exist' do
             it 'creates a new tab' do
-              expect{ subject }.to change { Tab.count }.from(0).to(1)
+              expect { subject }.to change(Tab, :count).from(0).to(1)
             end
           end
         end
 
-        context 'is not admin' do
-          before(:each) { sign_in(user) }
+        context 'when user is not admin' do
+          before { sign_in(user) }
 
-          it 'it redirects to root if not admin' do
-            put :update , params: { id: 666 }
+          it 'redirects to root if not admin' do
+            put :update, params: { id: 666 }
             expect(response).to redirect_to :root
             expect(flash[:notice]).to eq('Zugriff verweigert')
           end

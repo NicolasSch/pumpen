@@ -1,13 +1,15 @@
-class Cart < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Cart < ApplicationRecord
   alias_attribute :cart_items, :tab_items
 
   belongs_to :user
-  has_many :tab_items
+  has_many :tab_items, dependent: :destroy
 
   def add_product(properties)
     product_id, quantity = properties.values_at(:product_id, :quantity)
     quantity = quantity.present? ? quantity.to_i : 1
-    current_item = cart_items.find_by_product_id(product_id)
+    current_item = cart_items.find_by(product_id: product_id)
     if current_item
       current_item.quantity += quantity
     else
@@ -17,9 +19,9 @@ class Cart < ActiveRecord::Base
   end
 
   def add_to_users_current_tab
-    tab   = user.tabs.tab_of_the_month
+    tab = user.tabs.tab_of_the_month
     cart_items.each do |item|
-      existing_item = tab.tab_items.where(product_id: item.product_id).first
+      existing_item = tab.tab_items.find_by(product_id: item.product_id)
       if existing_item.present?
         existing_item.quantity += item.quantity
         existing_item.save
@@ -32,6 +34,6 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-    cart_items.to_a.sum { |cart_item| cart_item.total_price }
+    cart_items.to_a.sum(&:total_price)
   end
 end

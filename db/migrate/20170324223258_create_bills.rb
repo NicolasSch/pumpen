@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBills < ActiveRecord::Migration[5.0]
   def up
     create_table :bills do |t|
@@ -10,6 +12,5 @@ class CreateBills < ActiveRecord::Migration[5.0]
     add_column :tabs, :state, :string, default: 'open'
   end
 
-  def down
-  end
+  def down; end
 end

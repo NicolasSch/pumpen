@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  AVAILABLE_MEMBERSHIPS = %w(staff full four three two one guest)
-  ROLES = %w(admin user)
+  AVAILABLE_MEMBERSHIPS = %w[staff full four three two one guest].freeze
+  ROLES = %w[admin user].freeze
 
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -9,11 +11,16 @@ class User < ApplicationRecord
   has_many :bills, through: :tabs
   has_many :tab_items, through: :tabs
   has_many :products, through: :tab_items
-  has_one :cart
+  has_one :cart, dependent: :destroy
 
   scope :active,    -> { where(archived: false) }
   scope :archived,  -> { where(archived: true) }
-  scope :name_like, ->(name) { where("(concat(first_name, ' ', last_name) like ?) OR (concat(last_name, ' ', first_name) like ?)","%#{name}%", "%#{name}%") }
+  scope :name_like, ->(name) do
+    where(
+      "(concat(first_name, ' ', last_name) like ?) OR (concat(last_name, ' ', first_name) like ?)",
+      "%#{name}%", "%#{name}%"
+    )
+  end
 
   def most_used_products
     products.group(:id).order(Arel.sql('count(products.id) desc'))
@@ -35,13 +42,17 @@ class User < ApplicationRecord
     admin? || staff_member? || full_member?
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # Need to override devise method to send email asynchronously
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
   def active_for_authentication?
-    super and !self.archived?
+    super && !archived?
   end
 
   def queue_open_bills_reminder

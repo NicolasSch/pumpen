@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TabItemsController < ApplicationController
   def create
     tab = current_user.tabs.tab_of_the_month
