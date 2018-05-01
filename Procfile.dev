@@ -1,3 +1,2 @@
 redis: redis-server config/redis-dev.conf
 sidekiq: bundle exec sidekiq -q default -q mailers
-mailcatcher: mailcatcher
