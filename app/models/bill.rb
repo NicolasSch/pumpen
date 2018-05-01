@@ -11,7 +11,7 @@ class Bill < ApplicationRecord
   serialize :items
 
   before_validation :add_number, on: :create
-  after_create :queue_bill_added_mail
+  after_commit :queue_bill_added_mail, on: :create
 
   validates :number, presence: true
 
@@ -22,12 +22,12 @@ class Bill < ApplicationRecord
 
   scope :open, -> { where(paid: false) }
 
-  def self.queue_accouting_bills_summary_mail(bills)
-    attachment = create_bill_summary_csv(bills)
-    NotificationMailer.accounting_bills_summary_mail(attachment).deliver_later
-  end
-
   class << self
+    def queue_accouting_bills_summary_mail(bills)
+      attachment = create_bill_summary_csv(bills)
+      NotificationMailer.accounting_bills_summary_mail(attachment).deliver_later
+    end
+
     def create_bill_summary_csv(bills)
       CSV.generate(headers: true) do |csv|
         csv << csv_header
