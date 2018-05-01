@@ -47,8 +47,8 @@ de:
         sum_price:           "Summe"
     nav_bar:
       home:                  "CrossFit HH"
-      logout:                "abmelden"
-      account:               "mein Konto"
+      logout:                "Abmelden"
+      account:               "Mein Konto"
       admin:                 "Admin Bereich"
       private:               "Privater Bereich"
       users:                 "Benutzer"
@@ -154,7 +154,7 @@ de:
       destroy_confirm:       "Achtung: Mit dem löschen des Benutzers werden auch alle zugehörigen Tabs und Rechnungen gelöscht! Bist Du sicher?"
   nav_bar:
     home:                    "Meine Tabliste"
-    logout:                  "abmelden"
+    logout:                  "Abmelden"
     profile:                 "Mein Profil"
     account:                 "Mein Konto"
     admin:                   "Admin-Bereich"

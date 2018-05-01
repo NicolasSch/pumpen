@@ -2,8 +2,8 @@
 
 class Admin::ExportController < AdminController
   def index
-    start_time  = Time.zone.new(date_params[:year], date_params[:month])
-    end_time    = Time.zone.new(date_params[:year], date_params[:month]) + 1.month
+    start_time  = Date.new(date_params[:year].to_i, date_params[:month].to_i)
+    end_time    = Date.new(date_params[:year].to_i, date_params[:month].to_i) + 1.month
     bills = Bill.where('created_at >= ? AND created_at < ?', start_time, end_time)
     send_data Bill.create_bill_summary_csv(bills),
               type: 'application/csv',

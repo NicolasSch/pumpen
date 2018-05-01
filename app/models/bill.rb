@@ -28,8 +28,6 @@ class Bill < ApplicationRecord
   end
 
   class << self
-    private
-
     def create_bill_summary_csv(bills)
       CSV.generate(headers: true) do |csv|
         csv << csv_header
