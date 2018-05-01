@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :tab do
     user {create(:user)}
     month Time.now.month

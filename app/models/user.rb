@@ -16,7 +16,7 @@ class User < ApplicationRecord
   scope :name_like, ->(name) { where("(concat(first_name, ' ', last_name) like ?) OR (concat(last_name, ' ', first_name) like ?)","%#{name}%", "%#{name}%") }
 
   def most_used_products
-    products.group(:id).order('count(products.id) desc')
+    products.group(:id).order(Arel.sql('count(products.id) desc'))
   end
 
   def admin?

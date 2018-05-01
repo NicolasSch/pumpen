@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :tab_item do
     product
     cart nil

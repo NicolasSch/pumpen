@@ -14,7 +14,7 @@ RSpec.describe Admin::TabItemsController, type: :controller do
         let(:request_with_quantity) { post :create, params: { tab_item: { product_id: product.id, quantity: 3, cart_id: cart.id } , format: :js } }
 
         it 'is successful' do
-          expect(request).to be_success
+          expect(request).to be_successful
         end
 
         it 'adds new item without quantity' do

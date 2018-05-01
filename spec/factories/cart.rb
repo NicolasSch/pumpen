@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :cart do
     transient do
       products { [create(:product), create(:product)] }

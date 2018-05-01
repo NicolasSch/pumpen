@@ -31,7 +31,7 @@ RSpec.describe TabItemsController, type: :controller do
 
         describe 'with existing item' do
           let!(:item) { tab.tab_items.create!(product: product) }
-          
+
           it 'increases quantity of existing items by n' do
             request_with_quantity
             expect(tab.reload.tab_items.count).to eq(1)
