@@ -29,6 +29,8 @@ gem 'toastr-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'nokogiri'
+gem 'active_model_attributes'
 
 group :development, :test do
   gem 'byebug', platform: :mri
