@@ -29,7 +29,7 @@ gem 'toastr-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'nokogiri'
+gem 'google_drive'
 gem 'active_model_attributes'
 
 group :development, :test do
