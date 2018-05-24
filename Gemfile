@@ -29,8 +29,8 @@ gem 'toastr-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'google_drive'
 gem 'active_model_attributes'
+gem 'sepa_king'
 
 group :development, :test do
   gem 'byebug', platform: :mri
