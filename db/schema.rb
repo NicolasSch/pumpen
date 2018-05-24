@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_121055) do
+ActiveRecord::Schema.define(version: 2018_05_24_154241) do
 
   create_table "bills", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_05_23_121055) do
     t.date "date_of_collection"
     t.string "invoice_number"
     t.string "sequence_type"
+    t.string "mandate_id"
+    t.boolean "exported", default: false
   end
 
   create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,12 +110,6 @@ ActiveRecord::Schema.define(version: 2018_05_23_121055) do
     t.string "city"
     t.string "member_number"
     t.boolean "archived", default: false
-    t.string "iban"
-    t.string "bic"
-    t.string "bank"
-    t.string "phone"
-    t.date "birthdate"
-    t.date "sepa_signature_date"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
