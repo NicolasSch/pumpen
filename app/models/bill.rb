@@ -29,7 +29,7 @@ class Bill < ApplicationRecord
         sepa_mandate_id: nil,
         sepa_date_signed: nil
       }
-    )
+    ).open
   end
 
   def to_sepa_data
