@@ -21,6 +21,16 @@ class Bill < ApplicationRecord
   end
 
   scope :open, -> { where(paid: false) }
+  scope :for_sepa_export, -> do
+    includes(:user).where.not(
+      users: {
+        iban: nil,
+        bank: nil,
+        sepa_mandate_id: nil,
+        sepa_date_signed: nil
+      }
+    )
+  end
 
   def to_sepa_data
     Sepa::Data.new(

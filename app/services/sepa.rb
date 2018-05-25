@@ -5,6 +5,6 @@ module Sepa
       debit.add_transaction(invoice.to_sepa_data.debitor_attributes)  
     end
     File.open('tmp/sepaso.xml', 'w') { |file| file.write(debit.to_xml) }
-    invoices.update_all(exported: true)
+    # invoices.update_all(exported: true) if invoices.first.is_a?(MembershipInvoice)
   end
 end
