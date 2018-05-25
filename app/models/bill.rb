@@ -22,6 +22,20 @@ class Bill < ApplicationRecord
 
   scope :open, -> { where(paid: false) }
 
+  def to_sepa_data
+    Sepa::Data.new(
+      name: user.full_name,
+      bic: user.bic,
+      iban: user.iban,
+      amount: amount,
+      reference: user.member_number,
+      usage: "Tabrechnung #{number}",
+      mandate_id: user.sepa_mandate_id,
+      mandate_date_of_signature: user.sepa_date_signed,
+      requested_date: Date.today.at_beginning_of_month.next_month + 14.days
+    )
+  end
+
   class << self
     def queue_accouting_bills_summary_mail(bills)
       attachment = create_bill_summary_csv(bills)
