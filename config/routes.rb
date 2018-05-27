@@ -55,4 +55,10 @@ Rails.application.routes.draw do
   resources :tab_items, only: :create
   resources :bills, only: %i[index show]
   resources :users, only: %i[edit update]
+  resource :policy do
+    collection do
+      get :imprint
+      get :data_policy
+    end
+  end
 end

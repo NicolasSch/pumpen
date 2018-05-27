@@ -28,6 +28,8 @@
             <%= link_to t('nav_bar.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete%>
             <%= link_to t('nav_bar.profile'), edit_user_path(current_user), class: 'dropdown-item' %>
             <%= link_to t('nav_bar.admin'), admin_shops_path, class: 'dropdown-item' if current_user&.admin? %>
+            <%= link_to t('nav_bar.imprint'), imprint_policy_path, class: 'dropdown-item' %>
+            <%= link_to t('nav_bar.data_policy'), data_policy_policy_path, class: 'dropdown-item' %>
           </div>
         </li>
       </ul>

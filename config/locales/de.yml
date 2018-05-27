@@ -153,6 +153,8 @@ de:
       destroy_link:          "Benutzer unwiderruflich löschen"
       destroy_confirm:       "Achtung: Mit dem löschen des Benutzers werden auch alle zugehörigen Tabs und Rechnungen gelöscht! Bist Du sicher?"
   nav_bar:
+    imprint:                 "Impressum"
+    data_policy:             "Datenschutzerklärung"
     home:                    "Meine Tabliste"
     logout:                  "Abmelden"
     profile:                 "Mein Profil"
