@@ -1,13 +1,9 @@
 <footer class="footer">
     <div class="container">
     <% if current_user.blank? %>
-        <% if current_page?(imprint_policy_path) %>
-            <%= link_to('zurück', root_path) %>
-        <% else %>
-            <%= link_to('Impressum', imprint_policy_path) %>
-        <% end %>
-        <br />
-        <%= link_to('Datenschutzerklärung', data_policy_policy_path) %>
+        <%= link_to('zurück', root_path) unless current_page?(root_path) %>
+        <%= link_to('Impressum', imprint_policy_path) unless current_page?(imprint_policy_path) %>
+        <%= link_to('Datenschutzerklärung', data_policy_policy_path) unless current_page?(data_policy_policy_path) %>
     <% end %>
     </div>
 </footer>

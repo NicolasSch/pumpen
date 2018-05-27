@@ -4,7 +4,5 @@ class PoliciesController < ApplicationController
 
   def imprint; end
 
-  def data_policy
-    send_file 'public/Datenschutzerklärung-DSGVO-2018.pdf'
-  end
+  def data_policy; end
 end

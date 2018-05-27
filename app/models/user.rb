@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :products, through: :tab_items
   has_one :cart, dependent: :destroy
 
+  validates_with SEPA::IBANValidator, field_name: :iban
+  validates_with SEPA::BICValidator, field_name: :bic
+
   scope :active,    -> { where(archived: false) }
   scope :archived,  -> { where(archived: true) }
   scope :name_like, ->(name) do
