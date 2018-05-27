@@ -7,6 +7,11 @@
   <%= f.input :street, label: t('admin.users.street'), input_html: { value: @user.street } %>
   <%= f.input :zip, label: t('admin.users.zip'), input_html: { value: @user.zip } %>
   <%= f.input :city, label: t('admin.users.city'), input_html: { value: @user.city } %>
+  <%= f.input :iban, label: t('admin.users.iban'), input_html: { value: @user.iban } %>
+  <%= f.input :bic, label: t('admin.users.bic'), input_html: { value: @user.bic } %>
+  <%= f.input :bank, label: t('admin.users.bank'), input_html: { value: @user.bank } %>
+  <%= f.input :sepa_mandate_id, label: t('admin.users.sepa_mandate_id'), input_html: { value: @user.sepa_mandate_id } %>
+  <%= f.input :sepa_date_signed, label: t('admin.users.sepa_date_signed'), input_html: { value: @user.sepa_date_signed } %>
   <%= f.input :member_number, label: t('admin.users.member_number'), input_html: { value: @user.member_number } %>
   <% unless @user.persisted? %>
   <%= f.input :password, label: t('admin.users.password') %>

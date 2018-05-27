@@ -145,6 +145,8 @@ de:
       city:                  "Stadt"
       bic:                   "BIC"
       iban:                  "IBAN"
+      sepa_date_sigend:      "Sepa unterschrieben am"
+      sepa_mandate_id:                  "Sepa Mandat ID"
       bank:                  "Bank"
       zip:                   "Postleitzahl"
       street:                "Straße"

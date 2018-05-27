@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :products, through: :tab_items
   has_one :cart, dependent: :destroy
 
+  validates :sepa_mandate_id, :sepa_date_signed, :first_name, :last_name, :email, :member_number,
+    presence: true
+
   validates_with SEPA::IBANValidator, field_name: :iban
   validates_with SEPA::BICValidator, field_name: :bic
 

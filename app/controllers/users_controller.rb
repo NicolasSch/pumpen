@@ -53,7 +53,10 @@ class UsersController < ApplicationController
       :email,
       :current_password,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :iban,
+      :bic,
+      :bank
     )
   end
 end

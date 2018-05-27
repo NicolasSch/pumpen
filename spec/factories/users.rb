@@ -11,6 +11,10 @@ FactoryBot.define do
     role 'user'
     membership 'one'
     sequence(:member_number) { |n| n }
+    sequence(:sepa_mandate_id) { |n| n }
+    sepa_date_signed { Time.zone.now.to_date }
+    iban 'DE73200000000020101538'
+    bic 'MARKDEF1200'
     confirmed_at { Time.zone.now }
 
     trait :is_admin do

@@ -14,7 +14,12 @@ RSpec.describe Admin::UsersController, type: :controller do
   let(:gender)      { 'male' }
   let(:membership)  { 'full' }
   let(:password)    { 'changeme' }
-  let(:member_number) { 123_456 }
+  let(:iban)        { 'DE73200000000020101538' }
+  let(:bic)         { 'MARKDEF1200' }
+  let(:sepa_mandate_id) { 'foo' }
+  let(:sepa_date_signed) { Time.zone.now.to_date }
+
+  let(:member_number) { '123_456' }
   let(:password_confirmation) { 'changeme' }
 
   describe '#create' do
@@ -31,6 +36,10 @@ RSpec.describe Admin::UsersController, type: :controller do
                  street: street,
                  city: city,
                  zip: zip,
+                 sepa_mandate_id: sepa_mandate_id,
+                 sepa_date_signed: sepa_date_signed,
+                 iban: iban,
+                 bic: bic,
                  member_number: member_number,
                  password: password,
                  password_confirmation: password_confirmation

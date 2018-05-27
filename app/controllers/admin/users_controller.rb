@@ -20,6 +20,7 @@ class Admin::UsersController < AdminController
     if @user.save
       redirect_to admin_users_path, notice: t('admin.users.notice.created')
     else
+      flash.now[:error] = 'Benutzer konnte nicht gespeichert werden'
       render :new
     end
   end
@@ -30,9 +31,10 @@ class Admin::UsersController < AdminController
 
   def update
     user = User.find(params[:id])
-    if user.update!(user_params)
+    if user.update(user_params)
       redirect_to admin_users_path, notice: t('admin.users.notice.updated')
     else
+      flash.now[:error] = 'Benutzer konnte nicht gespeichert werden'
       @user = user
       render :edit
     end
@@ -56,7 +58,8 @@ class Admin::UsersController < AdminController
       :membership, :gender, :street,
       :zip, :city, :member_number,
       :role, :password, :password_confirmation,
-      :archived
+      :archived, :sepa_mandate_id, :sepa_date_signed,
+      :iban, :bic, :bank
     )
   end
 end
