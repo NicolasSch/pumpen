@@ -13,7 +13,7 @@ class Tab < ApplicationRecord
   end
 
   def self.tab_of_the_month
-    where(month: Time.zone.now.month).first_or_create
+    where(month: Time.zone.now.month, state: 'open').first_or_create
   end
 
   def total_price

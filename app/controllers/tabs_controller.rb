@@ -31,6 +31,6 @@ class TabsController < ApplicationController
   end
 
   def ensure_tab
-    @tab = current_user.tabs.includes(:products).where(month: Time.zone.now.month).first_or_create
+    @tab = current_user.tabs.includes(:products).tab_of_the_month
   end
 end
