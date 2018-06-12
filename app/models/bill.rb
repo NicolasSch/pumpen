@@ -21,7 +21,7 @@ class Bill < ApplicationRecord
   end
 
   scope :open, -> { where(paid: false) }
-  scope :for_sepa_export, -> do
+  scope :for_sepa_export, -> do 
     includes(:user).where.not(
       users: {
         iban: nil,
@@ -29,11 +29,11 @@ class Bill < ApplicationRecord
         sepa_mandate_id: nil,
         sepa_date_signed: nil
       }
-    ).open
+    ).open.where(exported: false)
   end
 
   def to_sepa_data
-    Sepa::Data.new(
+    data = Sepa::Data.new(
       name: user.full_name,
       bic: user.bic,
       iban: user.iban,
@@ -42,8 +42,11 @@ class Bill < ApplicationRecord
       usage: "Tabrechnung #{number}",
       mandate_id: user.sepa_mandate_id,
       mandate_date_of_signature: user.sepa_date_signed,
-      requested_date: Date.today.at_beginning_of_month.next_month + 14.days
+      requested_date: Date.today.at_beginning_of_month + 14.days
     )
+    return data unless user.bills.where(exported: true).any? 
+    data.sequence_type = 'RCUR'
+    data
   end
 
   class << self

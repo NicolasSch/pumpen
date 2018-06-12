@@ -7,14 +7,14 @@ class Api::BillsController < ApiController
     tabs.each do |tab|
       if tab.tab_items.any?
         bills_for_accounting.push(
-          tab.create_bill(
+          tab.create_bill!(
             amount: tab.total_price,
             items: BillPresenter.serialized_items(tab.tab_items),
             discount: tab.discount
           )
         )
         tab.state = 'billed'
-        tab.save
+        tab.save!
       else
         tab.destroy!
       end
