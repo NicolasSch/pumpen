@@ -1,0 +1,31 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('admin.sepa.headline')%></h3>
+      <% if @unexported_bills.any? %>
+      <div class="alert alert-info" role="alert">
+        <h5 class="alert-heading">Nicht exportierte Rechnungen gefunden!</h5>
+        <p><%= t('admin.sepa.unexported_bills', count: @unexported_bills.count) %></p>
+        <p class="mb-0"><%= link_to t('admin.sepa.create'), admin_sepas_path, method: :post %></p>
+      </div>
+      <table class="table col-md-12 table-striped table-hover">
+        <thead>
+          <tr>
+            <th><%= t('admin.sepa.month')%></th>
+            <th><%= t('admin.bills.number')%></th>
+            <th><%= t('admin.sepa.user')%></th>
+            <th><%= t('admin.sepa.sum')%></th>
+          </tr>
+        </thead>
+        <tbody>
+        <%= render partial: 'bill', collection: @unexported_bills, as: :bill %>
+        </tbody>
+      </table>
+      <% else %>
+        <%= t('admin.sepa.all_exported')%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: 'membership' %>

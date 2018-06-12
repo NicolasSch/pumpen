@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     authenticate :user, ->(u) { u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
+    resources :sepas, only: [:index, :create] do
+      collection do
+        post :create_membership_invoices_xml
+      end
+    end
     resources :users
     resources :products
     resources :statistics, only: :index

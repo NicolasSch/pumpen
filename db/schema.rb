@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_163345) do
+ActiveRecord::Schema.define(version: 2018_06_12_124828) do
 
   create_table "bills", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_163345) do
     t.string "sequence_type"
     t.string "mandate_id"
     t.boolean "exported", default: false
+    t.string "city"
   end
 
   create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

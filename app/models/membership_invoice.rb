@@ -1,7 +1,6 @@
 class MembershipInvoice < ApplicationRecord
-  validates :firstname, :lastname, :membership_number, :date_of_signature,
-    :address, :zip, :email, :bank, :iban, :amount, :date_of_collection,
-    :invoice_number, :mandate_id, presence: true
+  validates :firstname, :lastname, :membership_number, :date_of_collection, :date_of_signature,
+    :amount, :email, :bank, :iban, :invoice_number, :mandate_id, presence: true
 
   validates_with SEPA::IBANValidator, field_name: :iban
   validates_with SEPA::BICValidator, field_name: :bic

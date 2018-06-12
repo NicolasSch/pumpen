@@ -1,0 +1,6 @@
+<tr>
+  <td><%= translated_month(bill.tab.month)%> </td>
+  <td><%= bill.number %> </td>
+  <td><%= bill.user.first_name %> <%= bill.user.last_name%> </td>
+  <td><%= number_to_euro(bill.amount) %> </td>
+</tr>

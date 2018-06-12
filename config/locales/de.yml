@@ -98,6 +98,22 @@ de:
       sum:                   "Betrag"
       paid:                  "bezahlt"
       reminded_at:           "Erinnerung"
+    sepas:
+      membership:
+        headline: "Mitgliedschaften Sepa XML"
+        description: "Bitte wählen sie eine CSV Datei aus, die zum Generieren des SEPA Files verwendet werden soll.
+          Die CSV Datei muss folgene Spalten beinhalten. Bitte Groß- und Kleinschreibung beachten."
+        falsy_csv: "Folgende Probleme traten bei der verwendeten CSV Datei auf:"
+        button: "SEPA XML generieren"
+    sepa:
+      headline: "Tab-Rechnungen Sepa XML"
+      unexported_bills: "%{count} Rechnungen wurden noch nicht exportiert"
+      create: "Jetzt exportieren..."
+      month: "Monat"
+      number: "Rechnungsnummer"
+      user: "Benutzer"
+      sum: "Summe"
+      all_exported: "Alle Rechnungen wurden exportiert"
     products:
       headline:              "Artikelliste"
       description:           "Erstelle neue Artikel oder editiere Bestehende."
@@ -165,6 +181,7 @@ de:
     profile:                 "Mein Profil"
     account:                 "Mein Konto"
     admin:                   "Admin-Bereich"
+    sepa:                    "Sepa"
     private:                 "Privater Bereich"
     products:                "Sortiment"
     bills:                   "Rechnungen"

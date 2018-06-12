@@ -21,6 +21,9 @@
       <li class="nav-item <%= 'active' if current_page?(admin_statistics_path) %>">
         <%= link_to t('admin.nav_bar.statistics'), admin_statistics_path, class: 'nav-link '%>
       </li>
+      <li class="nav-item <%= 'active' if current_page?(admin_sepas_path) %>">
+        <%= link_to t('admin.nav_bar.sepa'), admin_sepas_path, class: 'nav-link '%>
+      </li>
     </ul>
     <ul class="navbar-nav mt-2 col-md-2 mt-md-0">
       <li class="nav-item dropdown">

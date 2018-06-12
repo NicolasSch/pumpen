@@ -1,0 +1,41 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+      <h3 class="card-title text-center"><%= t('.headline')%></h3>
+      <% if @errors.present? %>
+        <div class="alert alert-danger" role="alert">
+        <h5 class="alert-heading">Fehler in Quelldatei</h5>
+        <p><%= t('.falsy_csv') %></p>
+        <ul>
+          <% @errors.flatten.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+    
+      <%= simple_form_for :membership_invoice,
+                          url: create_membership_invoices_xml_admin_sepas_path do |f| %>
+        <p><%= t('.description') %></p>
+        <ul>
+          <li>First Name</li>
+          <li>Last Name</li>
+          <li>mandat ID</li>
+          <li>Member#</li>
+          <li>Date Signed</li>
+          <li>Email</li>
+          <li>Bank</li>
+          <li>BIC</li>
+          <li>IBAN</li>
+          <li>Amount</li>
+          <li>Invoice No.</li>
+          <li>Date of Collection</li>
+          <li>SEPA TRANSCATION</li>
+        </ul>
+        <%= f.input :file, as: :file, label: false %>
+        <%= f.submit t('.button'), class: 'button' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
