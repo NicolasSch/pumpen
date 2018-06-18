@@ -46,7 +46,7 @@ module Admin
           bank: row['Bank'],
           bic: row['BIC'],
           iban: row['IBAN'],
-          amount: row['Amount'],
+          amount: row['Amount'].gsub(',', '.'),
           invoice_number: row['Invoice No.'],
           date_of_collection: row['Date of collection'],
           sequence_type: row['SEPA TRANSACTION']

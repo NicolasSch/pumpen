@@ -19,7 +19,8 @@ class MembershipInvoice < ApplicationRecord
       usage: invoice_number,
       mandate_id: mandate_id,
       mandate_date_of_signature: date_of_signature,
-      requested_date: date_of_collection
+      requested_date: date_of_collection,
+      sequence_type: sequence_type
     )
   end
 

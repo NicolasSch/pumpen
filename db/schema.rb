@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_12_124828) do
+ActiveRecord::Schema.define(version: 2018_06_18_113520) do
 
   create_table "bills", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_124828) do
     t.string "bank"
     t.string "bic"
     t.string "iban"
-    t.decimal "amount", precision: 10
+    t.decimal "amount", precision: 8, scale: 2
     t.date "date_of_collection"
     t.string "invoice_number"
     t.string "sequence_type"
