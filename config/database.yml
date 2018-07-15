@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
+  password: <%= ENV.fetch('SQL_PW', '') %>
   socket: <%= RUBY_PLATFORM =~ /darwin/ ? '/tmp/mysql.sock' : '/var/run/mysqld/mysqld.sock' %>
 
 development:
