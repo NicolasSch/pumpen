@@ -19,7 +19,7 @@ module Sepa
     attribute :mandate_date_of_signature, :date
     attribute :local_instrument, :string, default: 'CORE'
     attribute :sequence_type, :string, default: 'FRST'
-    attribute :requested_date, :date, default: -> { Date.today.at_beginning_of_month  + 14.days }
+    attribute :requested_date, :date, default: -> { Date.today + 7.days }
 
     def creditor_attributes
       {

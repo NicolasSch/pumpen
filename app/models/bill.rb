@@ -42,7 +42,7 @@ class Bill < ApplicationRecord
       usage: "Tabrechnung #{number}",
       mandate_id: user.sepa_mandate_id,
       mandate_date_of_signature: user.sepa_date_signed,
-      requested_date: Date.today.at_beginning_of_month + 14.days
+      requested_date: Date.today + 7.days
     )
     return data unless user.bills.where(exported: true).any? 
     data.sequence_type = 'RCUR'
