@@ -10,6 +10,9 @@ FactoryBot.define do
     password_confirmation 'changeme'
     role 'user'
     membership 'one'
+    street 'foo strasse 1'
+    zip '21629'
+    city 'Hamburg'
     sequence(:member_number) { |n| n }
     sequence(:sepa_mandate_id) { |n| n }
     sepa_date_signed { Time.zone.now.to_date }

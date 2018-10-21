@@ -1,4 +1,19 @@
 de:
+  signup:
+    gender: Anrede
+    firstname: Vorname
+    lastname: Nachname
+    email: E-Mail
+    street: Straße und Hausnummer
+    zip: Postleitzahl
+    city: Stadt
+    iban: IBAN
+    bic: BIC
+    invoice_data: Wir benötigen Deine Rechnungsdaten um am Ende des Monats eine Rechnung für Deine Tabliste zu erstellen.
+    terms_html: Ich bestätige dass ich die <a href=%{link}>Datenschutzrichtlinien</a> gelesen habe.
+    bank: Name der Bank
+    member_number: Bitte gebe Deine Crossfit HH Mitgliedsnummer an. Diese findest Du in deinem Vertrag.
+    member_number_label: Mitgliedsnummer
   shared:
     open_bills_count:
       one:                   "Du hast eine offene Rechnung!"

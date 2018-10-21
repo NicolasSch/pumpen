@@ -110,7 +110,7 @@ RSpec.describe Admin::UsersController, type: :controller do
         subject
         expect(user.reload.first_name).to eq firstname
         expect(user.reload.last_name).to eq lastname
-        expect(user.reload.email).to eq email
+        expect(user.reload.unconfirmed_email).to eq email
         expect(user.reload.gender).to eq gender
         expect(user.reload.membership).to eq membership
         expect(user.reload.member_number).to eq member_number

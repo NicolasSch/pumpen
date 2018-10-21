@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   helper  SmartListing::Helper
 
   def index
+    redirect_to root_path unless current_user.tab_manager?
     authorize! :read, Product
     @tab_item      = TabItem.new
     @open_bills    = current_user.bills.open

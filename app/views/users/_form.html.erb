@@ -6,7 +6,7 @@
   <%= f.input :street, label: t('admin.users.street'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.street } %>
   <%= f.input :zip, label: t('admin.users.zip'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.zip } %>
   <%= f.input :city, label: t('admin.users.city'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.city } %>
-  <%= f.input :iban, label: t('admin.users.iban'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.bank } %>
+  <%= f.input :iban, label: t('admin.users.iban'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.iban } %>
   <%= f.input :bic, label: t('admin.users.bic'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.bic } %>
   <%= f.input :bank, label: t('admin.users.bank'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.bank } %>
   <%= f.input :member_number, disabled: true, label: t('user.member_number'), wrapper_html: {class: 'col-12'}, input_html: { value: @user.member_number } %>

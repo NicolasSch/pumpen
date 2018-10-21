@@ -1,17 +1,41 @@
-<h2><%= t(".sign_up") %></h2>
+<div class="col-12">
+  <div class="card">
+    <div class="card-block">
+      <h2><%= t(".sign_up") %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true %>
+        <div class="form-inputs row">
+          
+          <%= f.input :gender, label: t('signup.gender'), as: :select, collection: translated_genders, wrapper_html: {class: 'col-md-2'} %>
+          <%= f.input :first_name, label: t('signup.firstname'), wrapper_html: {class: 'col-md-5'} %>
+          <%= f.input :last_name, label: t('signup.lastname'), wrapper_html: {class: 'col-md-5'} %>
+          <%= f.input :email, label: t('signup.email'), wrapper_html: {class: 'col-md-12'} %>
+          
+          <p class="col-md-12"><%= t('signup.invoice_data')%></p>
+          <%= f.input :street, label: t('signup.street'), wrapper_html: {class: 'col-md-10'} %>
+          <%= f.input :zip, label: t('signup.zip'), wrapper_html: {class: 'col-md-2'} %>
+          <%= f.input :city, label: t('signup.city'), wrapper_html: {class: 'col-md-6'} %>
+          <%= f.input :iban, label: t('signup.iban'), wrapper_html: {class: 'col-md-6'} %>
+          <%= f.input :bic, label: t('signup.bic'), wrapper_html: {class: 'col-md-6'} %>
+          <%= f.input :bank, label: t('signup.bank'), wrapper_html: {class: 'col-md-6'} %>
+
+          <%= f.input :password, required: true, wrapper_html: {class: 'col-md-12'} %>
+          <%= f.input :password_confirmation, required: true, wrapper_html: {class: 'col-md-12'} %>
+
+          <p class="col-md-12"><%= t('signup.member_number')%></p>
+          <%= f.input :member_number, label: t('signup.member_number_label'), wrapper_html: {class: 'col-md-12'} %>
+          <%= f.input :terms, as: :boolean, label: t('signup.terms_html', link: data_policy_policy_path), wrapper_html: {class: 'col-md-12'} %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, t(".sign_up") %>
+        </div>
+      <% end %>
+    </div>
   </div>
+  <%= render "devise/shared/links" %>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_up") %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   AVAILABLE_MEMBERSHIPS = %w[staff full four three two one guest].freeze
   ROLES = %w[admin user].freeze
 
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tabs, dependent: :destroy
@@ -14,7 +14,11 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
 
   validates :sepa_mandate_id, :sepa_date_signed, :first_name, :last_name, :email, :member_number,
-    presence: true
+    :street, :zip, :city, presence: true
+
+  validates_acceptance_of :terms
+
+  before_validation :set_sepa_info, on: :create
 
   validates_with SEPA::IBANValidator, field_name: :iban
   validates_with SEPA::BICValidator, field_name: :bic
@@ -45,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def tab_manager?
-    admin? || staff_member? || full_member?
+    admin? || staff_member?
   end
 
   def full_name
@@ -63,5 +67,11 @@ class User < ApplicationRecord
 
   def queue_open_bills_reminder
     NotificationMailer.open_bills_reminder(self).deliver_later
+  end
+
+  def set_sepa_info
+    return if sepa_mandate_id? && sepa_date_signed?
+    self.sepa_mandate_id = "#{member_number}T0001"
+    self.sepa_date_signed = Date.today
   end
 end

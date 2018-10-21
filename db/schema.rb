@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_06_18_113520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "month", default: 3, null: false
+    t.integer "month", default: 8, null: false
     t.string "state", default: "open"
     t.integer "discount"
     t.index ["user_id"], name: "index_tabs_on_user_id"
