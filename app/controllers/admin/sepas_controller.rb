@@ -36,6 +36,8 @@ module Admin
     def load_membership_invoices
       invoices = []
       CSV.foreach(membership_params[:file].path, headers: true) do |row|
+        amount = row['Amount'].gsub(',', '.').to_f
+        next if amount == 0
         invoices << MembershipInvoice.new(
           firstname:row['First Name'],
           lastname: row['Last Name'],
@@ -46,9 +48,9 @@ module Admin
           bank: row['Bank'],
           bic: row['BIC'],
           iban: row['IBAN'],
-          amount: row['Amount'].gsub(',', '.'),
+          amount: amount,
           invoice_number: row['Invoice No.'],
-          date_of_collection: row['Date of collection'],
+          date_of_collection: Date.strptime(row['Date of collection'], "%d.%m.%Y"),
           sequence_type: row['SEPA TRANSACTION']
         )
       end
